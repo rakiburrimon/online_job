@@ -9,27 +9,27 @@
     <link rel="stylesheet" href="assets/css/passwordvalidation.css">
     <title>Registration</title>
   </head>
-  
+
   <body>
     <div class="container col-md-4">
 
     <h1>Job Seeker Registration</h1>
   <div class="row justify-content-center">
    <div class="col-md-12">
-    <form>
+    <form action="insert_job_seeker.php" method="POST">
       <div class="form-group">
     <label for="name">Enter Full Name</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Full Name">
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Full Name">
     
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
     
   </div>
    <div class="form-group">
-    <label for="name">Cell Number</label>
-    <input type="text" class="form-control" id="exampleInputPhone1" placeholder="Enter Phone Number">
+    <label for="phone">Cell Number</label>
+    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number">
     
   </div>
   <div class="form-group">
@@ -47,7 +47,7 @@
     <label for="password">Confirm Password</label>
     <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
   </div>
-   <button type="button" class="btn btn-outline-primary btn-lg btn-block">Register Now</button>
+   <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Register Now</button>
 </form>
 </div>
   </div>
