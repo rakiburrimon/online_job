@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/passwordvalidation.css">
     <title>Registration</title>
   </head>
+  
   <body>
     <div class="container col-md-4">
 
