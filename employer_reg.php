@@ -13,25 +13,37 @@
   <body>
     <div class="container col-md-4">
 
-    <h3>Job Seeker Registration</h3>
+    <h3>Employer Registration</h3>
   <div class="row justify-content-center">
    <div class="col-md-12">
     <form action="insert_job_seeker.php" method="POST">
+
       <div class="form-group">
-    <label for="name">Enter Full Name</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Full Name">
+    <label for="name">Company Name</label>
+    <input type="text" class="form-control" id="c_name" name="c_name" placeholder="Enter Company Name">
     
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+    <label for="name">Contact Person's Name</label>
+    <input type="text" class="form-control" id="c_person_name" name="c_person_name" placeholder="Enter Contact Person Name">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Contact Person's Email address</label>
+    <input type="email" class="form-control" id="c_person_email" name="c_person_email" aria-describedby="emailHelp" placeholder="Enter Contact Person Email">
     
   </div>
    <div class="form-group">
-    <label for="phone">Cell Number</label>
-    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number">
+    <label for="phone">Employer Phone Number</label>
+    <input type="text" class="form-control" id="e_phone" name="e_phone" placeholder="Employer Phone Number">
     
   </div>
+  <div class="form-group">
+    <label for="comment">Company Description</label>
+    <textarea type="text" rows="5" class="form-control" id="c_description" name="c_description" placeholder="Enter Company Description"></textarea>
+    
+  </div>
+
   <div class="form-group">
     <label for="Password">Password</label>
     <input type="password" class="form-control" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least 8 or more characters" required>
@@ -46,6 +58,21 @@
   <div class="form-group">
     <label for="password">Confirm Password</label>
     <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
+  </div>
+  <div class="form-group">
+    <label for="comment">Business Description</label>
+    <textarea type="text" rows="5" class="form-control" id="b_description" name="b_description" placeholder="Enter Business Description"></textarea>
+    
+  </div>
+  <div class="form-group">
+    <label for="comment">Company Location</label>
+    <textarea type="text" rows="5" class="form-control" id="c_location" name="c_location" placeholder="Enter Company Location"></textarea>
+    
+  </div>
+  <div class="form-group">
+    <label for="comment">Industry Type</label>
+    <textarea type="text" rows="1" class="form-control" id="i_type" name="i_type" placeholder="Enter Industry Type"></textarea>
+    
   </div>
    <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Register Now</button>
 </form>
