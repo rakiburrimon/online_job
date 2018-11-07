@@ -66,11 +66,13 @@
           <div class="row">
           <div class="col-12">
             <div class="input-group-sm mb-3">
-                <input class="form-control border-secondary py-1" type="search" placeholder="Search">
+              <form action="search.php" method="GET">
+                <input name="query" class="form-control border-secondary py-1" type="text" placeholder="Search">
                 <div class="input-group-append">
-                    <button class="btn btn-primary btn-round btn-lg" type="button">Search
+                    <button class="btn btn-primary btn-round btn-md" type="submit" value="Search">Search
                     </button>
                 </div>
+              </form>
             </div>
           </div>
         </div>
