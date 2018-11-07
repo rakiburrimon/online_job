@@ -30,7 +30,7 @@
             <span class="navbar-toggler-bar bar3"></span>
           </button>
         </div>
-        <a class="navbar-brand" href="#pablo">Now UI Dashboard</a>
+        <a class="navbar-brand" href="#pablo">Online Job Portal</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -40,13 +40,13 @@
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="../examples/dashboard.html">
-              Back to Dashboard
+            <a class="nav-link" href="">
+              Registration
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://github.com/creativetimofficial/now-ui-dashboard/issues" target="_blank">
-              Have an issue?
+            <a class="nav-link" href="">
+              Login
             </a>
           </li>
         </ul>
@@ -83,17 +83,17 @@
       <nav>
         <ul>
           <li>
-            <a href="https://www.creative-tim.com">
-              Creative Tim
+            <a href="">
+              Contact
             </a>
           </li>
           <li>
-            <a href="http://presentation.creative-tim.com">
+            <a href="">
               About Us
             </a>
           </li>
           <li>
-            <a href="http://blog.creative-tim.com">
+            <a href="">
               Blog
             </a>
           </li>
@@ -104,8 +104,7 @@
         <script>
           document.write(new Date().getFullYear())
         </script>, Designed by
-        <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+        <a>Md. Rakibur Rahman</a>
       </div>
     </div>
   </footer>

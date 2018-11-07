@@ -16,7 +16,7 @@
     <h3>Employer Registration</h3>
   <div class="row justify-content-center">
    <div class="col-md-12">
-    <form action="insert_job_seeker.php" method="POST">
+    <form action="insert_employer.php" method="POST">
 
       <div class="form-group">
     <label for="name">Company Name</label>
@@ -57,7 +57,7 @@
 </div>
   <div class="form-group">
     <label for="password">Confirm Password</label>
-    <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
+    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
   </div>
   <div class="form-group">
     <label for="comment">Business Description</label>
