@@ -19,7 +19,7 @@ $admin_email = stripslashes($admin_email);
 $password = stripslashes($password);
 $admin_email = mysqli_real_escape_string($db, $admin_email);
 $password = mysqli_real_escape_string($db, $password);
-$password = md5($password);
+//$password = md5($password);
  
 //Check username and password from database
 $sql="SELECT admin_id FROM admin WHERE admin_email='$admin_email' and password='$password'";
@@ -29,7 +29,7 @@ $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 //If username and password exist in our database then create a session.
 //Otherwise echo error.
  
-if(mysqli_num_rows($result) == 1)
+if(mysqli_num_rows($result) >= 1)
 {
 $_SESSION['admin_email'] = $login_user; // Initializing Session
 header("location: welcome.php"); // Redirecting To Other Page
@@ -42,6 +42,8 @@ $error = "Incorrect email or password.";
 }
  
 ?>
+
+
 <!doctype html>
 <html>
 <head>
