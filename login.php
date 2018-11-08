@@ -35,7 +35,7 @@ $_SESSION['admin_email'] = $login_user; // Initializing Session
 header("location: welcome.php"); // Redirecting To Other Page
 }else
 {
-$error = "Incorrect username or password.";
+$error = "Incorrect email or password.";
 }
  
 }

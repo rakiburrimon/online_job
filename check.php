@@ -11,6 +11,6 @@ $login_user=$row['admin_name'];
  
 if(!isset($user_check))
 {
-header("Location: index.php");
+header("Location: welcome.php");
 }
 ?>
