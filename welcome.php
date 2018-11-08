@@ -1,15 +1,18 @@
 <?php
-   include('session.php');
+	include("check.php");	
 ?>
-<html">
-   
-   <head>
-      <title>Welcome </title>
-   </head>
-   
-   <body>
-      <h1>Welcome <?php echo $login_session; ?></h1> 
-      <h2><a href = "logout.php">Sign Out</a></h2>
-   </body>
-   
-</html> 
+ 
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Home</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+ 
+<body>
+<h1 class="hello">Hello, <em><?php echo $login_user;?>!</em></h1>
+<br><br><br>
+<a href="logout.php" style="font-size:18px">Logout?</a>
+</body>
+</html>
