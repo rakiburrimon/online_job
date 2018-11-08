@@ -2,7 +2,7 @@
 session_start();
 include("connection.php"); //Establishing connection with our database
  
-//$error = ""; //Variable for storing our errors.
+$error = ""; //Variable for storing our errors.
 if(isset($_POST["submit"]))
 {
 if(empty($_POST["admin_email"]) || empty($_POST["password"]))
@@ -32,7 +32,7 @@ $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 if(mysqli_num_rows($result) == 1)
 {
 $_SESSION['admin_email'] = $login_user; // Initializing Session
-header("location:welcome.php"); // Redirecting To Other Page
+header("location: welcome.php"); // Redirecting To Other Page
 }else
 {
 $error = "Incorrect email or password.";

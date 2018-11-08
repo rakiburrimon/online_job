@@ -9,8 +9,4 @@ $row=mysqli_fetch_array($sql,MYSQLI_ASSOC);
  
 $login_user=$row['admin_name'];
  
-if(!isset($user_check))
-{
-header("Location: welcome.php");
-}
 ?>
