@@ -32,7 +32,7 @@ $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 if(mysqli_num_rows($result) == 1)
 {
 $_SESSION['admin_email'] = $login_user; // Initializing Session
-header("location: home.php"); // Redirecting To Other Page
+header("location: welcome.php"); // Redirecting To Other Page
 }else
 {
 $error = "Incorrect username or password.";
