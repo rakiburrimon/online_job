@@ -3,20 +3,18 @@
    session_start();
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
       
       $admin_email = mysqli_real_escape_string($db,$_POST['admin_email']);
       $password = mysqli_real_escape_string($db,$_POST['password']); 
       
-      $sql = "SELECT id FROM admin WHERE admin_email = '$admin_email' and password = '$password'";
+      $sql = "SELECT admin_id FROM admin WHERE admin_email = '$admin_email' and password = '$password'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
       
       $count = mysqli_num_rows($result);
       
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
+      
       if($count == 1) {
          session_register("admin_email");
          $_SESSION['login_user'] = $admin_email;
@@ -58,8 +56,8 @@
             <div style = "margin:30px">
                
                <form action = "" method = "post">
-                  <label>UserName  :</label><input type = "text" name = "admin_email" class = "text"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "password" class = "text" /><br/><br />
+                  <label>User Email  :</label><input type = "text" name = "admin_email" class = "box"/><br /><br />
+                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
                </form>
                
