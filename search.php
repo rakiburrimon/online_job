@@ -23,7 +23,7 @@ $dbname = "job_portal";
      
     if(strlen($query) >= $min_length){ // if query length is more or equal minimum length then
          
-        //$query = htmlspecialchars($query); 
+        $query = htmlspecialchars($query); 
         // changes characters used in html to their equivalents, for example: < to &gt;
          
         //$query = mysql_real_escape_string($query);
