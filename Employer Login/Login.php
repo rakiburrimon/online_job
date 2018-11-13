@@ -5,24 +5,24 @@ include("connection.php"); //Establishing connection with our database
 $error = ""; //Variable for storing our errors.
 if(isset($_POST["submit"]))
 {
-if(empty($_POST["company_name"]) || empty($_POST["password"]))
+if(empty($_POST["company_name"]) || empty($_POST["employer_password"]))
 {
 $error = "Both fields are required.";
 }else
 {
 // Define $username and $password
 $company_name=$_POST['company_name'];
-$password=$_POST['password'];
+$employer_password=$_POST['employer_password'];
  
 // To protect from MySQL injection
 $company_name = stripslashes($company_name);
-$password = stripslashes($password);
+$employer_password = stripslashes($employer_password);
 $company_name = mysqli_real_escape_string($db, $company_name);
-$password = mysqli_real_escape_string($db, $password);
+$employer_password = mysqli_real_escape_string($db, $employer_password);
 //$password = md5($password);
  
 //Check username and password from database
-$sql="SELECT employer_id FROM employer WHERE company_name='$company_name' and password='$password'";
+$sql="SELECT employer_id FROM employer WHERE company_name='$company_name' and employer_password='$employer_password'";
 $result=mysqli_query($db,$sql);
 $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
  
@@ -61,7 +61,7 @@ $error = "Incorrect email or password.";
 <label>Username:</label><br>
 <input type="text" name="company_name" placeholder="Company Name" /><br><br>
 <label>Password:</label><br>
-<input type="password" name="password" placeholder="password" />  <br><br>
+<input type="password" name="employer_password" placeholder="Password" />  <br><br>
 <input type="submit" name="submit" value="Login" /> 
 </form>
 <div class="error"><?php echo $error;?></div>
