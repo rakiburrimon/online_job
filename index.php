@@ -45,7 +45,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Admin Login/Login.php">
+            <a class="nav-link" href="#" data-toggle="dropdown" role="button">
               Login
             </a>
           </li>
