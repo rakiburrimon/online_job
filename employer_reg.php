@@ -70,11 +70,98 @@
     <textarea type="text" rows="5" class="form-control" id="c_location" name="c_location" placeholder="Enter Company Location"></textarea>
     
   </div>
-  <div class="form-group">
-    <label for="comment">Industry Type</label>
-    <textarea type="text" rows="1" class="form-control" id="i_type" name="i_type" placeholder="Enter Industry Type"></textarea>
-    
-  </div>
+  <label for="comment">Industry Type</label>
+  <div class="col-md-12 col-lg-12">
+            <div class="form-check">
+            <label class="form-check-label" for="radio1">
+              <input type="radio" class="form-check-input" id="Agro based Industry" name="Industry Type" value="Agro based Industry" >Agro based Industry
+              </label>
+            </div>
+
+            <div class="form-check">
+            <label class="form-check-label" for="radio2">
+              <input type="radio" class="form-check-input" id="Archi./Engg./Construction" name="Industry Type" value="Archi./Engg./Construction" >Archi./Engg./Construction
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio3">
+              <input type="radio" class="form-check-input" id="Automobile/Industrial Machine" name="Industry Type" value="Automobile/Industrial Machine" >Automobile/Industrial Machine
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio4">
+              <input type="radio" class="form-check-input" id="Bank/Non-Bank Fin. Institution" name="Industry Type" value="Bank/Non-Bank Fin. Institution" >Bank/Non-Bank Fin. Institution
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio5">
+              <input type="radio" class="form-check-input" id="Energy/Power/Fuel" name="Industry Type" value="Energy/Power/Fuel">Energy/Power/Fuel
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio6">
+              <input type="radio" class="form-check-input" id="Education" name="Industry Type" value="Education">Education
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio7">
+              <input type="radio" class="form-check-input" id="Garments/Textile" name="Industry Type" value="Garments/Textile">Garments/Textile
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio8">
+              <input type="radio" class="form-check-input" id="Pharmaceuticals" name="Industry Type" value="Pharmaceuticals">Pharmaceuticals
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio9">
+              <input type="radio" class="form-check-input" id="Hospital/ Diagnostic Center" name="Industry Type" value="Hospital/ Diagnostic Center">Hospital/ Diagnostic Center
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio10">
+              <input type="radio" class="form-check-input" id="Information Technology (IT)" name="Industry Type" value="Information Technology (IT)">Information Technology (IT)
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio11">
+              <input type="radio" class="form-check-input" id="Media / Advertising/ Event Mgt." name="Industry Type" value="Media / Advertising/ Event Mgt.">Media / Advertising/ Event Mgt.
+              </label>
+            </div>
+
+              <div class="form-check">
+              <label class="form-check-label" for="radio12">
+              <input type="radio" class="form-check-input" id="Real Estate/Development" name="Industry Type" value="Real Estate/Development">Real Estate/Development
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio13">
+              <input type="radio" class="form-check-input" id="Food/Beverage Industry" name="Industry Type" value="Food/Beverage Industry">Food/Beverage Industry
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio14">
+              <input type="radio" class="form-check-input" id="Security Service" name="Industry Type" value="Security Service">Security Service
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label" for="radio15">
+              <input type="radio" class="form-check-input" id="Others" name="Industry Type" value="Others">Others
+              </label>
+            </div>
+        </div>
    <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Register Now</button>
 </form>
 </div>
