@@ -31,7 +31,6 @@ $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 if(mysqli_num_rows($result) == 1)
 {
 $_SESSION['company_name'] = $login_user; // Initializing Session
-$_SESSION['employer_status'] = $active;
 header("location: welcome.php"); // Redirecting To Other Page
 }else
 {
