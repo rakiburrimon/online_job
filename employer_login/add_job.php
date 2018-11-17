@@ -1,5 +1,5 @@
 <?php
-include 'check.php';
+require 'check.php';
 
 ?>
 

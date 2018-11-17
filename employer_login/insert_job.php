@@ -1,4 +1,9 @@
  <?php
+require 'check.php'
+ ?>
+
+ <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "";
