@@ -45,7 +45,7 @@
                         <li><a href="Login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                        
                     <?php } else { ?>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                             <?php echo ($_SESSION['company_name']); ?>
                         </a>
                         <div class="dropdown-menu">
