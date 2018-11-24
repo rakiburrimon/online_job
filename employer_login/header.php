@@ -41,7 +41,7 @@
                     <?php if (empty($_SESSION['company_name'])) { ?>
                         <li><a href="home.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                        
                     <?php } else { ?>
-                        <li><a href="../logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> <?php echo ($_SESSION['company_name']); ?></a></li>
                     <?php } ?>
                         
                     
