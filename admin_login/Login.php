@@ -11,16 +11,16 @@ if (!isset($_SESSION)) {
     <div class="container-fluid">
         <div class="container jumbotron">
 
-            <h1 class="text-center">Employer Login Panel</h1>
+            <h1 class="text-center">Admin Login Panel</h1>
             <form action="Login.php" method="POST" >
                 <div class="form-group">
-                    <label for="company_name">Name:</label>
-                    <input type="text" class="form-control" name="company_name" id="company_name">
+                    <label for="admin_name">Name:</label>
+                    <input type="text" class="form-control" name="admin_name" id="admin_name">
                 </div>
 
                 <div class="form-group">
-                    <label for="employer_password">Password:</label>
-                    <input type="password" name="employer_password" class="form-control" id="employer_password">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" class="form-control" id="password">
                 </div>               
 
                 <button type="submit" class="btn btn-success" name="submit">Submit</button>
@@ -35,15 +35,15 @@ if (!isset($_SESSION)) {
     <br>
     <?php
     if (isset($_POST['submit'])) {
-        $company_name = $_POST['company_name'];
-        $employer_password = $_POST['employer_password'];
+        $admin_name = $_POST['admin_name'];
+        $password = $_POST['password'];
         require 'connection.php';
 
-        $query = "SELECT * FROM employer WHERE company_name='" . $company_name . "' and employer_password='" . $employer_password . "'";
+        $query = "SELECT * FROM admin WHERE admin_name='" . $admin_name . "' and password='" . $password . "'";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
-        	$_SESSION['employer_id'] = $employer_id;
-            $_SESSION['company_name'] = $company_name;
+            $_SESSION['admin_email'] = $admin_email;
+            $_SESSION['admin_name'] = $admin_name;
             mysqli_close($conn);
 
             header('location:welcome.php');
