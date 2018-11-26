@@ -42,8 +42,12 @@ if (!isset($_SESSION)) {
         $query = "SELECT * FROM employer WHERE company_name='" . $company_name . "' and employer_password='" . $employer_password . "'";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
-        	$_SESSION['employer_id'] = $employer_id;
             $_SESSION['company_name'] = $company_name;
+            {
+                if ( password_verify( $_POST['employer_password'] = $employer_password ) ) {
+                            $_SESSION['employer_id'] = $employer_id;
+                    }
+            }
             mysqli_close($conn);
 
             header('location:welcome.php');
