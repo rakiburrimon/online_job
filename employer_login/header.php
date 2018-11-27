@@ -1,3 +1,5 @@
+<?php if (!isset($_SESSION)) session_start(); ?>
+
 <head>
     <link rel="stylesheet" href="assets/css/style4.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -41,12 +43,17 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                    <?php if (empty($_SESSION['company_name'])) { ?>
+                    <?php if (empty($_SESSION['employer_id'])) { ?>
                         <li><a href="Login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                        
                     <?php } else { ?>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                            <?php echo ($_SESSION['company_name']); ?>
+                            <?php 
+                            include_once 'connection.php';
+                            $result = "SELECT * FROM employer WHERE employer_id= '".$_SESSION['employer_id']."'";
+
+                                echo '$company_name'; 
+                            ?>
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="logout.php">Logout</a>
