@@ -94,7 +94,7 @@
   </div>
   <div class="form-group">
     <label for="comment">Company Name</label>
-    <select class="form-control rqun" style="width:100%" title="Food">
+    <select class="form-control rqun" style="width:100%" title="Company Name" name="company_name">
                         <option value="0">Select One</option>
                         <?php
                         include_once ("connection.php");
