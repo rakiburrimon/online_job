@@ -92,6 +92,21 @@
     <input type="date" rows="2" class="form-control" name="application_deadline" placeholder="Application Deadline">
     
   </div>
+  <div class="form-group">
+    <label for="comment">Company Name</label>
+    <select class="form-control rqun" style="width:100%" title="Food">
+                        <option value="0">Select One</option>
+                        <?php
+                        include_once ("connection.php");
+                        $query="SELECT * FROM `employer`";
+                        var_dump($conn);
+                        $result=mysqli_query($conn,$query);
+                        while ($row=mysqli_fetch_assoc($result)){
+                            echo "<option value='".$row["employer_id"]."'>".$row["company_name"]."</option>";
+                        }
+                        ?>
+    </select>
+  </div>
   
    <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Post the Job</button>
 </form>
