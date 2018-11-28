@@ -32,7 +32,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 
-    <title>Add Skill</title>
+    <title>Add Experience</title>
   </head>
 
   <body>
@@ -46,23 +46,23 @@
             </nav>
      <div class="">
 
-    <h1>Add Skill</h1>
+    <h1>Add Experience</h1>
     <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
 
-    <form action="insert_skill.php" method="POST">
+    <form action="insert_experience.php" method="POST">
       <div class="form-group">
-    <label for="name">Skill Name</label>
-    <input type="text" class="form-control" name="skill_name" placeholder="Skill Name">
+    <label for="name">Organozation Name</label>
+    <input type="text" class="form-control" name="experience_organization" placeholder="Organozation Name">
     
   </div>
   <div class="form-group">
-    <label for="comment">Skill Description</label>
-    <textarea type="text" rows="5" class="form-control" name="skill_description" placeholder="Skill Description"></textarea>
+    <label for="name">Duration</label>
+    <input type="text" class="form-control" name="experience_duration" placeholder="Duration">
     
   </div>
-   <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Add this Skill</button>
+   <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Add this Experience</button>
 </form>
  
 </div>
