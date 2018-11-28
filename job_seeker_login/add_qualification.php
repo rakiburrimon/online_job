@@ -37,7 +37,6 @@
 
   <body>
   	<div>
-<!-- Page Content  -->
         <div id="content">
             <nav>
             <?php include "header.php"; ?>
