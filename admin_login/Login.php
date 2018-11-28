@@ -1,54 +1,37 @@
-<?php
-
-if (!isset($_SESSION)) {
-    session_start();
+ <?php
+session_start();
+$message="";
+if(count($_POST)>0) {
+include_once 'connection.php';
+$result = mysqli_query($conn,"SELECT * FROM admin WHERE (admin_id='" . $_POST["userid_or_email"] . "' or admin_name='" . $_POST["userid_or_email"] . "') and password = '". $_POST["password"]."'");
+$row = mysqli_fetch_array($result);
+if(is_array($row)) {
+$_SESSION["admin_id"] = $row[admin_id];
+$_SESSION["admin_name"] = $row[admin_name];
+} else {
+$message = "Invalid Userid or company name or Password!";
 }
-
-
-    ?>
-
-
-    <div class="container-fluid">
-        <div class="container jumbotron">
-
-            <h1 class="text-center">Admin Login Panel</h1>
-            <form action="Login.php" method="POST" >
-                <div class="form-group">
-                    <label for="admin_name">Name:</label>
-                    <input type="text" class="form-control" name="admin_name" id="admin_name">
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" class="form-control" id="password">
-                </div>               
-
-                <button type="submit" class="btn btn-success" name="submit">Submit</button>
-
-            </form>
-        </div>
-    </div>
-
-
-    <br>
-    <br>
-    <br>
-    <?php
-    if (isset($_POST['submit'])) {
-        $admin_name = $_POST['admin_name'];
-        $password = $_POST['password'];
-        require 'connection.php';
-
-        $query = "SELECT * FROM admin WHERE admin_name='" . $admin_name . "' and password='" . $password . "'";
-        $result = mysqli_query($conn, $query);
-        if (mysqli_num_rows($result) > 0) {
-            $_SESSION['admin_email'] = $admin_email;
-            $_SESSION['admin_name'] = $admin_name;
-            mysqli_close($conn);
-
-            header('location:welcome.php');
-        } else
-            echo "user name and password not found";
-    }
-
+}
+if(isset($_SESSION["admin_id"])) {
+header('location:welcome.php');
+}
 ?>
+<html>
+<head>
+<title>Employer Login</title>
+</head>
+<body>
+<form method="post" action="" align="center">
+<div class="message"><?php if($message!="") { echo $message; } ?></div>
+<h3 align="center">Enter Login Details</h3>
+Userid or Company Name:<br>
+<input type="text" name="userid_or_email">
+<br>
+Password:<br>
+<input type="password" name="password">
+<br><br>
+<input type="submit" name="submit" value="Submit">
+<input type="reset">
+</form>
+</body>
+</html> 
