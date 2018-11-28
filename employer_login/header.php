@@ -49,10 +49,7 @@
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                             <?php 
-                            include_once 'connection.php';
-                            $result = "SELECT * FROM employer WHERE employer_id= '".$_SESSION['employer_id']."'";
-
-                                echo '$company_name'; 
+                            <?php echo ($_SESSION['employer_id']); ?>
                             ?>
                         </a>
                         <div class="dropdown-menu">
