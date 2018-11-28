@@ -43,14 +43,14 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                    <?php if (empty($_SESSION['employer_id'])) { ?>
+                    <?php if (empty($_SESSION['company_name'])) { ?>
                         <li><a href="Login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                        
                     <?php } else { ?>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                            <?php 
-                            <?php echo ($_SESSION['employer_id']); ?>
-                            ?>
+                            
+                            <?php echo ($_SESSION['company_name']); ?>
+                        
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="logout.php">Logout</a>
