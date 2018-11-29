@@ -48,7 +48,7 @@ if (!isset($_SESSION)) session_start();
 									<td><?php echo $res['job_seeker_gender']; ?></td>
 									<td><?php echo $res['image']; ?></td>
 									<td><a class="btn btn-success" name="update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
-									<td><a class="btn btn-success" href="certificate.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Certificale</a></td>
+									<td><a class="btn btn-success" href="cv_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Resume</a></td>
 
 								</tr>
 
@@ -60,6 +60,7 @@ if (!isset($_SESSION)) session_start();
 							<table class="table table-striped">
 								<h3>Experience</h3>
 								<tr>
+									<th>Designation</th>
 									<th>Organization</th>
 									<th>Duration</th>
 									<th></th>
@@ -78,6 +79,7 @@ if (!isset($_SESSION)) session_start();
 								?>
 
 								<tr>
+									<td><?php echo $res['designation']; ?></td>
 									<td><?php echo $res['experience_organization']; ?></td>
 									<br>
 									<td><?php echo $res['experience_duration']; ?></td>
