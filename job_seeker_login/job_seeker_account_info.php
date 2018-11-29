@@ -14,6 +14,7 @@ if (!isset($_SESSION)) session_start();
 						<div style="margin: 0 auto;">
 
 							<table class="table table-striped">
+								<h3>Personal Details</h3>
 								<tr>
 									<th>Name</th>
 									<th>Email</th>
@@ -57,6 +58,7 @@ if (!isset($_SESSION)) session_start();
 																
 							</table>
 							<table class="table table-striped">
+								<h3>Experience</h3>
 								<tr>
 									<th>Organization</th>
 									<th>Duration</th>
@@ -90,10 +92,45 @@ if (!isset($_SESSION)) session_start();
 																
 							</table>
 							<table class="table table-striped">
+								<h3>Skills</h3>
 								<tr>
 									<th>Skill Name</th>
 									<th>Skill Description</th>
 									<th></th>
+									<th></th>
+								</tr>
+
+								<?php 
+										include 'connection.php';
+
+										$q = "SELECT * FROM skill Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										
+										$query = mysqli_query($conn,$q);
+
+										while ($res= mysqli_fetch_array($query)) {
+										
+								?>
+
+								<tr>
+									<td><?php echo $res['skill_name']; ?></td>
+									<br>
+									<td><?php echo $res['skill_description']; ?></td>
+									<td><a class="btn btn-success" name="update" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
+									<td><a class="btn btn-success" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
+
+								</tr>
+
+								<?php 
+									}
+								?>
+																
+							</table>
+							<table class="table table-striped">
+								<h3>Qualification</h3>
+								<tr>
+									<th>Degree</th>
+									<th>Result</th>
+									<th>Institution</th>
 									<th></th>
 								</tr>
 
