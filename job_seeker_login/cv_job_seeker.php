@@ -81,12 +81,12 @@ if (!isset($_SESSION)) session_start();
 					while ($res= mysqli_fetch_array($query)) {
 										
 			?>
-			<div class="sectionContent">
-				<article>
-					<h2>Position : <?php echo $res['designation']; ?></h2>
+			<div>
+				<div  class="sectionContent">
+					<h2><?php echo $res['designation']; ?></h2>
 					<p class="subDetails">Duration : <?php echo $res['experience_duration']; ?></p>
 					<h3><b>Organization</b> : <?php echo $res['experience_organization']; ?>.</h3>
-				</article>
+				</div>
 				<?php 
 					}
 				?>
@@ -99,18 +99,24 @@ if (!isset($_SESSION)) session_start();
 			<div class="sectionTitle">
 				<h1>Key Skills</h1>
 			</div>
-			
-			<div class="sectionContent">
-				<ul class="keySkills">
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-				</ul>
+			<?php 
+					include 'connection.php';
+
+					$q = "SELECT * FROM skill Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										
+					$query = mysqli_query($conn,$q);
+
+					while ($res= mysqli_fetch_array($query)) {
+										
+			?>
+			<div >
+				<div class="sectionContent">
+					<h2><?php echo $res['skill_name']; ?></h2>
+					<p class="subDetails"><?php echo $res['skill_description']; ?></p>
+				</div>
+				<?php 
+					}
+				?>
 			</div>
 			<div class="clear"></div>
 		</section>
@@ -120,20 +126,26 @@ if (!isset($_SESSION)) session_start();
 			<div class="sectionTitle">
 				<h1>Education</h1>
 			</div>
-			
-			<div class="sectionContent">
-				<article>
-					<h2>College/University</h2>
-					<p class="subDetails">Qualification</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-				</article>
-				
-				<article>
-					<h2>College/University</h2>
-					<p class="subDetails">Qualification</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
+			<?php 
+					include 'connection.php';
+
+					$q = "SELECT * FROM qualification Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										
+					$query = mysqli_query($conn,$q);
+
+					while ($res= mysqli_fetch_array($query)) {
+										
+			?>
+			<div >
+				<article class="sectionContent">
+					<h2><?php echo $res['qualification_institution']; ?></h2>
+					<p class="subDetails"><?php echo $res['qualification_name']; ?></p>
+					<p><?php echo $res['qualification_result']; ?></p>
 				</article>
 			</div>
+			<?php 
+				}
+			?>
 			<div class="clear"></div>
 		</section>
 		

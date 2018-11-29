@@ -139,7 +139,7 @@ if (!isset($_SESSION)) session_start();
 								<?php 
 										include 'connection.php';
 
-										$q = "SELECT * FROM skill Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM qualification Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -148,9 +148,11 @@ if (!isset($_SESSION)) session_start();
 								?>
 
 								<tr>
-									<td><?php echo $res['skill_name']; ?></td>
+									<td><?php echo $res['qualification_name']; ?></td>
 									<br>
-									<td><?php echo $res['skill_description']; ?></td>
+									<td><?php echo $res['qualification_result']; ?></td>
+									<td><?php echo $res['qualification_institution']; ?></td>
+
 									<td><a class="btn btn-success" name="update" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
 									<td><a class="btn btn-success" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
 
