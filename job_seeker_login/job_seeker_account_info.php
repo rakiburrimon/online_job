@@ -21,6 +21,7 @@ if (!isset($_SESSION)) session_start();
 									<th>Contact</th>
 									<th>Address</th>
 									<th>Career Objective</th>
+									<th>Job Profile</th>
 									<th>Gender</th>
 									<th>Image</th>
 									<th></th>
@@ -45,6 +46,7 @@ if (!isset($_SESSION)) session_start();
 									<td><?php echo $res['job_seeker_contact']; ?></td>
 									<td><?php echo $res['job_seeker_address']; ?></td>
 									<td><?php echo $res['job_seeker_career_objective']; ?></td>
+									<td><?php echo $res['job_seeker_job_profile']; ?></td>
 									<td><?php echo $res['job_seeker_gender']; ?></td>
 									<td><?php echo $res['image']; ?></td>
 									<td><a class="btn btn-success" name="update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
@@ -152,6 +154,50 @@ if (!isset($_SESSION)) session_start();
 									<br>
 									<td><?php echo $res['qualification_result']; ?></td>
 									<td><?php echo $res['qualification_institution']; ?></td>
+
+									<td><a class="btn btn-success" name="update" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
+									<td><a class="btn btn-success" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
+
+								</tr>
+
+								<?php 
+									}
+								?>
+																
+							</table>
+							<table class="table table-striped">
+								<h3>Reference</h3>
+								<tr>
+									<th>Name</th>
+									<th>Desiganation</th>
+									<th>Company</th>
+									<th>Address</th>
+									<th>Email</th>
+									<th>Phone</th>
+									<th>Reference Type</th>
+
+								</tr>
+
+								<?php 
+										include 'connection.php';
+
+										$q = "SELECT * FROM reference Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										
+										$query = mysqli_query($conn,$q);
+
+										while ($res= mysqli_fetch_array($query)) {
+										
+								?>
+
+								<tr>
+									<td><?php echo $res['name']; ?></td>
+									<br>
+									<td><?php echo $res['designation']; ?></td>
+									<td><?php echo $res['company']; ?></td>
+									<td><?php echo $res['address']; ?></td>
+									<td><?php echo $res['email']; ?></td>
+									<td><?php echo $res['phone']; ?></td>
+									<td><?php echo $res['reference_type']; ?></td>
 
 									<td><a class="btn btn-success" name="update" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
 									<td><a class="btn btn-success" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>

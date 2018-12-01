@@ -12,6 +12,7 @@ if (!isset($_SESSION)) session_start();
 		$job_seeker_contact 	= mysqli_real_escape_string($conn,$_POST['job_seeker_contact']);
 		$job_seeker_address 	= mysqli_real_escape_string($conn,$_POST['job_seeker_address']);
 		$job_seeker_career_objective 	= mysqli_real_escape_string($conn,$_POST['job_seeker_career_objective']);
+		$job_seeker_job_profile 	= mysqli_real_escape_string($conn,$_POST['job_seeker_job_profile']);
 		$job_seeker_gender 	= mysqli_real_escape_string($conn,$_POST['job_seeker_gender']);
 		$job_seeker_image 	= mysqli_real_escape_string($conn,$_POST['job_seeker_image']);
 
@@ -23,7 +24,7 @@ if (!isset($_SESSION)) session_start();
 		}
 		else{
 
-			$sql= "UPDATE job_seeker SET job_seeker_id=$job_seeker_id, job_seeker_name='$job_seeker_name', job_seeker_email='$job_seeker_email', job_seeker_contact='$job_seeker_contact', job_seeker_address='$job_seeker_address', job_seeker_career_objective='$job_seeker_career_objective', job_seeker_gender='$job_seeker_gender', image='$image' WHERE job_seeker_id='".$_SESSION['job_seeker_id']."'";
+			$sql= "UPDATE job_seeker SET job_seeker_id=$job_seeker_id, job_seeker_name='$job_seeker_name', job_seeker_email='$job_seeker_email', job_seeker_contact='$job_seeker_contact', job_seeker_address='$job_seeker_address', job_seeker_career_objective='$job_seeker_career_objective', job_seeker_job_profile='$job_seeker_job_profile', job_seeker_gender='$job_seeker_gender', image='$image' WHERE job_seeker_id='".$_SESSION['job_seeker_id']."'";
 
 			$qry= mysqli_query($conn,$sql);
 
@@ -78,6 +79,10 @@ if (!isset($_SESSION)) session_start();
 								<div class="form-group">
 									<label for="job_seeker_career_objective">Career Objective: </label>
 									<textarea type="text" name="job_seeker_career_objective" id="job_seeker_career_objective" class="form-control" rows="3" ><?php echo $res['job_seeker_career_objective']; ?></textarea>
+								</div>
+								<div class="form-group">
+									<label for="job_seeker_job_profile">Job Profile: </label>
+									<textarea type="text" name="job_seeker_job_profile" id="job_seeker_job_profile" class="form-control" rows="3" ><?php echo $res['job_seeker_job_profile']; ?></textarea>
 								</div>
 								<div class="form-group">
 									<label for="job_seeker_gender">Gender: </label>
