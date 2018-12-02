@@ -63,20 +63,20 @@ if (!isset($_SESSION)) session_start();
 									<p><?php echo $res['job_seeker_email']; ?> </p>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Contact: </p>
 									<td><?php echo $res['job_seeker_contact']; ?> </td>
 								</div>
-								<p class="text-primary">Full Name: </p>
+								<p class="text-primary">Address: </p>
 									<td><?php echo $res['job_seeker_address']; ?> </td>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Career Objective: </p>
 									<td><?php echo $res['job_seeker_career_objective']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Job Profile: </p>
 									<td><?php echo $res['job_seeker_job_profile']; ?> </td>
 								</div>
-								<p class="text-primary">Full Name: </p>
+								<p class="text-primary">Gender: </p>
 									<td><?php echo $res['job_seeker_gender']; ?> </td>
 								<?php } ?>
 						</div>
@@ -99,15 +99,15 @@ if (!isset($_SESSION)) session_start();
 								?>
 
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Designation: </p>
 									<td><?php echo $res['designation']; ?> </td>
 								</div>								
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Organization: </p>
 									<td><?php echo $res['experience_organization']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Duration: </p>
 									<td><?php echo $res['experience_duration']; ?> </td>
 								</div>
 								<?php } ?>
@@ -131,11 +131,11 @@ if (!isset($_SESSION)) session_start();
 								?>
 
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Skill Name: </p>
 									<td><?php echo $res['skill_name']; ?> </td>
 								</div>								
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Skill Description: </p>
 									<td><?php echo $res['skill_description']; ?> </td>
 								</div>
 								<?php } ?>
@@ -159,15 +159,15 @@ if (!isset($_SESSION)) session_start();
 								?>
 
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Qualification: </p>
 									<td><?php echo $res['qualification_name']; ?> </td>
 								</div>								
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Result: </p>
 									<td><?php echo $res['qualification_result']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Institution: </p>
 									<td><?php echo $res['qualification_institution']; ?> </td>
 								</div>
 								<?php } ?>
@@ -195,27 +195,27 @@ if (!isset($_SESSION)) session_start();
 									<td><?php echo $res['name']; ?> </td>
 								</div>								
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Designation: </p>
 									<td><?php echo $res['designation']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Company: </p>
 									<td><?php echo $res['company']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Address: </p>
 									<td><?php echo $res['address']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Email: </p>
 									<td><?php echo $res['email']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Phone: </p>
 									<td><?php echo $res['phone']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
+									<p class="text-primary">Reference Type: </p>
 									<td><?php echo $res['reference_type']; ?> </td>>
 								</div>
 							<?php } ?>
