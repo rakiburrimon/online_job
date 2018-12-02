@@ -231,6 +231,12 @@ echo "<br>";
 <div class="sectionContent">
 <input type="submit" class="btn btn-info col-md-7 btn-lg" onclick="printDiv('printableArea')" value="print This!">
 </div>
+<?php
+echo "<br>";
+?>
+<?php
+echo "<br>";
+?>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

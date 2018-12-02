@@ -14,32 +14,43 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <button type="disable" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
                         <span>Toggle Sidebar</span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="hidden" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
+                        <ul class="nav navbar-nav ml-left">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
+                        <a class="btn btn-light" href="welcome.php" role="button">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Profile
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="job_seeker_account_details.php">See Profile</a>
+                            <a class="dropdown-item" href="job_seeker_account_info.php">Update Profile</a>
+                            <a class="dropdown-item" href="cv_job_seeker.php">See Profile's Resume</a>
+                        </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">See Job Updates
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="">See ALL Applied Job</a>
+                            <a class="dropdown-item" href="#">Selected for Interview</a>
+                        </div>
+                        </li>
                         </ul>
+                        </div>
+                        <div>
                         <ul class="nav navbar-nav navbar-right">
                     <?php if (empty($_SESSION['job_seeker_email'])) { ?>
                         <li><a href="Login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                        
@@ -50,8 +61,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="logout.php">Logout</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
+                            
                         </div>
                         </li>
                     <?php } ?>
@@ -61,3 +71,4 @@
                     </div>
                 </div>
             </nav>
+            </body>
