@@ -50,8 +50,6 @@ if (!isset($_SESSION)) session_start();
 									<th>Job Profile</th>
 									<th>Gender</th>
 									<th>Image</th>
-									<th></th>
-									<th></th>
 								</tr>
 
 								<?php 
@@ -91,8 +89,7 @@ if (!isset($_SESSION)) session_start();
 									<th>Designation</th>
 									<th>Organization</th>
 									<th>Duration</th>
-									<th></th>
-									<th></th>
+									<th><a class="btn btn-info" name="add" href="add_experience.php">Add</a></th>
 								</tr>
 
 								<?php 
@@ -112,7 +109,7 @@ if (!isset($_SESSION)) session_start();
 									<br>
 									<td><?php echo $res['experience_duration']; ?></td>
 									<td><a class="btn btn-success" href="update_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Update</a></td>
-									<td><a class="btn btn-success" href="update_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Delete</a></td>
+									<td><a class="btn btn-danger" href="update_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Delete</a></td>
 
 								</tr>
 
@@ -126,8 +123,7 @@ if (!isset($_SESSION)) session_start();
 								<tr>
 									<th>Skill Name</th>
 									<th>Skill Description</th>
-									<th></th>
-									<th></th>
+									<th><a class="btn btn-info" name="add" href="add_skill.php">Add</a></th>
 								</tr>
 
 								<?php 
@@ -146,7 +142,7 @@ if (!isset($_SESSION)) session_start();
 									<br>
 									<td><?php echo $res['skill_description']; ?></td>
 									<td><a class="btn btn-success" name="update" href="update_skill.php?skill_id=<?php echo $res['skill_id']; ?>">Update</a></td>
-									<td><a class="btn btn-success" href=" ?skill_id=<?php echo $res['skill_id']; ?>">Delete</a></td>
+									<td><a class="btn btn-danger" href=" ?skill_id=<?php echo $res['skill_id']; ?>">Delete</a></td>
 
 								</tr>
 
@@ -161,7 +157,7 @@ if (!isset($_SESSION)) session_start();
 									<th>Degree</th>
 									<th>Result</th>
 									<th>Institution</th>
-									<th></th>
+									<th><a class="btn btn-info" name="add" href="add_qualification.php">Add</a></th>
 								</tr>
 
 								<?php 
@@ -182,7 +178,7 @@ if (!isset($_SESSION)) session_start();
 									<td><?php echo $res['qualification_institution']; ?></td>
 
 									<td><a class="btn btn-success" name="update" href="update_qualification.php?qualification_id=<?php echo $res['qualification_id']; ?>">Update</a></td>
-									<td><a class="btn btn-success" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
+									<td><a class="btn btn-danger" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
 
 								</tr>
 
@@ -201,6 +197,7 @@ if (!isset($_SESSION)) session_start();
 									<th>Email</th>
 									<th>Phone</th>
 									<th>Reference Type</th>
+									<th><a class="btn btn-info" name="add" href="add_reference.php">Add</a></th>
 
 								</tr>
 
@@ -226,7 +223,7 @@ if (!isset($_SESSION)) session_start();
 									<td><?php echo $res['reference_type']; ?></td>
 
 									<td><a class="btn btn-success" name="update" href="update_reference.php?reference_id=<?php echo $res['reference_id']; ?>">Update</a></td>
-									<td><a class="btn btn-success" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
+									<td><a class="btn btn-danger" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
 
 								</tr>
 
