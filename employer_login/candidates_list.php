@@ -1,10 +1,10 @@
-<?php 	
-if (!isset($_SESSION)) session_start();
+ <?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Job Details</title>
+<title>Candidates List</title>
 
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
@@ -35,132 +35,68 @@ if (!isset($_SESSION)) session_start();
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
+<nav>
+   <?php
+			if(isset($_SESSION["employer_id"])){
+			?>
+			<nav>
+   				<?php include "header.php"; ?>
+  			</nav>
+			<?php
+}else{
+	?>
+	<div>
+				<input type="hidden" name="">
+			</div>
+	<?php
+}
+			?>
+  </nav>
 
 <body id="top" class="">
-	<nav>
-   <?php include "header.php"; ?>
-  </nav>
-  <form action="add_fixed_interview.php" method="POST">
+<form action="" method="">
 <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
 		<?php 
 			include 'connection.php';
-			$job_id= $_GET['job_id'];
+            $job_id=$_GET['job_id'];
 
-				$q = "SELECT * FROM job Where job_id = $job_id";
+				$q = "SELECT * FROM online_application Where job_id = $job_id ";
 										
 				$query = mysqli_query($conn,$q);
 
 				while ($res= mysqli_fetch_array($query)) {
 										
 		?>
-		<input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
-		<section>
-			<article>
-		<div class="sectionTitle">
-					
-		</div>
-	</article>
-		</section>
-		<div class="clear"></div>
-	</div>
-	
-	<div>
-		<section>
-			<article>
-				
-				<div class="sectionContent">
-					<h1 class="quickFade delayTwo"><?php echo $res['job_title']; ?></h1>
-				</div>
-			</article>
-			<div class="clear"></div>
-		</section>
-		<section>
-			<article>
-				<div class="sectionTitle">
-					<h3>Job Context</h3>
-				</div>
-				
-				<div class="sectionContent">
-					<p><?php echo $res['job_context']; ?></p>
-				</div>
-			</article>
-			<div class="clear"></div>
-		</section>
-		<section>
-			<article>
-				<div class="sectionTitle">
-					<h3>Job Responsibilities</h3>
-				</div>
-				
-				<div class="sectionContent">
-					<p><?php echo $res['job_responsibilities']; ?></p>
-				</div>
-			</article>
-			<article>
-				<div class="sectionTitle">
-					<h3>Educational Requirements</h3>
-				</div>
-				
-				<div class="sectionContent">
-					<p><?php echo $res['educaqtional_requirement']; ?></p>
-				</div>
-			</article>
-			<article>
-				<div class="sectionTitle">
-					<h3>Experience Required</h3>
-				</div>
-				
-				<div class="sectionContent">
-					<p><?php echo $res['job_experience_required']; ?></p>
-				</div>
-			</article>
-			<article>
-				<div class="sectionTitle">
-					<h3>Location</h3>
-				</div>
-				
-				<div class="sectionContent">
-					<p><?php echo $res['job_location']; ?></p>
-				</div>
-			</article>
-			<article>
-				<div class="sectionTitle">
-					<h3>Salary</h3>
-				</div>
-				
-				<div class="sectionContent">
-					<p><?php echo $res['job_salary']; ?></p>
-				</div>
-			</article>
-			<article>
-				<div class="sectionTitle">
-					<h3>Application Deadline</h3>
-				</div>
-				
-				<div class="sectionContent">
-					<p><?php echo $res['job_application_deadline']; ?></p>
-				</div>
-			</article>
-			<div class="clear"></div>
-		</section>
-		
-		<section>
-			<div class="clear"></div>
-			<div>
-				<div class="sectionContent">
-					<button type="submit" class="btn btn-outline-success btn-lg btn-inline">Create Interview</button>
+		<input type="text" id="job_seeker_id" name="job_seeker_id" value="<?php echo $res['job_seeker_id']; ?>">
+    <?php } ?>
+		<div class="container">
+        <div class="media border p-6 col-md-10 border border-success"">
+            <ul class="list-unstyled">
+                <li class="media">
+                    <div class="media-body">
+                        <?php
+                              include 'connection.php';
 
-					<td><a class="btn btn-success" name="Details" href="candidates_list.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
-				</div>
-			</div>
-		</section>
-		<?php 
-			}
-		?>
-		
-	</div>
+                                $q = "SELECT * FROM job_seeker Where job_seeker_id = $job_seeker_id ";
+                                   
+                                $query = mysqli_query($conn,$q);
+
+                                while ($res= mysqli_fetch_array($query)) {
+                                        
+                        ?>
+                        <h5 class="mt-0 mb-1"><?php echo $res['job_seeker_name']; ?></h5>
+                        <p><?php echo $res['job_seeker_contact']; ?></p>
+                        <p><?php echo $res['job_seeker_address']; ?></p>
+                        <td><a class="btn btn-success" name="Details" href="jobdetails.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </div>
+        <?php } ?>	
+</div>
 </div>
 </div>
 </form>
