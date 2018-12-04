@@ -16,12 +16,13 @@ $password = "";
 $dbname = "job_portal";
 
 
-$_SESSION['search_value']=$_POST["query"];
+$a=$_POST["query"];
+if(isset($_POST["query"])){
 $conn=new mysqli($servername,$username,$password,$dbname);
 if($conn->connect_error){
     echo 'Connection Faild: '.$con->connect_error;
     }else{
-        $sql="select * from job where job_title like '%".$_SESSION['search_value']."%'";
+        $sql="select * from job where job_title like '%$a%'";
 
         $quer = mysqli_query($conn,$sql);
 
@@ -36,7 +37,7 @@ if($conn->connect_error){
                         <h5 class="mt-0 mb-1"><?php echo $res['job_title']; ?></h5>
                         <p><?php echo $res['job_context']; ?></p>
                         <p><?php echo $res['educaqtional_requirement']; ?></p>
-                        <td><a class="btn btn-success" name="Details" href=" ?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
+                        <td><a class="btn btn-success" name="Details" href="jobsearchdetail.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
                     </div>
                 </li>
             </ul>
@@ -46,6 +47,7 @@ if($conn->connect_error){
     <?php
         }
         }       
+    }
     ?>
 </body>
 </html>

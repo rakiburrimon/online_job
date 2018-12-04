@@ -1,15 +1,10 @@
+<?php if (!isset($_SESSION)) session_start(); ?>
 
-<?php 
-session_start();
-if(!isset($_SESSION["job_seeker_id"])){
-  header("Location:Login.php");
-}
-?>
-
-<html>
-   
-   <head>
-      <title>Welcome </title>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
@@ -30,46 +25,71 @@ if(!isset($_SESSION["job_seeker_id"])){
     <link rel="stylesheet" href="assets/css/style5.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style4.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-   
-   </head>
+
+
+    <title>Post Job</title>
+  </head>
+
   <body>
-  <!-- Navbar -->
-  <nav>
-   <?php include "header.php"; ?>
-  </nav>
-  <!-- End Navbar -->
-  <div>
+  	<div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <?php include "sidebar.php"; ?>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <nav>
+            <?php include "header.php"; ?>
+            </nav>
+     <div class="">
+
+    <h1>Create Interview</h1>
+    <div class="container">
+  <div class="row justify-content-center">
+   <div class="col-md-12">
+<?php 
+      include 'connection.php';
+      $job_id= $_POST['job_id'];
+
+        $q = "SELECT * FROM job Where job_id = $job_id";
+                    
+        $query = mysqli_query($conn,$q);
+
+        while ($res= mysqli_fetch_array($query)) {
+                    
+    ?>
+    <form action="insert_interview.php" method="POST">
+   
+    <input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
+  
+  <?php } ?>
+    <div class="form-group">
+    <label for="date">Interview Date</label>
+    <input type="date" rows="2" class="form-control" name="interview_date" placeholder="Interview Date">
     
-    <div class="container text-center">
-      <div class="col-md-8 ml-auto mr-auto">
-        <div class="brand">
-          <h1 class="title">
-            Search Job
-          </h1>
-          <br/>
-          <div class="row">
-          <div class="col-12">
-            <div class="input-group-sm mb-3">
-              <form action="job_search.php" method="POST">
-                <div class="input-group mb-3">
-                  <input type="text" name="query" class="form-control" placeholder="Search">
-                  <div class="input-group-append">
-                    <button class="btn btn-success" type="submit">Search</button>  
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
   </div>
-  <!--   Core JS Files   -->
+  <div class="form-group">
+    <label for="comment">Place</label>
+    <textarea type="text" rows="5" class="form-control" name="interview_place" placeholder="Place"></textarea>
+    
+  </div>
+ 
+   <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Create Interview</button>
+</form>
+ 
+</div>
+  </div>
+</div>
+</div>
+        </div>
+    </div>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
@@ -86,6 +106,5 @@ if(!isset($_SESSION["job_seeker_id"])){
             });
         });
     </script>
-</body>
-   
+  </body>
 </html>

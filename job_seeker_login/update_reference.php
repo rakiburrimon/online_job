@@ -1,5 +1,8 @@
-<?php 	
-if (!isset($_SESSION)) session_start();
+<?php
+session_start();
+if(!isset($_SESSION["job_seeker_id"])){
+	header("Location:Login.php");
+}
 ?>
 <?php 	
 	include 'connection.php';
@@ -23,7 +26,7 @@ if (!isset($_SESSION)) session_start();
 		}
 		else{
 
-			$sql= "UPDATE `reference` SET `reference_id`=$reference_id,`name`=$name,`designation`=$designation,`company`=$company,`address`=$address,`email`=$email,`phone`=$phone,`reference_type`=$reference_type, WHERE reference_id='$reference_id'";
+			$sql= "UPDATE reference SET reference_id=$reference_id, name='$name', designation='$designation',company='$company', address='$address',email='$email', phone='$phone', reference_type='$reference_type' WHERE reference_id='$reference_id'";
 
 			$qry= mysqli_query($conn,$sql);
 
@@ -57,9 +60,6 @@ if (!isset($_SESSION)) session_start();
 								<div class="form-group">
 									<label for="name">Name: </label>
 									<input type="text" name="name" id="name" class="form-control" required="" value="<?php echo $res['name']; ?>" />
-									<?php if (isset($msg)): ?>
-									<span><?php echo $msg;?></span>
-								<?php endif ?>
 								</div>
 								<div class="form-group">
 									<label for="designation">Designation: </label>
@@ -92,7 +92,8 @@ if (!isset($_SESSION)) session_start();
                         					<option value="Other">Other</option>
     
   								</div>
-								<input class="btn btn-outline-primary btn-lg btn-block" type="submit" value="Submit">
+								<input class="btn btn-outline-primary btn-lg btn-block" type="hidden" value="Submit">
+								<button type="submit" name="submit" class="btn btn-success">Submit</button>
 							</form>
 
 						</div>

@@ -1,5 +1,8 @@
  <?php
 session_start();
+if(!isset($_SESSION["job_seeker_id"])){
+
+}
 $message="";
 if(count($_POST)>0) {
 include_once 'connection.php';
@@ -13,7 +16,12 @@ $message = "Invalid Userid or Email or Password!";
 }
 }
 if(isset($_SESSION["job_seeker_id"])) {
+	if(isset($_GET["redirect"])){
+	header("Location:".$_GET["redirect"]);
+	return;
+}
 header('location:welcome.php');
+
 }
 ?>
 <html>
