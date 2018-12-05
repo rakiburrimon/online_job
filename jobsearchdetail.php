@@ -63,7 +63,7 @@ session_start();
 			$job_id= $_GET['job_id'];
 
 				$q = "SELECT * FROM job Where job_id = $job_id";
-										
+					$a;					
 				$query = mysqli_query($conn,$q);
 
 				while ($res= mysqli_fetch_array($query)) {
@@ -199,28 +199,31 @@ session_start();
 					<?php 
 					include 'connection.php';
 
-					$q = "SELECT * FROM online_application Where job_seeker_id = ".$_SESSION['job_seeker_id']."";
+					$q = "SELECT COUNT(*) AS co FROM online_application Where job_seeker_id = ".$_SESSION['job_seeker_id']." AND job_id='".$_GET['job_id']."'";
 										
 					$query = mysqli_query($conn,$q);
 
-					while ($res= mysqli_fetch_array($query)) {
-						if($res['job_seeker_id']==($_SESSION["job_seeker_id"]) And $res['job_id']==$a){
+					$res= mysqli_fetch_array($query); 
+						if($res['co']){
 										
 			?>
+			
 			<div>
 				<div  class="sectionContent">
-					<input class="btn btn-outline-primary btn-lg btn-block" type="Disabled" value="Already Applied">
+					<input class="btn btn-danger btn-lg btn-block" type="Disabled" value="Already Applied">
+				</div>
+			</div>
 				<?php
 			}else{
 			?>
 			<div>
 				<div  class="sectionContent">
-					<input class="btn btn-outline-primary btn-lg btn-block" type="Submit" value="Apply">
+					<input class="btn btn-outline-success btn-lg btn-block" type="Submit" value="Apply">
 				</div>
 			</div>
 			<?php
 			}
-		}
+		
 	}else{
 			?>
 			<div>

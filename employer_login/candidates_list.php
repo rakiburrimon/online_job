@@ -54,7 +54,7 @@ session_start();
   </nav>
 
 <body id="top" class="">
-<form action="" method="">
+<form action="addjobseekerinterview.php" method="POST">
 <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
@@ -69,32 +69,36 @@ session_start();
 				while ($res= mysqli_fetch_array($query)) {
 										
 		?>
-		<input type="text" id="job_seeker_id" name="job_seeker_id" value="<?php echo $res['job_seeker_id']; ?>">
-    <?php } ?>
+    <input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
+		<input type="hidden" id="job_seeker_id" name="job_seeker_id" value="<?php echo $res['job_seeker_id']; ?>">
+    
 		<div class="container">
         <div class="media border p-6 col-md-10 border border-success"">
             <ul class="list-unstyled">
                 <li class="media">
                     <div class="media-body">
-                        <?php
-                              include 'connection.php';
+                        <p><?php echo $res['job_seeker_id']; ?></p>
+                        <?php 
+                             include 'connection.php';
+                                    $job_seeker_id=$res['job_seeker_id'];
 
                                 $q = "SELECT * FROM job_seeker Where job_seeker_id = $job_seeker_id ";
-                                   
+                    
                                 $query = mysqli_query($conn,$q);
 
                                 while ($res= mysqli_fetch_array($query)) {
-                                        
-                        ?>
-                        <h5 class="mt-0 mb-1"><?php echo $res['job_seeker_name']; ?></h5>
-                        <p><?php echo $res['job_seeker_contact']; ?></p>
-                        <p><?php echo $res['job_seeker_address']; ?></p>
-                        <td><a class="btn btn-success" name="Details" href="jobdetails.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
+                    
+                            ?>
+                            <p><?php echo $res['job_seeker_name']; ?></p>
+                            <p><?php echo $res['job_seeker_contact']; ?></p>
+                            <p><?php echo $res['job_seeker_address']; ?></p>
+                        <button type="submit" class="btn btn-success btn-sm btn-block">Create Interview</button>
                     </div>
                 </li>
             </ul>
         </div>
         </div>
+        <?php } ?>
         <?php } ?>	
 </div>
 </div>

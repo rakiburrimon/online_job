@@ -82,7 +82,7 @@ if (!isset($_SESSION)) session_start();
 						</div>
 					</div>
 					<div class="panel-heading">
-						<h3>Experience</h3>
+					<h3>Experience</h3>
 					</div>
 					<div class="panel-body">
 						<div style="max-width: 400px; margin: 0 auto;">
