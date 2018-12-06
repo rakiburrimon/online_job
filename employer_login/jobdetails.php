@@ -150,15 +150,50 @@ if (!isset($_SESSION)) session_start();
 			<div class="clear"></div>
 			<div>
 				<div class="sectionContent">
-					<button type="submit" class="btn btn-outline-success btn-lg btn-inline">Create Interview</button>
+					<td><a class="btn btn-success" name="Show Candidates List" href="candidates_list.php?job_id=<?php echo $res['job_id']; ?>">Show Candidates List..</a></td>
+					<?php
+					include 'connection.php';
+					$job_id= $_GET['job_id'];
 
-					<td><a class="btn btn-success" name="Details" href="candidates_list.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
+					$q = "SELECT * FROM interview Where job_id=$job_id";
+										
+					$query = mysqli_query($conn,$q);
+
+					$res= mysqli_fetch_array($query);
+										
+					?>		
+					<td><a class="btn btn-success" name="Manage Interview" href="update_interview.php?interview_id=<?php echo $res['interview_id']; ?>">Manage Interview..</a></td>
 				</div>
+			<?php  ?>
 			</div>
 		</section>
 		<?php 
 			}
-		?>
+					include 'connection.php';
+
+					$q = "SELECT COUNT(*) AS co FROM interview Where job_id='".$_GET['job_id']."'";
+										
+					$query = mysqli_query($conn,$q);
+
+					$res= mysqli_fetch_array($query); 
+						if($res['co']){
+										
+			?>
+		<div>
+				<div  class="sectionContent">
+					<input class="btn btn-danger btn-sm btn-block" type="Disabled" value="Already Created">
+				</div>
+			</div>
+				<?php
+			}else{
+			?>
+			<div>
+				<div  class="sectionContent">
+					<input class="btn btn-outline-success btn-sm btn-block" type="Submit" value="Create">
+				</div>
+			</div>
+			<?php
+			} ?>
 		
 	</div>
 </div>

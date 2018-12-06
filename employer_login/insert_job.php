@@ -26,10 +26,23 @@ $a8=$_POST["application_deadline"];
 $sql = "INSERT INTO `job` (`job_id`, `job_title`, `job_context`, `job_responsibilities`, `educaqtional_requirement`, `job_experience_required`, `job_status`, `job_location`, `job_salary`, `job_application_deadline`, `employer_id`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4', '$a5', 'Active', '$a6', '$a7', '$a8', '".$_SESSION['employer_id']."')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
+	$last_id = $conn->insert_id;
+    include 'connection.php';
+
+				$q = "SELECT * FROM job Where job_id = $last_id";
+										
+				$query = mysqli_query($conn,$q);
+
+				while ($res= mysqli_fetch_array($query)) {
+	 ?>
+    			<form action="insert_interview.php" method="POST">
+				<input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
+<?php 
+ }
+ } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
-
 $conn->close();
 ?> 
+<button type="submit" class="btn btn-outline-primary btn-lg btn-block">Confirm</button>
+</form>

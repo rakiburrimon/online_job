@@ -54,6 +54,7 @@
 <?php 
       include 'connection.php';
       $job_id= $_POST['job_id'];
+      $a;
 
         $q = "SELECT * FROM interview Where job_id = $job_id";
                     
@@ -66,7 +67,7 @@
    
     <input type="hidden" id="interview_id" name="interview_id" value="<?php echo $res['interview_id']; ?>">
   
-  <?php } ?>
+  <?php $a=$res['interview_id']; ?>
   
   <?php 
       include 'connection.php';
@@ -250,8 +251,36 @@
               <?php } ?>
             </div>
           </div>
+      
+          <?php 
+          include 'connection.php';
+          $job_seeker_id= $_POST['job_seeker_id'];
+          $q = "SELECT COUNT(*) AS co FROM job_seeking_interview Where job_seeker_id = ".$_POST['job_seeker_id']." AND interview_id = '$a' ";
+                    
+          $query = mysqli_query($conn,$q);
 
-   <button type="submit" class="btn btn-primary btn-sm btn-inline">Confirm Candidate</button>
+          $res= mysqli_fetch_array($query); 
+            if($res['co']){
+                    
+      ?>
+      
+      <div>
+        <div  class="sectionContent">
+          <input class="btn btn-danger btn-lg btn-block" type="Disabled" value="Already Select">
+        </div>
+      </div>
+        <?php
+      }else{
+      ?>
+      <div>
+        <div  class="sectionContent">
+          <input class="btn btn-success btn-sm " type="Submit" value="Select">
+        </div>
+      </div>
+      <?php
+      }
+    }
+      ?>
 </form>
  
 </div>

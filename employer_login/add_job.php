@@ -4,7 +4,6 @@
 <html lang="en">
   <head>
   	
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
@@ -35,8 +34,8 @@
     <title>Post Job</title>
   </head>
 
-  <body>
-  	<div class="wrapper">
+  	<body>
+    <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
             <?php include "sidebar.php"; ?>
@@ -49,7 +48,7 @@
             </nav>
      <div class="">
 
-    <h1>Post job</h1>
+    <h1>Add Job</h1>
     <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">

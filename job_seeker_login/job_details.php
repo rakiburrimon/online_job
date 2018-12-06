@@ -210,7 +210,7 @@ session_start();
 			
 			<div>
 				<div  class="sectionContent">
-					<input class="btn btn-danger btn-lg btn-block" type="Disabled" value="Already Applied">
+					<input class="btn btn-danger btn-sm btn-block" type="Disabled" value="Already Applied">
 				</div>
 			</div>
 				<?php
@@ -218,7 +218,7 @@ session_start();
 			?>
 			<div>
 				<div  class="sectionContent">
-					<input class="btn btn-outline-success btn-lg btn-block" type="Submit" value="Apply">
+					<input class="btn btn-outline-success btn-sm btn-block" type="Submit" value="Apply">
 				</div>
 			</div>
 			<?php

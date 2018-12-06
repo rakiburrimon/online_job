@@ -199,7 +199,7 @@ session_start();
 					<?php 
 					include 'connection.php';
 
-					$q = "SELECT COUNT(*) AS co FROM online_application Where job_seeker_id = ".$_SESSION['job_seeker_id']." AND job_id='".$_GET['job_id']."'";
+					$q = "SELECT COUNT(*) AS co FROM online_application Where job_seeker_id = ".$_SESSION['job_seeker_id']." AND job_id ='".$_GET['job_id']."'";
 										
 					$query = mysqli_query($conn,$q);
 
