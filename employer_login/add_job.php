@@ -1,5 +1,9 @@
-<?php if (!isset($_SESSION)) session_start(); ?>
-
+<?php
+session_start();
+if(!isset($_SESSION["employer_id"])){
+  header("Location:Login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

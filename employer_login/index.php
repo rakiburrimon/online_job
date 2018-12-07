@@ -1,15 +1,13 @@
 <?php 
 session_start();
-if(!isset($_SESSION["job_seeker_id"])){
+if(!isset($_SESSION["employer_id"])){
   header("Location:Login.php");
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  	
-    <!-- Required meta tags -->
+ <html>
+   
+   <head>
+      <title>Welcome </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
@@ -30,53 +28,46 @@ if(!isset($_SESSION["job_seeker_id"])){
     <link rel="stylesheet" href="assets/css/style5.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/style4.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
-
-    <title>Add Experience</title>
-  </head>
-
+   
+   </head>
   <body>
-  	<div>
-        <!-- Sidebar  -->
-
-        <!-- Page Content  -->
-        <div id="content">
-            <nav>
-            <?php include "header.php"; ?>
-            </nav>
-     <div class="">
-
-    <h1>Add Experience</h1>
-    <div class="container">
-  <div class="row justify-content-center">
-   <div class="col-md-12">
-
-    <form action="insert_experience.php" method="POST">
-      <div class="form-group">
-    <label for="name">Organozation Name</label>
-    <input type="text" class="form-control" name="experience_organization" placeholder="Organozation Name">
+  <!-- Navbar -->
+  <nav>
+   <?php include "header.php"; ?>
+  </nav>
+  <!-- End Navbar -->
+  <div>
     
-  </div>
-  <div class="form-group">
-    <label for="name">Duration</label>
-    <input type="text" class="form-control" name="experience_duration" placeholder="Duration">
-    
-  </div>
-   <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Add this Experience</button>
-</form>
- 
-</div>
-  </div>
-</div>
-</div>
+    <div class="container text-center">
+      <div class="col-md-8 ml-auto mr-auto">
+        <div class="brand">
+          <h1 class="title">
+            Search Job Seeker
+          </h1>
+          <br/>
+          <div class="row">
+          <div class="col-12">
+            <div class="input-group-sm mb-3">
+              <form action="job_seeker_search.php" method="POST">
+                <div class="input-group mb-3">
+                  <input type="text" name="query" class="form-control" placeholder="Search">
+                  <div class="input-group-append">
+                    <button class="btn btn-success" type="submit">Search</button>  
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
+        </div>
+      </div>
     </div>
-
+  </div>
+  <!--   Core JS Files   -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
@@ -93,5 +84,6 @@ if(!isset($_SESSION["job_seeker_id"])){
             });
         });
     </script>
-  </body>
+</body>
+   
 </html>

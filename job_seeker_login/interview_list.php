@@ -30,32 +30,33 @@ $username = "root";
 $password = "";
 $dbname = "job_portal";
 
-
-$_SESSION['search_value']=$_POST["query"];
 $conn=new mysqli($servername,$username,$password,$dbname);
 if($conn->connect_error){
     echo 'Connection Faild: '.$con->connect_error;
     }else{
-        $sql="select * from job where job_title like '%".$_SESSION['search_value']."%' ORDER BY job_id DESC";
-
+        $sql="select * from job_seeking_interview where job_seeker_id ='".$_SESSION['job_seeker_id']."'";
         $quer = mysqli_query($conn,$sql);
-
         while ($res= mysqli_fetch_array($quer)){
-            
+        $jj= $res['interview_id'];
+        $sql1="select * from interview where interview_id =$jj";
+
+        $quer1 = mysqli_query($conn,$sql1);
+
+        while ($res1= mysqli_fetch_array($quer1)){
             ?>
+            <?php echo "<br>"; ?>
         <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-10">
-            <?php echo "<br>";  ?>
-            <div class="d-flex justify-content-center"></div>
+        <div class="d-flex justify-content-center"></div>
         <div class="media border p-2 col-md-8 border border-info">
             <ul>
                 <li class="media">
                     <div class="media-body">
-                        <h5 class="mt-0 mb-1"><?php echo $res['job_title']; ?></h5>
-                        <p><?php echo $res['job_context']; ?></p>
-                        <p><?php echo $res['educaqtional_requirement']; ?></p>
-                        <td><a class="btn btn-success" name="Details" href=" job_details.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
+                        <p><?php echo $res1['interview_place']; ?></p>
+                        <p><?php echo $res1['interview_date']; ?></p>
+                        <p><?php echo $res1['job_id']; ?></p>
+                        <td><a class="btn btn-success" name="Details" href=" job_details.php?job_id=<?php echo $res1['job_id']; ?>">Details..</a></td>
                     </div>
                 </li>
             </ul>
@@ -64,7 +65,8 @@ if($conn->connect_error){
         </div> 
     <?php
         }
-        }  
+    }
+    }
         echo "<br>";     
     ?>
 </body>

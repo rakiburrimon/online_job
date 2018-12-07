@@ -20,7 +20,7 @@ if(isset($_SESSION["job_seeker_id"])) {
 	header("Location:".$_GET["redirect"]);
 	return;
 }
-header('location:welcome.php');
+header('location:index.php');
 
 }
 ?>

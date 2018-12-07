@@ -1,5 +1,7 @@
- <?php
+
+<?php
 session_start();
+
 $message="";
 if(count($_POST)>0) {
 include_once 'connection.php';
@@ -13,7 +15,7 @@ $message = "Invalid Userid or company name or Password!";
 }
 }
 if(isset($_SESSION["employer_id"])) {
-header('location:welcome.php');
+header('location:index.php');
 }
 ?>
 <html>

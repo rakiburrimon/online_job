@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!isset($_SESSION["job_seeker_id"])){
+if(!isset($_SESSION["employer_id"])){
   header("Location:Login.php");
 }
 ?>
@@ -46,9 +46,10 @@ if(!isset($_SESSION["job_seeker_id"])){
 						<div style="max-width: 400px; margin: 0 auto;">
 
 								<?php 
+								$job_seeker_id=$_GET['job_seeker_id'];
 										include 'connection.php';
 
-										$q = "SELECT * FROM job_seeker Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM job_seeker Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -57,30 +58,30 @@ if(!isset($_SESSION["job_seeker_id"])){
 								?>
 
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
-									<td><?php echo $res['job_seeker_name']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Full Name: <?php echo $res['job_seeker_name']; ?> </td>
 									
 								</div>								
 								<div class="form-group">
-									<h4>Email: </h4>
-									<p><?php echo $res['job_seeker_email']; ?> </p>
+									<h4></h4>
+									<p>Email: <?php echo $res['job_seeker_email']; ?> </p>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Contact: </p>
-									<td><?php echo $res['job_seeker_contact']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Contact: <?php echo $res['job_seeker_contact']; ?> </td>
 								</div>
-								<p class="text-primary">Address: </p>
-									<td><?php echo $res['job_seeker_address']; ?> </td>
+								<p class="text-primary"></p>
+									<td>Address: <?php echo $res['job_seeker_address']; ?> </td>
 								<div class="form-group">
-									<p class="text-primary">Career Objective: </p>
-									<td><?php echo $res['job_seeker_career_objective']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Career Objective: <?php echo $res['job_seeker_career_objective']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Job Profile: </p>
-									<td><?php echo $res['job_seeker_job_profile']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Job Profile: <?php echo $res['job_seeker_job_profile']; ?> </td>
 								</div>
-								<p class="text-primary">Gender: </p>
-									<td><?php echo $res['job_seeker_gender']; ?> </td>
+								<p class="text-primary"></p>
+									<td>Gender: <?php echo $res['job_seeker_gender']; ?> </td>
 								<?php } ?>
 						</div>
 					</div>
@@ -93,7 +94,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 								<?php 
 										include 'connection.php';
 
-										$q = "SELECT * FROM experience Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM experience Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -102,16 +103,16 @@ if(!isset($_SESSION["job_seeker_id"])){
 								?>
 
 								<div class="form-group">
-									<p class="text-primary">Designation: </p>
-									<td><?php echo $res['designation']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Designation: <?php echo $res['designation']; ?> </td>
 								</div>								
 								<div class="form-group">
-									<p class="text-primary">Organization: </p>
-									<td><?php echo $res['experience_organization']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Organization: <?php echo $res['experience_organization']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Duration: </p>
-									<td><?php echo $res['experience_duration']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Duration: <?php echo $res['experience_duration']; ?> </td>
 								</div>
 								<?php } ?>
 						</div>
@@ -125,7 +126,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 								<?php 
 										include 'connection.php';
 
-										$q = "SELECT * FROM skill Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM skill Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -134,12 +135,12 @@ if(!isset($_SESSION["job_seeker_id"])){
 								?>
 
 								<div class="form-group">
-									<p class="text-primary">Skill Name: </p>
-									<td><?php echo $res['skill_name']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Skill Name: <?php echo $res['skill_name']; ?> </td>
 								</div>								
 								<div class="form-group">
-									<p class="text-primary">Skill Description: </p>
-									<td><?php echo $res['skill_description']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Skill Description: <?php echo $res['skill_description']; ?> </td>
 								</div>
 								<?php } ?>
 						</div>
@@ -153,7 +154,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 								<?php 
 										include 'connection.php';
 
-										$q = "SELECT * FROM qualification Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM qualification Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -162,16 +163,16 @@ if(!isset($_SESSION["job_seeker_id"])){
 								?>
 
 								<div class="form-group">
-									<p class="text-primary">Qualification: </p>
-									<td><?php echo $res['qualification_name']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Qualification: <?php echo $res['qualification_name']; ?> </td>
 								</div>								
 								<div class="form-group">
-									<p class="text-primary">Result: </p>
-									<td><?php echo $res['qualification_result']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Result: <?php echo $res['qualification_result']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Institution: </p>
-									<td><?php echo $res['qualification_institution']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Institution: <?php echo $res['qualification_institution']; ?> </td>
 								</div>
 								<?php } ?>
 						</div>
@@ -185,7 +186,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 								<?php 
 										include 'connection.php';
 
-										$q = "SELECT * FROM reference Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM reference Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -194,35 +195,48 @@ if(!isset($_SESSION["job_seeker_id"])){
 								?>
 
 								<div class="form-group">
-									<p class="text-primary">Full Name: </p>
-									<td><?php echo $res['name']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Full Name: <?php echo $res['name']; ?> </td>
 								</div>								
 								<div class="form-group">
-									<p class="text-primary">Designation: </p>
-									<td><?php echo $res['designation']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Designation: <?php echo $res['designation']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Company: </p>
-									<td><?php echo $res['company']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Company: <?php echo $res['company']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Address: </p>
-									<td><?php echo $res['address']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Address: <?php echo $res['address']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Email: </p>
-									<td><?php echo $res['email']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Email: <?php echo $res['email']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Phone: </p>
-									<td><?php echo $res['phone']; ?> </td>
+									<p class="text-primary"></p>
+									<td>Phone: <?php echo $res['phone']; ?> </td>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Reference Type: </p>
-									<td><?php echo $res['reference_type']; ?> </td>>
+									<p class="text-primary"></p>
+									<td>Reference Type: <?php echo $res['reference_type']; ?> </td>>
 								</div>
 							<?php } ?>
 						</div>
+						<?php 
+								$job_seeker_id=$_GET['job_seeker_id'];
+										include 'connection.php';
+
+										$q = "SELECT * FROM job_seeker Where job_seeker_id = $job_seeker_id";
+										
+										$query = mysqli_query($conn,$q);
+
+										while ($res= mysqli_fetch_array($query)) {
+										
+								?>
+								<td><a class="btn btn-success" name="Details" href=" email.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Send Email..</a></td>
+								<?php } ?>
 					</div>
 				</div>
 			</div>

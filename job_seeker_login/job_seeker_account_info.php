@@ -1,5 +1,8 @@
-<?php 	
-	if (!isset($_SESSION)) session_start();
+<?php 
+session_start();
+if(!isset($_SESSION["job_seeker_id"])){
+  header("Location:Login.php");
+}
 ?>
 		<head>
     <meta charset="utf-8">
@@ -31,13 +34,16 @@
    <?php include "header.php"; ?>
   </nav>
 
-			<div class="col-md-9 hidden-print">
+			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3>Account Info</h3>
+					<div class="Container d-flex justify-content-center">
+					<div class="panel-heading col-md-3">
+						<h1>Account Info</h1>
 					</div>
+				</div>
 					<div class="panel-body">
-						<div style="margin: 0 auto;">
+							<div class="container">
+						<div>
 
 							<table class="table table-striped">
 								<h3>Personal Details</h3>
@@ -49,7 +55,7 @@
 									<th>Career Objective</th>
 									<th>Job Profile</th>
 									<th>Gender</th>
-									<th>Image</th>
+									<th> Image</th>
 								</tr>
 
 								<?php 
@@ -109,7 +115,7 @@
 									<br>
 									<td><?php echo $res['experience_duration']; ?></td>
 									<td><a class="btn btn-success" href="update_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Update</a></td>
-									<td><a class="btn btn-danger" href="update_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Delete</a></td>
+									<td><a class="btn btn-danger" href="delete_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Delete</a></td>
 
 								</tr>
 
@@ -142,7 +148,7 @@
 									<br>
 									<td><?php echo $res['skill_description']; ?></td>
 									<td><a class="btn btn-success" name="update" href="update_skill.php?skill_id=<?php echo $res['skill_id']; ?>">Update</a></td>
-									<td><a class="btn btn-danger" href=" ?skill_id=<?php echo $res['skill_id']; ?>">Delete</a></td>
+									<td><a class="btn btn-danger" href="delete_skill.php?skill_id=<?php echo $res['skill_id']; ?>">Delete</a></td>
 
 								</tr>
 
@@ -178,7 +184,7 @@
 									<td><?php echo $res['qualification_institution']; ?></td>
 
 									<td><a class="btn btn-success" name="update" href="update_qualification.php?qualification_id=<?php echo $res['qualification_id']; ?>">Update</a></td>
-									<td><a class="btn btn-danger" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
+									<td><a class="btn btn-danger" href="delete_qualification.php?qualification_id=<?php echo $res['qualification_id']; ?>">Delete</a></td>
 
 								</tr>
 
@@ -223,7 +229,7 @@
 									<td><?php echo $res['reference_type']; ?></td>
 
 									<td><a class="btn btn-success" name="update" href="update_reference.php?reference_id=<?php echo $res['reference_id']; ?>">Update</a></td>
-									<td><a class="btn btn-danger" href=" ?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
+									<td><a class="btn btn-danger" href="delete_reference.php?reference_id=<?php echo $res['reference_id']; ?>">Delete</a></td>
 
 								</tr>
 
@@ -234,6 +240,7 @@
 							</table>
 							
 						</div>
+					</div>
 					</div>
 				</div>
 			</div>

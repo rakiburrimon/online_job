@@ -1,3 +1,4 @@
+
 <head>
     <link rel="stylesheet" href="assets/css/style4.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -29,7 +30,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-left">
                             <li class="nav-item">
-                        <a class="btn btn-light" href="welcome.php" role="button">Home</a>
+                        <a class="btn btn-light" href="index.php" role="button">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Profile
@@ -45,7 +46,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="">See ALL Applied Job</a>
-                            <a class="dropdown-item" href="#">Selected for Interview</a>
+                            <a class="dropdown-item" href="interview_list.php">Selected for Interview</a>
                         </div>
                         </li>
                         </ul>

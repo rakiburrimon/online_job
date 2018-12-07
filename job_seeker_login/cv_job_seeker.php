@@ -1,5 +1,8 @@
-<?php 	
-if (!isset($_SESSION)) session_start();
+<?php 
+session_start();
+if(!isset($_SESSION["job_seeker_id"])){
+  header("Location:Login.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +42,7 @@ echo "<br>";
 										
 		?>
 		<div id="headshot" class="quickFade">
-			<img src= />
+			
 		</div>
 		
 		<div id="name">

@@ -1,4 +1,3 @@
-<?php if (!isset($_SESSION)) session_start(); ?>
 
 <head>
     <link rel="stylesheet" href="assets/css/style4.css">
@@ -28,20 +27,30 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
+                        <ul class="nav navbar-nav ml-left">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
+                        <a class="btn btn-light" href="index.php" role="button">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Profile
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="job_seeker_account_details.php">See Profile</a>
+                            <a class="dropdown-item" href="job_seeker_account_info.php">Update Profile</a>
+                            <a class="dropdown-item" href="cv_job_seeker.php">See Profile's Resume</a>
+                        </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">See Job Updates
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="">See ALL Applied Job</a>
+                            <a class="dropdown-item" href="#">Selected for Interview</a>
+                        </div>
+                        </li>
                         </ul>
+                        </div>
+                        <div>
                         <ul class="nav navbar-nav navbar-right">
                     <?php if (empty($_SESSION['company_name'])) { ?>
                         <li><a href="Login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                        
@@ -54,8 +63,6 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="logout.php">Logout</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
                         </div>
                         </li>
                     <?php } ?>
@@ -63,5 +70,6 @@
                     
                 </ul>
                     </div>
+                </div>
                 </div>
             </nav>
