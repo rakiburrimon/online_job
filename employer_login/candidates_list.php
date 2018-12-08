@@ -100,7 +100,6 @@ if($conn->connect_error){
                     <div class="media-body">
                         <input type="hidden" name="job_seeker_id" value="<?php echo $res['job_seeker_id']; ?>">
                         <td><a class="btn btn-success" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res1['job_seeker_id']; ?>">Details..</a></td>
-                        <div id="printableArea">
                         <td><?php echo $res1['job_seeker_name']; ?></td>
                         <td>
                         <?php
@@ -115,8 +114,19 @@ if($conn->connect_error){
                     </li>
                          Duration:<?php echo $res2['experience_duration']; } ?>
                      </td>
-                        <td><?php
+                    <td><?php
                         $sql2="select * from skill where job_seeker_id =$jj";
+
+                        $quer3 = mysqli_query($conn,$sql2);
+
+                        while ($res3= mysqli_fetch_array($quer3)){
+                        ?>
+                        <li>
+                        <?php echo $res3['skill_name']; } ?>
+                        </li>
+                    </td>
+                    <td><?php
+                        $sql4="select count(*) as co from online_application where job_seeker_id =$jj";
 
                         $quer3 = mysqli_query($conn,$sql2);
 
