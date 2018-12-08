@@ -46,13 +46,13 @@ if(!isset($_SESSION["employer_id"])){
   <div class="row justify-content-center">
    <div class="col-md-6">
 
-    <h1>see</h1>
+    <h1>Candidate Information</h1>
     <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
 <?php 
       include 'connection.php';
-      $job_id= $_POST['job_id'];
+      $job_id= $_GET['job_id'];
       $a;
 
         $q = "SELECT * FROM interview Where job_id = $job_id";
@@ -67,10 +67,10 @@ if(!isset($_SESSION["employer_id"])){
     <input type="hidden" id="interview_id" name="interview_id" value="<?php echo $res['interview_id']; ?>">
   
   <?php $a=$res['interview_id']; ?>
-  
+
   <?php 
       include 'connection.php';
-      $job_seeker_id= $_POST['job_seeker_id'];
+      $job_seeker_id= $_GET['job_seeker_id'];
 
         $q = "SELECT * FROM job_seeker Where job_seeker_id = $job_seeker_id";
                     
@@ -114,7 +114,7 @@ if(!isset($_SESSION["employer_id"])){
 
                 <?php 
                     include 'connection.php';
-                    $job_seeker_id= $_POST['job_seeker_id'];
+                    $job_seeker_id= $_GET['job_seeker_id'];
 
                   $q = "SELECT * FROM experience Where job_seeker_id = $job_seeker_id";
                     
@@ -147,7 +147,7 @@ if(!isset($_SESSION["employer_id"])){
 
                 <?php 
                     include 'connection.php';
-                    $job_seeker_id= $_POST['job_seeker_id'];
+                    $job_seeker_id= $_GET['job_seeker_id'];
 
                     $q = "SELECT * FROM skill Where job_seeker_id = $job_seeker_id";
                     
@@ -176,7 +176,7 @@ if(!isset($_SESSION["employer_id"])){
 
                 <?php 
                     include 'connection.php';
-                    $job_seeker_id= $_POST['job_seeker_id'];
+                    $job_seeker_id= $_GET['job_seeker_id'];
 
                     $q = "SELECT * FROM qualification Where job_seeker_id = $job_seeker_id";
                     
@@ -209,7 +209,7 @@ if(!isset($_SESSION["employer_id"])){
 
                 <?php 
                     include 'connection.php';
-                    $job_seeker_id= $_POST['job_seeker_id'];
+                    $job_seeker_id= $_GET['job_seeker_id'];
 
                     $q = "SELECT * FROM reference Where job_seeker_id = $job_seeker_id";
                     
@@ -253,8 +253,8 @@ if(!isset($_SESSION["employer_id"])){
       
           <?php 
           include 'connection.php';
-          $job_seeker_id= $_POST['job_seeker_id'];
-          $q = "SELECT COUNT(*) AS co FROM job_seeking_interview Where job_seeker_id = ".$_POST['job_seeker_id']." AND interview_id = '$a' ";
+          $job_seeker_id= $_GET['job_seeker_id'];
+          $q = "SELECT COUNT(*) AS co FROM job_seeking_interview Where job_seeker_id = '$job_seeker_id' AND interview_id = '$a' ";
                     
           $query = mysqli_query($conn,$q);
 
