@@ -45,7 +45,7 @@
                         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">See Job Updates
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="">See ALL Applied Job</a>
+                            <a class="dropdown-item" href="applied_job.php">See ALL Applied Job</a>
                             <a class="dropdown-item" href="interview_list.php">Selected for Interview</a>
                         </div>
                         </li>

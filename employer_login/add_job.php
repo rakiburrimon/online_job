@@ -39,14 +39,11 @@ if(!isset($_SESSION["employer_id"])){
   </head>
 
   	<body>
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <?php include "sidebar.php"; ?>
-        </nav>
+    <div>
+
 
         <!-- Page Content  -->
-        <div id="content">
+        <div id="">
             <nav>
             <?php include "header.php"; ?>
             </nav>

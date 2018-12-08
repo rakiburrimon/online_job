@@ -35,17 +35,16 @@
                         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Profile
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="job_seeker_account_details.php">See Profile</a>
-                            <a class="dropdown-item" href="job_seeker_account_info.php">Update Profile</a>
-                            <a class="dropdown-item" href="cv_job_seeker.php">See Profile's Resume</a>
+                            <a class="dropdown-item" href="employer_details.php">See Profile</a>
+                            <a class="dropdown-item" href="employer_info.php">Update Profile</a>
                         </div>
                         </li>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">See Job Updates
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="">See ALL Applied Job</a>
-                            <a class="dropdown-item" href="#">Selected for Interview</a>
+                            <a class="dropdown-item" href="posted_job.php">See ALL Posted Job</a>
+                            <a class="dropdown-item" href="add_job.php">Post A New Job</a>
                         </div>
                         </li>
                         </ul>

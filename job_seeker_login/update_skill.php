@@ -53,14 +53,14 @@ if(!isset($_SESSION["job_seeker_id"])){
 								?>
 
 								<div class="form-group">
-									<label for="skill_name">Duration: </label>
+									<label for="skill_name">Skill Name: </label>
 									<input type="text" name="skill_name" id="skill_name" class="form-control" required="" value="<?php echo $res['skill_name']; ?>" />
 									<?php if (isset($msg)): ?>
 									<span><?php echo $msg;?></span>
 								<?php endif ?>
 								</div>								
 								<div class="form-group">
-									<label for="skill_description">Organization: </label>
+									<label for="skill_description">Skill Description: </label>
 									<input type="text" name="skill_description" id="skill_description" class="form-control" required="" value="<?php echo $res['skill_description']; ?>"/>
 								</div>
 								

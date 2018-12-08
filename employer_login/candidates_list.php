@@ -58,53 +58,88 @@ if(!isset($_SESSION["employer_id"])){
 			?>
   </nav>
 
-<body id="top" class="">
-<form action="addjobseekerinterview.php" method="POST">
+<body id="top" class=""> 
+    <form action="addjobseekerinterview.php" method="POST">
 <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
-		<?php 
-			include 'connection.php';
-            $job_id=$_GET['job_id'];
+    <table class="table table-striped">
+    <tr class="container-fluid bg-info">
+                                    <th>Details</th>
+                                    <th>Name</th>
+                                    <th>Experience</th>
+                                    <th>Skill</th>
+                                    <th>Action</th>
+             
+             </tr> 
+<?php
+include 'connection.php';
+if($conn->connect_error){
+    echo 'Connection Faild: '.$con->connect_error;
+    }else{
 
-				$q = "SELECT * FROM online_application Where job_id = $job_id ";
-										
-				$query = mysqli_query($conn,$q);
+        $job_id=$_GET['job_id'];
+        $sql="select * from online_application where job_id = $job_id";
+        $quer = mysqli_query($conn,$sql);
+        while ($res= mysqli_fetch_array($quer)){
+        $job_id= $res['job_seeker_id'];
+        $jj= $res['job_seeker_id'];
+        ?>
+        <input type="hidden" name="job_id" value="<?php echo $res['job_id']; ?>">
+        <?php
+        $sql1="select * from job_seeker where job_seeker_id =$jj";
 
-				while ($res= mysqli_fetch_array($query)) {
-										
-		?>
-    <input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
-		<input type="hidden" id="job_seeker_id" name="job_seeker_id" value="<?php echo $res['job_seeker_id']; ?>">
-    
-		<div class="container">
-        <div class="media border p-6 col-md-10 border border-success"">
-            <ul class="list-unstyled">
-                <li class="media">
+        $quer1 = mysqli_query($conn,$sql1);
+
+        while ($res1= mysqli_fetch_array($quer1)){
+            ?>
+            <?php echo "<br>"; ?>
+        <div class="row">                
+             <tr>
+                
                     <div class="media-body">
-                        <p><?php echo $res['job_seeker_id']; ?></p>
-                        <?php 
-                             include 'connection.php';
-                                    $job_seeker_id=$res['job_seeker_id'];
+                        <input type="hidden" name="job_seeker_id" value="<?php echo $res['job_seeker_id']; ?>">
+                        <td><a class="btn btn-success" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res1['job_seeker_id']; ?>">Details..</a></td>
+                        <div id="printableArea">
+                        <td><?php echo $res1['job_seeker_name']; ?></td>
+                        <td>
+                        <?php
+                        $sql2="select * from experience where job_seeker_id =$jj";
 
-                                $q = "SELECT * FROM job_seeker Where job_seeker_id = $job_seeker_id ";
-                    
-                                $query = mysqli_query($conn,$q);
+                        $quer2 = mysqli_query($conn,$sql2);
 
-                                while ($res= mysqli_fetch_array($query)) {
-                    
-                            ?>
-                            <p><?php echo $res['job_seeker_name']; ?></p>
-                            <p><?php echo $res['job_seeker_contact']; ?></p>
-                            <p><?php echo $res['job_seeker_address']; ?></p>
-                        <button type="submit" class="btn btn-success btn-sm btn-block">Check Details</button>
+                        while ($res2= mysqli_fetch_array($quer2)){
+                        ?>
+                        <li>
+                        Designation:<?php echo $res2['designation']; echo "<br>"; ?>
+                    </li>
+                         Duration:<?php echo $res2['experience_duration']; } ?>
+                     </td>
+                        <td><?php
+                        $sql2="select * from skill where job_seeker_id =$jj";
+
+                        $quer3 = mysqli_query($conn,$sql2);
+
+                        while ($res3= mysqli_fetch_array($quer3)){
+                        ?>
+                        <li>
+                        <?php echo $res3['skill_name']; } ?>
+                        </li>
+                    </td>
+                    <td><button class="btn btn-primary" type="submit">Add for Interview</button></td>
                     </div>
-                </li>
-            </ul>
+                
+        </tr>
+    
         </div>
+        
         </div>
-        <?php } ?>
-        <?php } ?>	
+        </div> 
+    <?php
+    }
+    }
+}
+    ?>
 </div>
 </div>
 </div>

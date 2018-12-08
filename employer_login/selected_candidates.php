@@ -1,4 +1,4 @@
- <?php
+<?php 
 session_start();
 if(!isset($_SESSION["employer_id"])){
   header("Location:Login.php");
@@ -7,10 +7,11 @@ if(!isset($_SESSION["employer_id"])){
 <!DOCTYPE html>
 <html>
 <head>
-<title>Posted Job</title>
+<title>Candidates List</title>
 
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <meta charset="utf-8">
@@ -29,6 +30,7 @@ if(!isset($_SESSION["employer_id"])){
     <link rel="stylesheet" href="assets/css/style5.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style4.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -56,37 +58,87 @@ if(!isset($_SESSION["employer_id"])){
 			?>
   </nav>
 
-<body id="top" class="">
-<form action="" method="">
+<body id="top" class=""> 
+    <form action="addjobseekerinterview.php" method="POST">
 <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
-		<?php 
-			include 'connection.php';
+    <table class="table table-striped">
+    <tr class="container-fluid bg-info">
+                                    <th>Details</th>
+                                    <th>Name</th>
+                                    <th>Experience</th>
+                                    <th>Skill</th>
+                                    <th>Action</th>
+             
+             </tr> 
+<?php
+include 'connection.php';
+if($conn->connect_error){
+    echo 'Connection Faild: '.$con->connect_error;
+    }else{
 
-				$q = "SELECT * FROM job Where employer_id = '".$_SESSION['employer_id']."'";
-										
-				$query = mysqli_query($conn,$q);
+        $job_id=$_GET['job_id'];
+        $sql="select * from job_seeking_application where job_id = $job_id";
+        $quer = mysqli_query($conn,$sql);
+        while ($res= mysqli_fetch_array($quer)){
+        $job_id= $res['job_seeker_id'];
+        $jj= $res['job_seeker_id'];
+        ?>
+        <input type="hidden" name="job_id" value="<?php echo $res['job_id']; ?>">
+        <?php
+        $sql1="select * from job_seeker where job_seeker_id =$jj";
 
-				while ($res= mysqli_fetch_array($query)) {
-										
-		?>
-		<input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
-		<div class="container">
-        <div class="media border p-6 col-md-10 border border-success"">
-            <ul class="list-unstyled">
-                <li class="media">
+        $quer1 = mysqli_query($conn,$sql1);
+
+        while ($res1= mysqli_fetch_array($quer1)){
+            ?>
+            <?php echo "<br>"; ?>
+        <div class="row">                
+             <tr>
+                
                     <div class="media-body">
-                        <h5 class="mt-0 mb-1"><?php echo $res['job_title']; ?></h5>
-                        <p><?php echo $res['job_context']; ?></p>
-                        <p><?php echo $res['educaqtional_requirement']; ?></p>
-                        <td><a class="btn btn-success" name="Details" href="jobdetails.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
+                        <input type="hidden" name="job_seeker_id" value="<?php echo $res['job_seeker_id']; ?>">
+                        <td><a class="btn btn-success" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res1['job_seeker_id']; ?>">Details..</a></td>
+                        <div id="printableArea">
+                        <td><?php echo $res1['job_seeker_name']; ?></td>
+                        <td>
+                        <?php
+                        $sql2="select * from experience where job_seeker_id =$jj";
+
+                        $quer2 = mysqli_query($conn,$sql2);
+
+                        while ($res2= mysqli_fetch_array($quer2)){
+                        ?>
+                        <li>
+                        Designation:<?php echo $res2['designation']; echo "<br>"; ?>
+                    </li>
+                         Duration:<?php echo $res2['experience_duration']; } ?>
+                     </td>
+                        <td><?php
+                        $sql2="select * from skill where job_seeker_id =$jj";
+
+                        $quer3 = mysqli_query($conn,$sql2);
+
+                        while ($res3= mysqli_fetch_array($quer3)){
+                        ?>
+                        <li>
+                        <?php echo $res3['skill_name']; } ?>
+                        </li>
+                    </td>
                     </div>
-                </li>
-            </ul>
+                
+        </tr>
+    
         </div>
+        
         </div>
-        <?php } ?>	
+        </div> 
+    <?php
+    }
+    }
+}
+    ?>
 </div>
 </div>
 </div>

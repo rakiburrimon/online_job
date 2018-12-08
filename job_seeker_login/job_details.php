@@ -188,57 +188,36 @@ if(!isset($_SESSION["job_seeker_id"])){
 				<div  class="sectionContent">
 					<h2><?php echo $res['company_name']; ?></h2>
 					<p>Description : <?php echo $res['company_description']; ?></p>
-					<h3><b>Location</b> : <?php echo $res['company_location']; ?>.</h3>
+					<h3><b>Company Location</b> : <?php echo $res['company_location']; ?>.</h3>
+				</div>
+				<?php 
+					}
+				?>
+			</div>
+			<div class="sectionTitle">
+				<h3>Interview</h3>
+			</div>
+			<?php 
+					include 'connection.php';
+					$job_id= $_GET['job_id'];
+
+					$q = "SELECT * FROM interview Where job_id = $job_id";
+										
+					$query = mysqli_query($conn,$q);
+
+					while ($res= mysqli_fetch_array($query)) {
+										
+			?>
+			<div>
+				<div  class="sectionContent">
+					<h2><b>Date :</b> <?php echo $res['interview_date']; ?></h2>
+					<p>Place : <?php echo $res['interview_place']; ?></p>
 				</div>
 				<?php 
 					}
 				?>
 			</div>
 			<div class="clear"></div>
-			<?php
-			if(isset($_SESSION["job_seeker_id"])){
-			?>
-			
-					<?php 
-					include 'connection.php';
-
-					$q = "SELECT COUNT(*) AS co FROM online_application Where job_seeker_id = ".$_SESSION['job_seeker_id']." AND job_id='".$_GET['job_id']."'";
-										
-					$query = mysqli_query($conn,$q);
-
-					$res= mysqli_fetch_array($query); 
-						if($res['co']){
-										
-			?>
-			
-			<div>
-				<div  class="sectionContent">
-					<input class="btn btn-danger btn-lg btn-block" type="Disabled" value="Already Applied">
-				</div>
-			</div>
-				<?php
-			}else{
-			?>
-			<div>
-				<div  class="sectionContent">
-					<input class="btn btn-success btn-lg btn-block" type="Submit" value="Apply">
-				</div>
-			</div>
-			<?php
-			}
-		
-	}else{
-			?>
-			<div>
-				<div  class="sectionContent">
-					<a class="btn btn-outline-primary btn-lg btn-block"  href="job_seeker_login/Login.php?redirect=<?=$_SERVER["REQUEST_URI"]?>">Login</a>
-
-				</div>
-			</div>
-		</section>
-<?php
-			}
-			?>
 		
 	</div>
 </div>

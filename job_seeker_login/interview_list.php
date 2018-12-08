@@ -56,7 +56,7 @@ if($conn->connect_error){
                         <p><?php echo $res1['interview_place']; ?></p>
                         <p><?php echo $res1['interview_date']; ?></p>
                         <p><?php echo $res1['job_id']; ?></p>
-                        <td><a class="btn btn-success" name="Details" href=" job_details.php?job_id=<?php echo $res1['job_id']; ?>">Details..</a></td>
+                        <td><a class="btn btn-success" name="Details" href="job_details.php?job_id=<?php echo $res1['job_id']; ?>">Details..</a></td>
                     </div>
                 </li>
             </ul>

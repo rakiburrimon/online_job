@@ -1,16 +1,17 @@
- <?php
+<?php 
 session_start();
-if(!isset($_SESSION["employer_id"])){
+if(!isset($_SESSION["job_seeker_id"])){
   header("Location:Login.php");
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Posted Job</title>
+<title>Candidates List</title>
 
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <meta charset="utf-8">
@@ -29,6 +30,7 @@ if(!isset($_SESSION["employer_id"])){
     <link rel="stylesheet" href="assets/css/style5.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style4.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -40,57 +42,75 @@ if(!isset($_SESSION["employer_id"])){
 </head>
 <nav>
    <?php
-			if(isset($_SESSION["employer_id"])){
-			?>
-			<nav>
-   				<?php include "header.php"; ?>
-  			</nav>
-			<?php
+            if(isset($_SESSION["job_seeker_id"])){
+            ?>
+            <nav>
+                <?php include "header.php"; ?>
+            </nav>
+            <?php
 }else{
-	?>
-	<div>
-				<input type="hidden" name="">
-			</div>
-	<?php
+    ?>
+    <div>
+                <input type="hidden" name="">
+            </div>
+    <?php
 }
-			?>
+            ?>
   </nav>
 
 <body id="top" class="">
-<form action="" method="">
 <div class="container">
   <div class="row justify-content-center">
+    <h3>Applied Job</h3>
    <div class="col-md-12">
-		<?php 
-			include 'connection.php';
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "job_portal";
 
-				$q = "SELECT * FROM job Where employer_id = '".$_SESSION['employer_id']."'";
-										
-				$query = mysqli_query($conn,$q);
+$conn=new mysqli($servername,$username,$password,$dbname);
+if($conn->connect_error){
+    echo 'Connection Faild: '.$con->connect_error;
+    }else{
+        $sql="select * from online_application where job_seeker_id ='".$_SESSION['job_seeker_id']."'";
+        $quer = mysqli_query($conn,$sql);
+        while ($res= mysqli_fetch_array($quer)){
+        $jj= $res['job_id'];
+        $sql1="select * from job where job_id =$jj";
 
-				while ($res= mysqli_fetch_array($query)) {
-										
-		?>
-		<input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
-		<div class="container">
-        <div class="media border p-6 col-md-10 border border-success"">
-            <ul class="list-unstyled">
+        $quer1 = mysqli_query($conn,$sql1);
+
+        while ($res1= mysqli_fetch_array($quer1)){
+            ?>
+            <?php echo "<br>"; ?>
+        <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+        <div class="d-flex justify-content-center"></div>
+        <div class="media border p-2 col-md-8 border border-info">
+            <ul>
                 <li class="media">
                     <div class="media-body">
-                        <h5 class="mt-0 mb-1"><?php echo $res['job_title']; ?></h5>
-                        <p><?php echo $res['job_context']; ?></p>
-                        <p><?php echo $res['educaqtional_requirement']; ?></p>
-                        <td><a class="btn btn-success" name="Details" href="jobdetails.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
+                        <p><?php echo $res1['job_title']; ?></p>
+                        <p><?php echo $res1['job_context']; ?></p>
+                        <p><?php echo $res1['job_application_deadline']; ?></p>
+                        <td><a class="btn btn-success" name="Details" href=" job_details.php?job_id=<?php echo $res1['job_id']; ?>">Details..</a></td>
                     </div>
                 </li>
             </ul>
         </div>
         </div>
-        <?php } ?>	
+        </div> 
+    <?php
+        }
+    }
+    }
+        echo "<br>";     
+    ?>
 </div>
 </div>
 </div>
-</form>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

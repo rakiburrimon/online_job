@@ -38,20 +38,15 @@ if(!isset($_SESSION["employer_id"])){
 
     <title>Candidate Confirmation</title>
   </head>
+<nav>
+  <?php include "header.php"; ?>
+</nav>
+  <body id="top">
+  	<div class="container">
+  <div class="row justify-content-center">
+   <div class="col-md-6">
 
-  <body>
-  	<div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <?php include "sidebar.php"; ?>
-        </nav>
-
-        <!-- Page Content  -->
-        <div id="content">
-            <?php include "header.php"; ?>
-     <div class="">
-
-    <h1>Create Interview</h1>
+    <h1>see</h1>
     <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">

@@ -153,7 +153,7 @@ if(!isset($_SESSION["employer_id"])){
 			<div class="clear"></div>
 			<div>
 				<div class="sectionContent">
-					<td><a class="btn btn-success" name="Show Candidates List" href="candidates_list.php?job_id=<?php echo $res['job_id']; ?>">Show Candidates List..</a></td>
+					<td><a class="btn btn-success" name="Show Candidates List" href="candidates_list.php?job_id=<?php echo $res['job_id']; ?>">Show Candidates List..</a></td><td><a class="btn btn-primary" name="Show Selected Candidates List" href="selected_candidates_list.php?job_id=<?php echo $res['job_id']; ?>">Show Selected Candidates List..</a></td>
 					<?php
 					include 'connection.php';
 					$job_id= $_GET['job_id'];
@@ -184,7 +184,7 @@ if(!isset($_SESSION["employer_id"])){
 			?>
 		<div>
 				<div  class="sectionContent">
-					<input class="btn btn-danger btn-sm btn-block" type="Disabled" value="Already Created">
+					<input class="btn btn-danger btn-sm btn-block" type="hidden" value="Already Created">
 				</div>
 			</div>
 				<?php
@@ -192,7 +192,7 @@ if(!isset($_SESSION["employer_id"])){
 			?>
 			<div>
 				<div  class="sectionContent">
-					<input class="btn btn-outline-success btn-sm btn-block" type="Submit" value="Create">
+					<input class="btn btn-outline-success btn-sm btn-block" type="hidden" value="Create">
 				</div>
 			</div>
 			<?php
