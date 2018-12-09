@@ -18,6 +18,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 $a1=$_POST["job_title"];
 $a2=$_POST["job_context"];
 $a3=$_POST["job_responsibilities"];
@@ -42,10 +43,13 @@ if ($conn->query($sql) === TRUE) {
 	 ?>
     			<form action="insert_interview.php" method="POST">
 				<input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
+				 <a class="btn btn-danger" name="cancel" href=" delete_job.php?job_id=<?php echo $res['job_id']; ?>">Cancel..</a>
 <?php 
  }
- } else {
+ }
+  else {
     echo "Error: " . $sql . "<br>" . $conn->error;
+
 }
 $conn->close();
 ?> 

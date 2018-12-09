@@ -36,11 +36,11 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="employer_details.php">See Profile</a>
-                            <a class="dropdown-item" href="employer_info.php">Update Profile</a>
+                            <a class="dropdown-item" href="employer_info.php">Edit Profile</a>
                         </div>
                         </li>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">See Job Updates
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Job Updates
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="posted_job.php">See ALL Posted Job</a>

@@ -49,10 +49,11 @@ if(!isset($_SESSION["employer_id"])){
             </nav>
      <div class="">
 
-    <h1>Add Job</h1>
+
     <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
+        <h1>Add Job</h1>
 
     <form action="insert_job.php" method="POST">
       <div class="form-group">

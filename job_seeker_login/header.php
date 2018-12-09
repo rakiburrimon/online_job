@@ -49,6 +49,16 @@
                             <a class="dropdown-item" href="interview_list.php">Selected for Interview</a>
                         </div>
                         </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Add Profile Features
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="add_skill.php">Add Skill</a>
+                            <a class="dropdown-item" href="add_experience.php">Add Experience</a>
+                            <a class="dropdown-item" href="add_qualification.php">Add Qualification</a>
+                            <a class="dropdown-item" href="add_reference.php">Add Reference</a>
+                        </div>
+                        </li>
                         </ul>
                         </div>
                         <div>
