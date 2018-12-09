@@ -58,19 +58,17 @@ if(!isset($_SESSION["employer_id"])){
 			?>
   </nav>
 
-<body id="top" class="">
-    <?php $job_id=$_GET['job_id']; ?>
-    <div id="printableArea">
+<body id="top" class=""> 
 <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
     <table class="table table-striped">
     <tr class="container-fluid bg-info">
-                                    <th>Details</th>
-                                    <th>Name</th>
-                                    <th>Experience</th>
-                                    <th>Skill</th>
-                                    <th>Action</th>
+                                    
+                                    <th>Date</th>
+                                    <th>Place</th>
+                                    <th>Job Title</th>
+                                    <th>Check</th>
              
              </tr> 
 <?php
@@ -78,54 +76,28 @@ include 'connection.php';
 if($conn->connect_error){
     echo 'Connection Faild: '.$con->connect_error;
     }else{
-
-        $job_id=$_GET['job_id'];
-        $sql="select * from online_application where job_id = $job_id";
+        $sql="select * from job where employer_id = '".$_SESSION['employer_id']."'";
         $quer = mysqli_query($conn,$sql);
         while ($res= mysqli_fetch_array($quer)){
-        $job_id= $res['job_seeker_id'];
-        $jj= $res['job_seeker_id'];
+        $job_id= $res['job_id'];
         ?>
-        <input type="hidden" name="job_id" value="<?php echo $res['job_id']; ?>">
+        <div class="row">                
+        <div class="media-body">
+        <tr>
         <?php
-        $sql1="select * from job_seeker where job_seeker_id =$jj";
+        $sql1="select * from interview where job_id =$job_id";
 
         $quer1 = mysqli_query($conn,$sql1);
 
         while ($res1= mysqli_fetch_array($quer1)){
             ?>
             <?php echo "<br>"; ?>
-        <div class="row">                
-             <tr>
-                
-                    <div class="media-body">
-                        
-                        <td><?php echo $res1['job_seeker_name']; ?></td>
+                        <td><?php echo $res1['interview_date']; ?></td>
                         <td>
-                        <?php
-                        $sql2="select * from experience where job_seeker_id =$jj";
-
-                        $quer2 = mysqli_query($conn,$sql2);
-
-                        while ($res2= mysqli_fetch_array($quer2)){
-                        ?>
-                        <li>
-                        Designation:<?php echo $res2['designation']; echo "<br>"; ?>
-                    </li>
-                         Duration:<?php echo $res2['experience_duration']; } ?>
-                     </td>
-                        <td><?php
-                        $sql2="select * from skill where job_seeker_id =$jj";
-
-                        $quer3 = mysqli_query($conn,$sql2);
-
-                        while ($res3= mysqli_fetch_array($quer3)){
-                        ?>
-                        <li>
-                        <?php echo $res3['skill_name']; } ?>
-                        </li>
-                    </td>
-                    </div>
+                            <?php echo $res1['interview_place']; } ?>
+                        </td>
+                        <td><?php echo $res['job_title']; ?></td>
+                        <td><a href=""></a><?php echo $res['job_title']; ?></td>
                 
         </tr>
     
@@ -135,10 +107,8 @@ if($conn->connect_error){
         </div> 
     <?php
     }
-    }
 }
     ?>
-</div>
 </div>
 </div>
 </div>
