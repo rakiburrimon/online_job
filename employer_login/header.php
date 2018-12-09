@@ -45,6 +45,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="posted_job.php">See ALL Posted Job</a>
                             <a class="dropdown-item" href="add_job.php">Post A New Job</a>
+                            <a class="dropdown-item" href="see_interview_list.php">All Interview List</a>
                         </div>
                         </li>
                         </ul>
