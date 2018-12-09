@@ -29,17 +29,37 @@ header('location:index.php');
 <title>Employer Login</title>
 </head>
 <body>
-<form method="post" action="" align="center">
-<div class="message"><?php if($message!="") { echo $message; } ?></div>
-<h3 align="center">Enter Login Details</h3>
-Userid or Email:<br>
-<input type="text" name="userid_or_email">
-<br>
-Password:<br>
-<input type="password" name="job_seeker_password">
-<br><br>
-<input type="submit" name="submit" value="Submit">
-<input type="reset">
+<form method="post" align="center">
+	<link rel="stylesheet" type="text/css" href="login.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="" id="icon" alt="User Icon" />
+      <h1>Job Seeker Login</h1>
+    </div>
+
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="userid_or_email" class="fadeIn second" name="userid_or_email" placeholder="Email">
+      <input type="text" id="job_seeker_password" class="fadeIn third" name="job_seeker_password" placeholder="Password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="../job_seeker_reg.php">Job Seeker Registration</a>
+    </div>
+
+  </div>
+</div>
 </form>
 </body>
 </html> 
