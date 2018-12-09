@@ -1,4 +1,3 @@
-<?php if (!isset($_SESSION)) session_start(); ?>
 
 <head>
     <link rel="stylesheet" href="assets/css/style4.css">

@@ -1,10 +1,13 @@
-<?php if (!isset($_SESSION)) session_start(); ?>
-
+<?php
+session_start();
+if(!isset($_SESSION["admin_id"])){
+  header("Location:Login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
   	
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
@@ -35,22 +38,22 @@
     <title>Post Job</title>
   </head>
 
-  <body>
-  	<div>
-        <!-- Sidebar  -->
+  	<body>
+    <div>
 
 
         <!-- Page Content  -->
-        <div id="content">
+        <div id="">
             <nav>
             <?php include "header.php"; ?>
             </nav>
      <div class="">
 
-    <h1>Post job</h1>
+
     <div class="container">
   <div class="row justify-content-center">
-   <div class="col-md-12">
+   <div class="col-md-8  border border-dark">
+        <h1>Add Job</h1>
 
     <form action="insert_job.php" method="POST">
       <div class="form-group">
@@ -92,10 +95,10 @@
     <input type="date" rows="2" class="form-control" name="application_deadline" placeholder="Application Deadline">
     
   </div>
-  <div class="form-group">
+    <div class="form-group">
     <label for="comment">Company Name</label>
-    <select class="form-control rqun" style="width:100%" title="Company Name" name="company_name">
-                        <option value="0">Select One</option>
+    <select class="form-control rqun" style="width:100%" title="employer_id" name="employer_id">
+                        <option value="0">Select Company</option>
                         <?php
                         include_once ("connection.php");
                         $query="SELECT * FROM `employer`";
@@ -136,3 +139,4 @@
     </script>
   </body>
 </html>
+ 
