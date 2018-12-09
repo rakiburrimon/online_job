@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!isset($_SESSION["job_seeker_id"])){
+if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
 }
 ?>
@@ -48,12 +48,13 @@ if(!isset($_SESSION["job_seeker_id"])){
             </nav>
      <div class="">
 
-    <h1>Post job</h1>
+    <h1>Add Qualification</h1>
     <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
 
     <form action="insert_qualification.php" method="POST">
+      <input type="hidden" name="job_seeker_id" value="<?php echo $_GET['job_seeker_id']; ?>">
       <div class="form-group">
     <label for="name">Qualification Name</label>
     <input type="text" class="form-control" name="qualification_name" placeholder="Qualification Name">
@@ -69,7 +70,7 @@ if(!isset($_SESSION["job_seeker_id"])){
     <input type="text" class="form-control" name="qualification_institution" placeholder="Institution">
     
   </div>
-   <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Post the Job</button>
+   <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Add Qualification</button>
 </form>
  
 </div>

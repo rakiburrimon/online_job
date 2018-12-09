@@ -1,6 +1,6 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["job_seeker_id"])){
+if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
 }
 ?>

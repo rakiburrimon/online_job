@@ -42,7 +42,7 @@ if(!isset($_SESSION["admin_id"])){
 </head>
 <nav>
    <?php
-			if(isset($_SESSION["employer_id"])){
+			if(isset($_SESSION["admin_id"])){
 			?>
 			<nav>
    				<?php include "header.php"; ?>
@@ -59,129 +59,58 @@ if(!isset($_SESSION["admin_id"])){
   </nav>
 
 <body id="top" class=""> 
-    <form">
+    <form>
 <div class="container">
   <div class="row justify-content-center">
+    <th><a class="btn btn-info" name="add" href="add_job_seeker.php">Add New Job Seeker</a></th>
+                                </tr>
    <div class="col-md-12">
-    <table class="table table-striped">
+    <table id="example" class="table table-striped">
     <tr class="container-fluid bg-info">
-                                    <th>Details</th>
                                     <th>Name</th>
-                                    <th>Experience</th>
-                                    <th>Skill</th>
-                                    <th>Status</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>   </th>
                                     <th>Action</th>
-             
+                                    <th>   </th>
              </tr> 
 <?php
 include 'connection.php';
 if($conn->connect_error){
     echo 'Connection Faild: '.$con->connect_error;
     }else{
-
-        $job_id=$_GET['job_id'];
-        $sql="select * from online_application where job_id = $job_id";
+        $sql="select * from job_seeker ORDER BY job_seeker_id DESC";
         $quer = mysqli_query($conn,$sql);
         while ($res= mysqli_fetch_array($quer)){
-        $job_id= $res['job_id'];
-        $jj= $res['job_seeker_id'];
-        ?>
-        <?php
-        $sql1="select * from job_seeker where job_seeker_id =$jj";
-
-        $quer1 = mysqli_query($conn,$sql1);
-
-        while ($res1= mysqli_fetch_array($quer1)){
             ?>
             <?php echo "<br>"; ?>
         <div class="row">                
              <tr>
                 
                     <div class="media-body">
-                        <td><a class="btn btn-success" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res1['job_seeker_id']; ?>">Details..</a></td>
-
-                        <td><?php echo $res1['job_seeker_name']; ?></td>
+                        <td><?php echo $res['job_seeker_name']; ?></td>
+                        <td><?php echo $res['job_seeker_email']; ?></td>
                         <td>
-                        <?php
-                        $sql2="select * from experience where job_seeker_id =$jj";
-
-                        $quer2 = mysqli_query($conn,$sql2);
-
-                        while ($res2= mysqli_fetch_array($quer2)){
-                        ?>
-                        <li>
-                        Designation:<?php echo $res2['designation']; echo "<br>"; ?>
-                    </li>
-                         Duration:<?php echo $res2['experience_duration']; } ?>
+                        <?php echo $res['job_seeker_contact']; ?>
                      </td>
-                        <td><?php
-                        $sql2="select * from skill where job_seeker_id =$jj";
-
-                        $quer3 = mysqli_query($conn,$sql2);
-
-                        while ($res3= mysqli_fetch_array($quer3)){
-                        ?>
-                        <li>
-                        <?php echo $res3['skill_name']; } ?>
-                        </li>
-                    </td>
-                    <?php
-                    include 'connection.php';
-                    $a;
-                        $sql2="select * from interview where job_id =".$_GET['job_id']."";
-
-                        $quer3 = mysqli_query($conn,$sql2);
-
-                        while ($res3= mysqli_fetch_array($quer3)){
-                             $a=$res3['interview_id'];
-                         }
-                        ?>
+                     <td><a class="btn btn-primary" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Details..</a></td>
+                            <td><a class="btn btn-success" name="Update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
+                             <td><a class="btn btn-danger" name="Delete" href="delete_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
                         <td>
-                    <?php 
-                        include 'connection.php';
-                        $q = "SELECT COUNT(*) AS co FROM job_seeking_interview Where job_seeker_id = '$jj' AND interview_id = '$a' ";
-                    
-                        $query = mysqli_query($conn,$q);
-
-                         $res= mysqli_fetch_array($query); 
-                            if($res['co']){
-                    
-                    ?>
-                    <div>
-                                <div  class="sectionContent">
-                                <input class="btn btn-danger btn-sm " type="Disabled" value="Already Selected">
-                                </div>
-                            </div>
-                                <?php
-                            }else{
-                            ?>
-                    <div>
-                    <div  class="sectionContent">
-                                <input class="btn btn-success btn-sm " type="Disabled" value="Can Select">
-                                </div>
-                        </div>
-                            <?php
-                            }
-                            ?>
-                        </td>
-                        <td><a class="btn btn-info" name="Add" href=" addjobseekerinterview.php?job_seeker_id=<?php echo $res1['job_seeker_id']; ?> & job_id=<?php echo"$job_id"; ?> ">Add..</a></td>
-
-                    </form>
+                    </td>
+                    </div>
                 
         </tr>
     
         </div>
-        
-        </div>
-        </div> 
     <?php
     }
-}
 }
     ?>
 </div>
 </div>
 </div>
+</form>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -191,6 +120,20 @@ var pageTracker = _gat._getTracker("UA-3753241-1");
 pageTracker._initData();
 pageTracker._trackPageview();
 </script>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+</script>
+<script src="../assets/css/dataTables.bootstrap4.min.css"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script>
 function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;

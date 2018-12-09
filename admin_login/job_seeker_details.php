@@ -1,10 +1,10 @@
 <?php 
 session_start();
-if(!isset($_SESSION["job_seeker_id"])){
+if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
 }
 ?>
-		<head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <meta charset="utf-8">
@@ -33,63 +33,60 @@ if(!isset($_SESSION["job_seeker_id"])){
 <nav>
    <?php include "header.php"; ?>
   </nav>
+<body>
+<div class="row">
+			<div class="col-md-3"></div>
 
-			<div class="col-md-12">
+			<div class="col-md-6">
 				<div class="panel panel-default">
-					<div class="Container d-flex justify-content-center">
-					<div class="panel-heading col-md-3">
-						<h1>Account Info</h1>
+					<div class="panel-heading">
+						<h3>Personal Details</h3>
 					</div>
-				</div>
 					<div class="panel-body">
-							<div class="container">
-						<div>
-
-							<table class="table table-striped">
-								<h3>Personal Details</h3>
-								<tr>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Contact</th>
-									<th>Address</th>
-									<th>Career Objective</th>
-									<th>Job Profile</th>
-									<th>Gender</th>
-									<th> Image</th>
-								</tr>
+						<div style="max-width: 400px; margin: 0 auto;">
 
 								<?php 
+								$job_seeker_id=$_GET['job_seeker_id'];
 										include 'connection.php';
 
-										$q = "SELECT * FROM job_seeker Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM job_seeker Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
 										while ($res= mysqli_fetch_array($query)) {
 										
 								?>
+								<td><a class="btn btn-success" name="Details" href="cv_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Check Resume..</a></td>
 
-								<tr>
-									<td><?php echo $res['job_seeker_name']; ?></td>
-									<br>
-									<td><?php echo $res['job_seeker_email']; ?></td>
-									<td><?php echo $res['job_seeker_contact']; ?></td>
-									<td><?php echo $res['job_seeker_address']; ?></td>
-									<td><?php echo $res['job_seeker_career_objective']; ?></td>
-									<td><?php echo $res['job_seeker_job_profile']; ?></td>
-									<td><?php echo $res['job_seeker_gender']; ?></td>
-									<td><?php echo $res['image']; ?></td>
-									<td><a class="btn btn-success" name="update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
-									<td><a class="btn btn-success" href="cv_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Resume</a></td>
-
-								</tr>
-
-								<?php 
-									}
-								?>
-																
-							</table>
-							<table class="table table-striped">
+								<div class="form-group">
+									<p class="text-primary"></p>
+									<td>Full Name: <?php echo $res['job_seeker_name']; ?> </td>
+									
+								</div>								
+								<div class="form-group">
+									<h4></h4>
+									<p>Email: <?php echo $res['job_seeker_email']; ?> </p>
+								</div>
+								<div class="form-group">
+									<p class="text-primary"></p>
+									<td>Contact: <?php echo $res['job_seeker_contact']; ?> </td>
+								</div>
+								<p class="text-primary"></p>
+									<td>Address: <?php echo $res['job_seeker_address']; ?> </td>
+								<div class="form-group">
+									<p class="text-primary"></p>
+									<td>Career Objective: <?php echo $res['job_seeker_career_objective']; ?> </td>
+								</div>
+								<div class="form-group">
+									<p class="text-primary"></p>
+									<td>Job Profile: <?php echo $res['job_seeker_job_profile']; ?> </td>
+								</div>
+								<p class="text-primary"></p>
+									<td>Gender: <?php echo $res['job_seeker_gender']; ?> </td>
+								<?php } ?>
+						</div>
+					</div>
+					<table class="table table-striped">
 								<h3>Experience</h3>
 								<tr>
 									<th>Designation</th>
@@ -99,9 +96,10 @@ if(!isset($_SESSION["job_seeker_id"])){
 								</tr>
 
 								<?php 
+								$job_seeker_id=$_GET['job_seeker_id'];
 										include 'connection.php';
 
-										$q = "SELECT * FROM experience Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM experience Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -133,9 +131,10 @@ if(!isset($_SESSION["job_seeker_id"])){
 								</tr>
 
 								<?php 
+								$job_seeker_id=$_GET['job_seeker_id'];
 										include 'connection.php';
 
-										$q = "SELECT * FROM skill Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM skill Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -163,13 +162,14 @@ if(!isset($_SESSION["job_seeker_id"])){
 									<th>Degree</th>
 									<th>Result</th>
 									<th>Institution</th>
-									<th><a class="btn btn-info" name="add" href="add_qualification.php">Add</a></th>
+									<th><a class="btn btn-info" name="add" href="add_qualification.php?job_seeker_id=<?php echo $_GET['job_seeker_id']; ?>">Add</a></th>
 								</tr>
 
 								<?php 
+								$job_seeker_id=$_GET['job_seeker_id'];
 										include 'connection.php';
 
-										$q = "SELECT * FROM qualification Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM qualification Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -208,9 +208,10 @@ if(!isset($_SESSION["job_seeker_id"])){
 								</tr>
 
 								<?php 
+								$job_seeker_id=$_GET['job_seeker_id'];
 										include 'connection.php';
 
-										$q = "SELECT * FROM reference Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+										$q = "SELECT * FROM reference Where job_seeker_id = $job_seeker_id";
 										
 										$query = mysqli_query($conn,$q);
 
@@ -238,12 +239,10 @@ if(!isset($_SESSION["job_seeker_id"])){
 								?>
 																
 							</table>
+								
 							
-						</div>
-					</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
-
+	</body>

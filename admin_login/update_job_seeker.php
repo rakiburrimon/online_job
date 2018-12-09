@@ -1,6 +1,6 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["job_seeker_id"])){
+if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
 }
 ?>
@@ -19,7 +19,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 		$job_seeker_gender 	= mysqli_real_escape_string($conn,$_POST['job_seeker_gender']);
 		$job_seeker_image 	= mysqli_real_escape_string($conn,$_POST['job_seeker_image']);
 
-		$sql= "SELECT * FROM job_seeker WHERE job_seeker_name='$job_seeker_name' AND job_seeker_address='$job_seeker_address' AND job_seeker_career_objective='$job_seeker_career_objective' AND job_seeker_gender='$job_seeker_gender'AND image='$image' AND job_seeker_id!='".$_SESSION['job_seeker_id']."'";
+		$sql= "SELECT * FROM job_seeker WHERE job_seeker_name='$job_seeker_name' AND job_seeker_address='$job_seeker_address' AND job_seeker_career_objective='$job_seeker_career_objective' AND job_seeker_gender='$job_seeker_gender'AND image='$image' AND job_seeker_id!=$job_seeker_id";
 		$res_s= mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 		if (mysqli_num_rows($res_s)>0) {
@@ -27,7 +27,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 		}
 		else{
 
-			$sql= "UPDATE job_seeker SET job_seeker_id=$job_seeker_id, job_seeker_name='$job_seeker_name', job_seeker_email='$job_seeker_email', job_seeker_contact='$job_seeker_contact', job_seeker_address='$job_seeker_address', job_seeker_career_objective='$job_seeker_career_objective', job_seeker_job_profile='$job_seeker_job_profile', job_seeker_gender='$job_seeker_gender', image='$image' WHERE job_seeker_id='".$_SESSION['job_seeker_id']."'";
+			$sql= "UPDATE job_seeker SET job_seeker_id=$job_seeker_id, job_seeker_name='$job_seeker_name', job_seeker_email='$job_seeker_email', job_seeker_contact='$job_seeker_contact', job_seeker_address='$job_seeker_address', job_seeker_career_objective='$job_seeker_career_objective', job_seeker_job_profile='$job_seeker_job_profile', job_seeker_gender='$job_seeker_gender', image='$image' WHERE job_seeker_id=$job_seeker_id";
 
 			$qry= mysqli_query($conn,$sql);
 
@@ -84,8 +84,8 @@ if(!isset($_SESSION["job_seeker_id"])){
 								<?php
 									
 
-									//$job_seeker_id	=$_GET['job_seeker_id'];
-									$q = "SELECT * FROM job_seeker WHERE job_seeker_id = '".$_SESSION['job_seeker_id']."' ";
+									$job_seeker_id	=$_GET['job_seeker_id'];
+									$q = "SELECT * FROM job_seeker WHERE job_seeker_id = $job_seeker_id";
 									$query= mysqli_query($conn,$q);
 									$res= mysqli_fetch_assoc($query);
 									
@@ -121,9 +121,6 @@ if(!isset($_SESSION["job_seeker_id"])){
 								<div class="form-group">
 									<label for="job_seeker_gender">Gender: </label>
 									<input type="text" name="job_seeker_gender" id="job_seeker_gender" class="form-control" value="<?php echo $res['job_seeker_gender']; ?>"/>
-								</div>
-								<div class="form-group">									
-									<input type="" name="image" id="image" class="form-control" value="<?php echo $res['image']; ?>"/>
 								</div>
 								
 								<button type="submit" name="submit" class="btn btn-success">Submit</button>

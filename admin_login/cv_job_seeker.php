@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!isset($_SESSION["job_seeker_id"])){
+if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
 }
 ?>
@@ -33,8 +33,9 @@ echo "<br>";
 	<div class="mainDetails">
 		<?php 
 			include 'connection.php';
+			$job_seeker_id=$_GET['job_seeker_id'];
 
-				$q = "SELECT * FROM job_seeker Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+				$q = "SELECT * FROM job_seeker Where job_seeker_id = $job_seeker_id";
 										
 				$query = mysqli_query($conn,$q);
 
@@ -96,8 +97,9 @@ echo "<br>";
 			</div>
 			<?php 
 					include 'connection.php';
+					$job_seeker_id=$_GET['job_seeker_id'];
 
-					$q = "SELECT * FROM experience Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+					$q = "SELECT * FROM experience Where job_seeker_id = $job_seeker_id";
 										
 					$query = mysqli_query($conn,$q);
 
@@ -124,8 +126,9 @@ echo "<br>";
 			</div>
 			<?php 
 					include 'connection.php';
+					$job_seeker_id=$_GET['job_seeker_id'];
 
-					$q = "SELECT * FROM skill Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+					$q = "SELECT * FROM skill Where job_seeker_id = $job_seeker_id";
 										
 					$query = mysqli_query($conn,$q);
 
@@ -151,8 +154,9 @@ echo "<br>";
 			</div>
 			<?php 
 					include 'connection.php';
+					$job_seeker_id=$_GET['job_seeker_id'];
 
-					$q = "SELECT * FROM qualification Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+					$q = "SELECT * FROM qualification Where job_seeker_id = $job_seeker_id";
 										
 					$query = mysqli_query($conn,$q);
 
@@ -177,8 +181,9 @@ echo "<br>";
 			</div>
 			<?php 
 					include 'connection.php';
+					$job_seeker_id=$_GET['job_seeker_id'];
 
-					$q = "SELECT * FROM reference Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+					$q = "SELECT * FROM reference Where job_seeker_id = $job_seeker_id";
 										
 					$query = mysqli_query($conn,$q);
 
@@ -211,8 +216,9 @@ echo "<br>";
 			
 			<?php 
 					include 'connection.php';
+					$job_seeker_id=$_GET['job_seeker_id'];
 
-					$q = "SELECT * FROM job_seeker Where job_seeker_id = '".$_SESSION['job_seeker_id']."'";
+					$q = "SELECT * FROM job_seeker Where job_seeker_id = $job_seeker_id";
 										
 					$query = mysqli_query($conn,$q);
 

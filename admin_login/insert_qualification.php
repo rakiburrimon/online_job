@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!isset($_SESSION["job_seeker_id"])){
+if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
 }
 ?>
@@ -21,9 +21,10 @@ if ($conn->connect_error) {
 $a1=$_POST["qualification_name"];
 $a2=$_POST["qualification_result"];
 $a3=$_POST["qualification_institution"];
+$a4=$_POST["job_seeker_id"];
 //'".$_SESSION['employer_id']."'
 
-$sql = "INSERT INTO `qualification` (`qualification_id`, `qualification_name`, `qualification_result`, `qualification_institution`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '$a3', '".$_SESSION['job_seeker_id']."')";
+$sql = "INSERT INTO `qualification` (`qualification_id`, `qualification_name`, `qualification_result`, `qualification_institution`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
-} 
+}
 ?>
 <head>
     <meta charset="utf-8">
@@ -47,8 +47,9 @@ if(!isset($_SESSION["admin_id"])){
 							<div class="container-fluid bg-light border border-primary">
 
 								<?php 
-									$employer_id=$_GET['employer_id'];
+										$employer_id=$_GET['employer_id'];
 										include 'connection.php';
+
 
 										$q = "SELECT * FROM employer Where employer_id = $employer_id";
 										

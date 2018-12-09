@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
@@ -42,7 +42,7 @@ if(!isset($_SESSION["admin_id"])){
 </head>
 <nav>
    <?php
-			if(isset($_SESSION["employer_id"])){
+			if(isset($_SESSION["admin_id"])){
 			?>
 			<nav>
    				<?php include "header.php"; ?>
@@ -59,52 +59,52 @@ if(!isset($_SESSION["admin_id"])){
   </nav>
 
 <body id="top" class=""> 
+    <form>
 <div class="container">
   <div class="row justify-content-center">
+    <th><a class="btn btn-info" name="add" href="add_employer.php">Add New Employer</a></th>
+                                </tr>
    <div class="col-md-12">
-    <table class="table table-striped">
+    <table id="example" class="table table-striped">
     <tr class="container-fluid bg-info">
-                                    
-                                    <th>Date</th>
-                                    <th>Place</th>
-                                    <th>Job Title</th>
-                                    <th>Check</th>
-             
+                                    <th>Company Name</th>
+                                    <th>Location</th>
+                                    <th>Phone</th>
+                                    <th>Industry Type</th>
+                                    <th>   </th>
+                                    <th>Action</th>
+                                    <th>   </th>
              </tr> 
 <?php
 include 'connection.php';
 if($conn->connect_error){
     echo 'Connection Faild: '.$con->connect_error;
     }else{
-        $sql="select * from job where employer_id = '".$_SESSION['employer_id']."'";
+        $sql="select * from employer ORDER BY employer_id DESC";
         $quer = mysqli_query($conn,$sql);
         while ($res= mysqli_fetch_array($quer)){
-        $job_id= $res['job_id'];
-        ?>
-        <div class="row">                
-        <div class="media-body">
-        <tr>
-        <?php
-        $sql1="select * from interview where job_id =$job_id";
-
-        $quer1 = mysqli_query($conn,$sql1);
-
-        while ($res1= mysqli_fetch_array($quer1)){
             ?>
             <?php echo "<br>"; ?>
-                        <td><?php echo $res1['interview_date']; ?></td>
+        <div class="row">                
+             <tr>
+                
+                    <div class="media-body">
+                        <td><?php echo $res['company_name']; ?></td>
+                        <td><?php echo $res['company_location']; ?></td>
+                        <td><?php echo $res['employer_contact']; ?></td>
                         <td>
-                            <?php echo $res1['interview_place']; } ?>
-                        </td>
-                        <td><?php echo $res['job_title']; ?></td>
-                        <td><a href=""></a><?php echo $res['job_title']; ?></td>
+                        <?php echo $res['industry_type']; ?>
+                     </td>
+                     <td><a class="btn btn-primary" name="Details" href="employer_details.php?employer_id=<?php echo $res['employer_id']; ?>">Details..</a></td>
+                            <td><a class="btn btn-success" name="Update" href="update_employer.php?employer_id=<?php echo $res['employer_id']; ?>">Update</a></td>
+                             <td><a class="btn btn-danger" name="Delete" href="delete_employer.php?employer_id=<?php echo $res['employer_id']; ?>">Delete</a></td>
+                        <td>
+                    </td>
+                    </div>
                 
         </tr>
     
         </div>
-        
-        </div>
-        </div> 
     <?php
     }
 }
@@ -112,6 +112,7 @@ if($conn->connect_error){
 </div>
 </div>
 </div>
+</form>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -121,6 +122,20 @@ var pageTracker = _gat._getTracker("UA-3753241-1");
 pageTracker._initData();
 pageTracker._trackPageview();
 </script>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+</script>
+<script src="../assets/css/dataTables.bootstrap4.min.css"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script>
 function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;

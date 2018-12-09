@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["employer_id"])){
+if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
 }
 ?>
@@ -43,9 +43,6 @@ if(!isset($_SESSION["employer_id"])){
   <body>
   	<div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
-            <?php include "sidebar.php"; ?>
-        </nav>
 
         <!-- Page Content  -->
         <div id="content">
