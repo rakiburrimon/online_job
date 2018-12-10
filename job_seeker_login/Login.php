@@ -49,7 +49,7 @@ header('location:index.php');
     <!-- Login Form -->
     <form>
       <input type="text" id="userid_or_email" class="fadeIn second" name="userid_or_email" placeholder="Email">
-      <input type="text" id="job_seeker_password" class="fadeIn third" name="job_seeker_password" placeholder="Password">
+      <input type="password" id="job_seeker_password" class="fadeIn second" name="job_seeker_password" placeholder="Password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 

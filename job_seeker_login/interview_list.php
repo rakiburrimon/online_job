@@ -8,7 +8,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 <html>
 <head>
     <title>Search results</title>
-    <link rel="stylesheet" href="assets/css/style4.css">
+    <link rel="stylesheet" href="../assets/css/style4.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <meta charset="utf-8">
@@ -22,10 +22,11 @@ if(!isset($_SESSION["job_seeker_id"])){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
-<nav>
+
+<body>
+    <nav>
     <?php include "header.php"; ?>
 </nav>
-<body>
 
     <?php
 $servername = "localhost";

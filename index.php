@@ -39,16 +39,22 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              Registration
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="dropdown" role="button">
-              Login
-            </a>
-          </li>
+          <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Registration
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="job_seeker_reg.php">Job Seeker Registration</a>
+                            <a class="dropdown-item" href="employer_reg.php">Employer Registration</a>
+                        </div>
+                        </li>
+          <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Login
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="job_seeker_login/Login.php">Job Seeker Login</a>
+                            <a class="dropdown-item" href="employer_login/Login.php">Employer Login</a>
+                        </div>
+                        </li>
         </ul>
       </div>
     </div>
@@ -125,6 +131,11 @@
   <script src="../assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 
 </html>
