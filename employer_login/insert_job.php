@@ -43,7 +43,7 @@ if ($conn->query($sql) === TRUE) {
 	 ?>
     			<form action="insert_interview.php" method="POST">
 				<input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
-				 <a class="btn btn-danger" name="cancel" href=" delete_job.php?job_id=<?php echo $res['job_id']; ?>">Cancel..</a>
+
 <?php 
  }
  }
@@ -53,5 +53,6 @@ if ($conn->query($sql) === TRUE) {
 }
 $conn->close();
 ?> 
-<button type="submit" class="btn btn-outline-primary btn-lg btn-block">Confirm</button>
+<td> <a class="btn btn-danger" name="cancel" href=" delete_job.php?job_id=<?php echo $res['job_id']; ?>">Cancel..</a></td>
+<input type="submit" value="Add" />
 </form>
