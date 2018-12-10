@@ -40,7 +40,7 @@ if(!isset($_SESSION["admin_id"])){
 </head>
 <nav>
    <?php
-			if(isset($_SESSION["job_seeker_id"])){
+			if(isset($_SESSION["admin_id"])){
 			?>
 			<nav>
    				<?php include "header.php"; ?>
@@ -84,7 +84,7 @@ if(!isset($_SESSION["admin_id"])){
 		<div class="clear"></div>
 	</div>
 	
-	<div>
+	<div  class="border border-right-1 border-success">
 		<section>
 			<article>
 				
@@ -167,8 +167,12 @@ if(!isset($_SESSION["admin_id"])){
 		<?php 
 			}
 		?>
-		
+	</div>
+		<?php 
+			echo "<br>";
+		?>
 		<section>
+			<div>
 			<div class="sectionTitle">
 				<h3>Organization Details</h3>
 			</div>
@@ -190,51 +194,8 @@ if(!isset($_SESSION["admin_id"])){
 					}
 				?>
 			</div>
-			<div class="clear"></div>
-			<?php
-			if(isset($_SESSION["job_seeker_id"])){
-			?>
-			
-					<?php 
-					include 'connection.php';
-					$q = "SELECT COUNT(*) AS co FROM online_application Where job_seeker_id = ".$_SESSION['job_seeker_id']." AND job_id='".$_GET['job_id']."'";
-										
-					$query = mysqli_query($conn,$q);
-					$res= mysqli_fetch_array($query); 
-						if($res['co']){
-										
-			?>
-			
-			<div>
-				<div  class="sectionContent">
-					<input class="btn btn-danger btn-lg btn-block" type="Disabled" value="Already Applied">
-				</div>
 			</div>
-				<?php
-			}else{
-			?>
-			<div>
-				<div  class="sectionContent">
-					<input class="btn btn-outline-success btn-lg btn-block" type="Submit" value="Apply">
-				</div>
-			</div>
-			<?php
-			}
-		
-	}else{
-			?>
-			<div>
-				<div  class="sectionContent">
-					<a class="btn btn-outline-primary btn-lg btn-block"  href="job_seeker_login/Login.php?redirect=<?=$_SERVER["REQUEST_URI"]?>">Login</a>
-
-				</div>
-			</div>
-		</section>
-<?php
-			}
-			?>
-		
-	</div>
+			</section>	
 </div>
 </div>
 </form>

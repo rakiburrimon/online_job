@@ -35,8 +35,8 @@
                         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Jobs
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="job_seeker_account_details.php">See All Jobs</a>
-                            <a class="dropdown-item" href="job_seeker_account_info.php">See All Interviews</a>
+                            <a class="dropdown-item" href="job_list.php">See All Jobs</a>
+                            <a class="dropdown-item" href="interview_list.php">See All Interviews</a>
                         </div>
                         </li>
                         </ul>
