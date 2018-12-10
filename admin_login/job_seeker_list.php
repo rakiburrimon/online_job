@@ -82,10 +82,9 @@ if($conn->connect_error){
         $sql="select * from job_seeker ORDER BY job_seeker_id DESC";
         $quer = mysqli_query($conn,$sql);
         while ($res= mysqli_fetch_array($quer)){
-            ?>
-            <?php echo "<br>"; ?>
+           echo "<br>"; ?>
         <div class="row">                
-             <tr>
+             <tr> 
                 
                     <div class="media-body">
                         <td><?php echo $res['job_seeker_name']; ?></td>
@@ -97,14 +96,13 @@ if($conn->connect_error){
                             <td><a class="btn btn-success" name="Update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
                              <td><a class="btn btn-danger" name="Delete" href="delete_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
                         <td>
-                    </td>
                     </div>
                 
         </tr>
     
         </div>
     <?php
-    }
+}
 }
     ?>
 </div>

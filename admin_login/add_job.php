@@ -45,7 +45,7 @@ if(!isset($_SESSION["admin_id"])){
         <!-- Page Content  -->
         <div id="">
             <nav>
-            <?php include "header.php"; ?>
+             <?php include "header.php"; ?>
             </nav>
      <div class="">
 

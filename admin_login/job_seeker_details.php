@@ -127,7 +127,7 @@ if(!isset($_SESSION["admin_id"])){
 								<tr>
 									<th>Skill Name</th>
 									<th>Skill Description</th>
-									<th><a class="btn btn-info" name="add" href="add_skill.php">Add</a></th>
+									<th><a class="btn btn-info" name="add" href="add_skill.php?job_seeker_id=<?php echo $_GET['job_seeker_id']; ?>">Add</a></th>
 								</tr>
 
 								<?php 
@@ -203,7 +203,7 @@ if(!isset($_SESSION["admin_id"])){
 									<th>Email</th>
 									<th>Phone</th>
 									<th>Reference Type</th>
-									<th><a class="btn btn-info" name="add" href="add_reference.php">Add</a></th>
+									<th><a class="btn btn-info" name="add" href="add_reference.php?job_seeker_id=<?php echo $_GET['job_seeker_id']; ?>">Add</a></th>
 
 								</tr>
 

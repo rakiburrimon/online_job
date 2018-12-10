@@ -54,6 +54,7 @@ if(!isset($_SESSION["admin_id"])){
    <div class="col-md-12">
 
     <form action="insert_reference.php" method="POST">
+      <input type="hidden" name="job_seeker_id" value="<?php echo $_GET['job_seeker_id']; ?>">
       <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" name="name" placeholder="Reference Person's Name">

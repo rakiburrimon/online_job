@@ -143,11 +143,36 @@ if(!isset($_SESSION["admin_id"])){
 				</div>
 				
 				<div class="sectionContent">
-					<p><?php echo $res['job_application_deadline']; ?></p>
+					<p><?php echo $res['job_application_deadline'];  ?></p>
 				</div>
 			</article>
 			<div class="clear"></div>
 		</section>
+			<section>
+			<div class="border border-success">
+			<div class="sectionTitle">
+				<h3>Interview Details</h3>
+			</div>
+			<?php
+			$job_id=$_GET['job_id'];
+					include 'connection.php';
+					$q = "SELECT * FROM interview Where job_id = $job_id ";
+										
+					$query = mysqli_query($conn,$q);
+					while ($res1= mysqli_fetch_array($query)) {
+										
+			?>
+			<div>
+				<div  class="sectionContent">
+					<p>Interview Date: <?php echo $res1['interview_date']; ?></p>
+					<p><b>Location</b> : <?php echo $res1['interview_place']; ?>.</p>
+				</div>
+				<?php 
+					}
+				?>
+			</div>
+			</div>
+			</section>	
 		
 		<section>
 			<div class="clear"></div>
@@ -155,6 +180,7 @@ if(!isset($_SESSION["admin_id"])){
 				<div class="sectionContent">
 					<td><a class="btn btn-success" name="Show Candidates List" href="candidates_list.php?job_id=<?php echo $res['job_id']; ?>">Show Candidates List..</a></td>
 					<?php
+				}
 					include 'connection.php';
 					$job_id= $_GET['job_id'];
 
@@ -170,58 +196,10 @@ if(!isset($_SESSION["admin_id"])){
 			<?php  ?>
 			</div>
 		</section>
-		<?php 
-			}
-					include 'connection.php';
-
-					$q = "SELECT COUNT(*) AS co FROM interview Where job_id='".$_GET['job_id']."'";
-										
-					$query = mysqli_query($conn,$q);
-
-					$res= mysqli_fetch_array($query); 
-						if($res['co']){
-										
-			?>
-		<div>
-				<div  class="sectionContent">
-					<input class="btn btn-danger btn-sm btn-block" type="hidden" value="Already Created">
-				</div>
-			</div>
-				<?php
-			}else{
-			?>
-			<div>
-				<div  class="sectionContent">
-					<input class="btn btn-outline-success btn-sm btn-block" type="hidden" value="Create">
-				</div>
-			</div>
-			<?php
-			} ?>
 		
 	</div>
 </div>
 </div>
 </form>
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-3753241-1");
-pageTracker._initData();
-pageTracker._trackPageview();
-</script>
-<script>
-function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
-
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
-}
-</script> 
 </body>
 </html>

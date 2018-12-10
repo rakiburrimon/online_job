@@ -20,9 +20,10 @@ if ($conn->connect_error) {
 }
 $a1=$_POST["skill_name"];
 $a2=$_POST["skill_description"];
+$a3=$_POST["job_seeker_id"];
 //'".$_SESSION['employer_id']."'
 
-$sql = "INSERT INTO `skill` (`skill_id`, `skill_name`, `skill_description`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '".$_SESSION['job_seeker_id']."')";
+$sql = "INSERT INTO `skill` (`skill_id`, `skill_name`, `skill_description`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '$a3')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

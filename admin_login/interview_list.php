@@ -112,9 +112,9 @@ if($conn->connect_error){
 
                             while ($res2= mysqli_fetch_array($query)) { ?>
                                 <td><?php echo $res2['company_name']; } ?></td>
-                     <td><a class="btn btn-primary" name="Details" href="interview_details.php?interview_id=<?php echo $res['interview_id']; ?>">Details..</a></td>
                             <td><a class="btn btn-success" name="Update" href="update_interview.php?interview_id=<?php echo $res['interview_id']; ?>">Update</a></td>
                              <td><a class="btn btn-danger" name="Delete" href="delete_interview.php?interview_id=<?php echo $res['interview_id']; ?>">Delete</a></td>
+                             <td><a class="btn btn-primary" name="Details" href="interview_details.php?job_id=<?php echo $job_id; ?> && interview_id=<?php echo $res['interview_id']; ?>">Details..</a></td>
                         <td>
                     </td>
                     </div>

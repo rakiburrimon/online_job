@@ -38,42 +38,27 @@ if(!isset($_SESSION["admin_id"])){
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
-<nav>
-   <?php
-			if(isset($_SESSION["admin_id"])){
-			?>
-			<nav>
-   				<?php include "header.php"; ?>
-  			</nav>
-			<?php
-}else{
-	?>
-	<div>
-				<input type="hidden" name="">
-			</div>
-	<?php
-}
-			?>
-  </nav>
 
 <body id="top" class="">
-<form>
+	<nav>
+   <?php include "header.php"; ?>
+  </nav>
+  <form action="add_fixed_interview.php" method="POST">
 <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
 		<?php 
 			include 'connection.php';
 			$job_id= $_GET['job_id'];
+
 				$q = "SELECT * FROM job Where job_id = $job_id";
-					$a;					
+										
 				$query = mysqli_query($conn,$q);
+
 				while ($res= mysqli_fetch_array($query)) {
 										
 		?>
 		<input type="hidden" id="job_id" name="job_id" value="<?php echo $res['job_id']; ?>">
-		<?php
-			$a=$job_id;
-		?>
 		<section>
 			<article>
 		<div class="sectionTitle">
@@ -84,7 +69,7 @@ if(!isset($_SESSION["admin_id"])){
 		<div class="clear"></div>
 	</div>
 	
-	<div  class="border border-right-1 border-success">
+	<div>
 		<section>
 			<article>
 				
@@ -158,37 +143,29 @@ if(!isset($_SESSION["admin_id"])){
 				</div>
 				
 				<div class="sectionContent">
-					<p><?php echo $res['job_application_deadline']; ?></p>
-					<?php $emp_id= $res['employer_id']; ?>
+					<p><?php echo $res['job_application_deadline'];  ?></p>
 				</div>
 			</article>
 			<div class="clear"></div>
 		</section>
-		<?php 
-			}
-		?>
-	</div>
-		<?php 
-			echo "<br>";
-		?>
-		<section>
-			<div>
+			<section>
+			<div class="border border-success">
 			<div class="sectionTitle">
-				<h3>Organization Details</h3>
+				<h3>Interview Details</h3>
 			</div>
-			<?php 
+			<?php
+			$interview_id=$_GET['interview_id'];
 					include 'connection.php';
-					$q = "SELECT * FROM employer Where employer_id = $emp_id";
+					$q = "SELECT * FROM interview Where interview_id = $interview_id ";
 										
 					$query = mysqli_query($conn,$q);
-					while ($res= mysqli_fetch_array($query)) {
+					while ($res1= mysqli_fetch_array($query)) {
 										
 			?>
 			<div>
 				<div  class="sectionContent">
-					<h2><?php echo $res['company_name']; ?></h2>
-					<p>Description : <?php echo $res['company_description']; ?></p>
-					<h3><b>Location</b> : <?php echo $res['company_location']; ?>.</h3>
+					<p>Interview Date: <?php echo $res1['interview_date']; ?></p>
+					<p><b>Location</b> : <?php echo $res1['interview_place']; ?>.</p>
 				</div>
 				<?php 
 					}
@@ -196,26 +173,32 @@ if(!isset($_SESSION["admin_id"])){
 			</div>
 			</div>
 			</section>	
+		
+		<section>
+			<div class="clear"></div>
+			<div>
+				<div class="sectionContent">
+					<td><a class="btn btn-success" name="Show Candidates List" href="candidates_list.php?job_id=<?php echo $res['job_id']; ?>">Show Candidates List..</a></td>
+					<?php
+				}
+					include 'connection.php';
+					$job_id= $_GET['job_id'];
+
+					$q = "SELECT * FROM interview Where job_id=$job_id";
+										
+					$query = mysqli_query($conn,$q);
+
+					$res= mysqli_fetch_array($query);
+										
+					?>		
+				</div>
+			<?php  ?>
+			</div>
+		</section>
+		
+	</div>
 </div>
 </div>
 </form>
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-3753241-1");
-pageTracker._initData();
-pageTracker._trackPageview();
-</script>
-<script>
-function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
-     document.body.innerHTML = printContents;
-     window.print();
-     document.body.innerHTML = originalContents;
-}
-</script> 
 </body>
 </html>

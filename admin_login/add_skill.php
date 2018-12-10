@@ -57,6 +57,7 @@ if(!isset($_SESSION["admin_id"])){
    <div class="col-md-12">
 
     <form action="insert_skill.php" method="POST">
+      <input type="hidden" name="job_seeker_id" value="<?php echo $_GET['job_seeker_id']; ?>">
       <div class="form-group">
     <label for="name">Skill Name</label>
     <input type="text" class="form-control" name="skill_name" placeholder="Skill Name">

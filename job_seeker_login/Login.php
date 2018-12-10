@@ -1,7 +1,6 @@
  <?php
 session_start();
 if(!isset($_SESSION["job_seeker_id"])){
-
 }
 $message="";
 if(count($_POST)>0) {
@@ -26,11 +25,11 @@ header('location:index.php');
 ?>
 <html>
 <head>
-<title>Employer Login</title>
+<title>Job Seeker Login</title>
 </head>
 <body>
 <form method="post" align="center">
-	<link rel="stylesheet" type="text/css" href="login.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/login.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -42,7 +41,7 @@ header('location:index.php');
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="" id="icon" alt="User Icon" />
+      <img src="../assets/img/caveman.png" id="icon" alt="User Icon" />
       <h1>Job Seeker Login</h1>
     </div>
 

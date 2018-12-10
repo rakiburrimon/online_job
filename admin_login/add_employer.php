@@ -37,18 +37,18 @@ if(!isset($_SESSION["admin_id"])){
 
     <title>Post Job</title>
   </head>
-            
+           <nav>
+            <?php include "header.php"; ?>
+            </nav> 
     <body>
     <div>
 
 
         <!-- Page Content  -->
-        <div id="">
-          <nav>
-            <?php include "header.php"; ?>
-            </nav>
+        <div>
+          
 
-     <div class="">
+     <div>
 
 
     <div class="container">

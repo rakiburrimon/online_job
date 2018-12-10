@@ -25,9 +25,10 @@ $a4=$_POST["address"];
 $a5=$_POST["email"];
 $a6=$_POST["phone"];
 $a7=$_POST["reference_type"];
+$a8=$_POST["job_seeker_id"];
 //'".$_SESSION['employer_id']."'
 
-$sql = "INSERT INTO `reference` (`reference_id`, `name`, `designation`, `company`, `address`, `email`, `phone`, `reference_type`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4', '$a5', '$a6', '$a7', '".$_SESSION['job_seeker_id']."')";
+$sql = "INSERT INTO `reference` (`reference_id`, `name`, `designation`, `company`, `address`, `email`, `phone`, `reference_type`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4', '$a5', '$a6', '$a7', '$a8')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
