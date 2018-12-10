@@ -92,7 +92,7 @@ if(!isset($_SESSION["admin_id"])){
 									<th>Designation</th>
 									<th>Organization</th>
 									<th>Duration</th>
-									<th><a class="btn btn-info" name="add" href="add_experience.php">Add</a></th>
+									<th><a class="btn btn-info" name="add" href="add_experience.php?job_seeker_id=<?php echo $_GET['job_seeker_id']; ?>">Add</a></th>
 								</tr>
 
 								<?php 

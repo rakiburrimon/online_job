@@ -18,6 +18,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+$a1=$_POST["interview_date"];
+$a2=$_POST["interview_place"];
 $a3=$_POST["job_id"];
 //'".$_SESSION['employer_id']."'
 

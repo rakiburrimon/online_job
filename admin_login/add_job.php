@@ -97,8 +97,8 @@ if(!isset($_SESSION["admin_id"])){
   </div>
     <div class="form-group">
     <label for="comment">Company Name</label>
-    <select class="form-control rqun" style="width:100%" title="employer_id" name="employer_id">
-                        <option value="0">Select Company</option>
+    <select class="form-control rqun" style="width:100%" title="employer_id" required="" name="employer_id">
+                        <option required="" value="0">Select Company</option>
                         <?php
                         include_once ("connection.php");
                         $query="SELECT * FROM `employer`";

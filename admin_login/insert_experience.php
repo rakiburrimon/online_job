@@ -20,9 +20,11 @@ if ($conn->connect_error) {
 }
 $a1=$_POST["experience_duration"];
 $a2=$_POST["experience_organization"];
+$a3=$_POST["job_seeker_id"];
+$a4=$_POST['designation'];
 //'".$_SESSION['employer_id']."'
 
-$sql = "INSERT INTO `experience` (`experience_id`, `experience_duration`, `experience_organization`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '".$_SESSION['job_seeker_id']."')";
+$sql = "INSERT INTO `experience` (`experience_id`, `experience_duration`, `experience_organization`, `job_seeker_id`, `designation`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

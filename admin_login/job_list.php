@@ -104,7 +104,7 @@ if($conn->connect_error){
 
                         <td><?php echo $res1['company_name']; } ?></td>
                      <td><a class="btn btn-primary" name="Details" href="job_details.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
-                            <td><a class="btn btn-success" name="Update" href="update_jobr.php?job_id=<?php echo $res['job_id']; ?>">Update</a></td>
+                            <td><a class="btn btn-success" name="Update" href="update_job.php?job_id=<?php echo $res['job_id']; ?>">Update</a></td>
                              <td><a class="btn btn-danger" name="Delete" href="delete_job.php?job_id=<?php echo $res['job_id']; ?>">Delete</a></td>
                         <td>
                     </td>

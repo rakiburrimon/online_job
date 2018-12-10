@@ -57,9 +57,15 @@ if(!isset($_SESSION["admin_id"])){
    <div class="col-md-12">
 
     <form action="insert_experience.php" method="POST">
-      <div class="form-group">
-    <label for="name">Organozation Name</label>
-    <input type="text" class="form-control" name="experience_organization" placeholder="Organozation Name">
+     <input type="hidden" name="job_seeker_id" value="<?php echo $_GET['job_seeker_id']; ?>">
+    <div class="form-group">
+    <label for="name">Organization Name</label>
+    <input type="text" class="form-control" name="experience_organization" placeholder="Organization Name">
+    
+  </div>
+   <div class="form-group">
+    <label for="name">Designation</label>
+    <input type="text" class="form-control" name="designation" placeholder="Designation">
     
   </div>
   <div class="form-group">

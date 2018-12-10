@@ -57,7 +57,7 @@ if(!isset($_SESSION["admin_id"])){
   </nav>
 
 <body id="top" class="">
-<form action="online_application.php" method="Post">
+<form>
 <div class="container">
   <div class="row justify-content-center">
    <div class="col-md-12">
