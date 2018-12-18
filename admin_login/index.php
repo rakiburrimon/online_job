@@ -56,12 +56,20 @@ if(!isset($_SESSION["admin_id"])){
                   <?php 
                             include 'connection.php';
 
-                            $sql1= "SELECT COUNT(job_seeker_id) AS co FROM job_seeker";
-                            $quer1 = mysqli_query($conn,$sql1);
 
-                            while ($res1= mysqli_fetch_array($quer1)){
+                            if ($result = mysqli_query($conn, "SELECT job_seeker_id FROM job_seeker ORDER BY job_seeker_id")) {
+
+                            $row_cnt = mysqli_num_rows($result);
+
+                             
                      ?>
-                  <canvas id="lineChartExample"><h1 class="border border-success"><?php echo $res1['co']; } ?></h1> </canvas>
+                  <h1 class="text-primary"><?php echo "$row_cnt";
+
+
+                             mysqli_free_result($result);
+                            }
+
+                            mysqli_close($conn); ?></h1>
                 </div>
               </div>
               <div class="card-footer">
@@ -79,7 +87,23 @@ if(!isset($_SESSION["admin_id"])){
               </div>
               <div class="card-body">
                 <div class="chart-area">
-                  <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
+                  <?php 
+                            include 'connection.php';
+
+
+                            if ($result = mysqli_query($conn, "SELECT employer_id FROM employer ORDER BY employer_id")) {
+
+                            $row_cnt = mysqli_num_rows($result);
+
+                             
+                     ?>
+                  <h1 class="text-primary"><?php echo "$row_cnt";
+
+
+                             mysqli_free_result($result);
+                            }
+
+                            mysqli_close($conn); ?></h1>
                 </div>
               </div>
               <div class="card-footer">
@@ -97,7 +121,23 @@ if(!isset($_SESSION["admin_id"])){
               </div>
               <div class="card-body">
                 <div class="chart-area">
-                  <canvas id="barChartSimpleGradientsNumbers"></canvas>
+                  <?php 
+                            include 'connection.php';
+
+
+                            if ($result = mysqli_query($conn, "SELECT job_id FROM job ORDER BY job_id")) {
+
+                            $row_cnt = mysqli_num_rows($result);
+
+                             
+                     ?>
+                  <h1 class="text-primary"><?php echo "$row_cnt";
+
+
+                             mysqli_free_result($result);
+                            }
+
+                            mysqli_close($conn); ?></h1>
                 </div>
               </div>
               <div class="card-footer">
