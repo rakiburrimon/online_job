@@ -4,14 +4,14 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-
+    <link rel="stylesheet" type="text/css" href="assets/css/registration.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/passwordvalidation.css">
     <title>Registration</title>
   </head>
 
   <body>
-    <div class="container col-md-4">
+    <div class="container col-md-4 bg-transparent">
 
     <h3>Job Seeker Registration</h3>
   <div class="row justify-content-center">
@@ -47,7 +47,7 @@
     <label for="password">Confirm Password</label>
     <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
   </div>
-   <button type="submit" class="btn btn-primary btn-lg btn-block">Register Now</button>
+   <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
 </form>
 </div>
   </div>
