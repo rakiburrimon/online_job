@@ -5,11 +5,12 @@ if(!isset($_SESSION["job_seeker_id"])){
 $message="";
 if(count($_POST)>0) {
 include_once 'connection.php';
-$result = mysqli_query($conn,"SELECT * FROM job_seeker WHERE (job_seeker_id='" . $_POST["userid_or_email"] . "' or job_seeker_email='" . $_POST["userid_or_email"] . "') and job_seeker_password = '". $_POST["job_seeker_password"]."'");
+$result = mysqli_query($conn,"SELECT * FROM job_seeker WHERE (job_seeker_id='" . $_POST["userid_or_email"] . "' or job_seeker_email='" . $_POST["userid_or_email"] . "') and job_seeker_password = '". $_POST["job_seeker_password"]."' and job_seeker_status= 'active' ");
 $row = mysqli_fetch_array($result);
 if(is_array($row)) {
 $_SESSION["job_seeker_id"] = $row[job_seeker_id];
 $_SESSION["job_seeker_email"] = $row[job_seeker_email];
+$_SESSION["image"] = $row[image];
 } else {
 $message = "Invalid Userid or Email or Password!";
 }
@@ -25,14 +26,15 @@ header('location:index.php');
 ?>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../assets/css/login.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Job Seeker Login</title>
 </head>
 <body>
 <form method="post" align="center">
-	<link rel="stylesheet" type="text/css" href="../assets/css/login.css">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="wrapper fadeInDown">

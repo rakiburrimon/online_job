@@ -53,8 +53,15 @@ if(!isset($_SESSION["admin_id"])){
               </div>
               <div class="card-body">
                 <div class="chart-area">
+                  <?php 
+                            include 'connection.php';
 
-                  <canvas id="lineChartExample"></canvas>
+                            $sql1= "SELECT COUNT(job_seeker_id) AS co FROM job_seeker";
+                            $quer1 = mysqli_query($conn,$sql1);
+
+                            while ($res1= mysqli_fetch_array($quer1)){
+                     ?>
+                  <canvas id="lineChartExample"><h1 class="border border-success"><?php echo $res1['co']; } ?></h1> </canvas>
                 </div>
               </div>
               <div class="card-footer">

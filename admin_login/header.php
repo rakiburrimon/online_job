@@ -12,6 +12,32 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+        
+         setInterval(function (){
+        myNotification();
+      },2000);
+      });
+
+      function myNotification(){
+        $(document).ready(function(){
+                
+                $.get( "../ajaxcall.php", function( data ) {
+                    $( ".result" ).html( data );
+                    alert( "Load was performed." );
+                });
+        });
+
+      }
+     
+  </script>
+  <style>
+      #notification{
+        margin-left: 7px;
+      }
+  </style>
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <img src="../assets/img/caveman.png" width="5%" height="3%" alt="User Icon" />
@@ -40,6 +66,13 @@
                         </div>
                         <div>
                         <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item dropdown">
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="">Edit Profile</a>
+                            <a class="dropdown-item" href="logout.php">Logout</a>                            
+                        </div>
+                        </li>
+
                     <?php if (empty($_SESSION['admin_name'])) { ?>
                         <li><a href="Login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                        
                     <?php } else { ?>

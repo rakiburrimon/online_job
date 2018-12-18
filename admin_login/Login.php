@@ -15,7 +15,7 @@ $message = "Invalid Userid or company name or Password!";
 }
 }
 if(isset($_SESSION["admin_id"])) {
-header('location:welcome.php');
+header('location:index.php');
 }
 ?>
 <html>

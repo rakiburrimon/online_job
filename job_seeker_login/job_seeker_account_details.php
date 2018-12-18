@@ -1,4 +1,4 @@
-<?php 
+<?php  
 session_start();
 if(!isset($_SESSION["job_seeker_id"])){
   header("Location:Login.php");
@@ -36,7 +36,6 @@ if(!isset($_SESSION["job_seeker_id"])){
 <body>
 <div class="row">
 			<div class="col-md-3"></div>
-
 			<div class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -176,6 +175,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 								<?php } ?>
 						</div>
 					</div>
+
 					<div class="panel-heading">
 						<h3>Reference</h3>
 					</div>

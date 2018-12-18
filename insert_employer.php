@@ -22,9 +22,17 @@ $a8=$_POST["c_location"];
 $a9=$_POST["i_type"];
 
 
-$sql = "INSERT INTO `employer` (`employer_id`, `company_name`, `contact_person_name`, `contact_person_email`, `employer_contact`, `company_description`, `employer_password`, `employer_status`, `employer_type`, `business_description`, `company_location`, `industry_type`, `company_logo`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4', '$a5', '$a6', 'Inactive', 'General', '$a7', '$a8', '$a9', NULL) ";
+$sql = "INSERT INTO `employer` (`employer_id`, `company_name`, `contact_person_name`, `contact_person_email`, `employer_contact`, `company_description`, `employer_password`, `employer_status`, `employer_type`, `business_description`, `company_location`, `industry_type`, `company_logo`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4', '$a5', '$a6', 'active', 'General', '$a7', '$a8', '$a9', NULL) ";
 
 if ($conn->query($sql) === TRUE) {
+
+	//$query="select admin_id from admin";
+	//$result=$conn->query($query);
+	//$message="New employer registered";
+	//$role=1;
+	//$userId= $result[0];
+	//$conn->query("INSERT INTO `notification`( `msg`, `role`, `user_id`) VALUES ($message, $role, $userId)");
+
     echo "<script type=\"text/javascript\">".
         "alert('success');".
         "</script>";

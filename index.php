@@ -30,7 +30,7 @@
             <span class="navbar-toggler-bar bar3"></span>
           </button>
         </div>
-        <a class="navbar-brand" href="#pablo">Online Job Portal</a>
+        <img src="assets/img/caveman.png" width="15%" height="9%" alt="Icon" />
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -74,7 +74,7 @@
             <div class="input-group-sm mb-3">
               <form action="search.php" method="POST">
                 <input name="query" class="form-control border-secondary py-1" type="text" placeholder="Search">
-                <div class="input-group-append">
+                <div class="input-group-append d-flex row justify-content-center">
                     <button class="btn btn-primary btn-round btn-md" type="submit" value="Search">Search
                     </button>
                 </div>

@@ -97,7 +97,7 @@ if($conn->connect_error){
                             <?php echo $res1['interview_place']; } ?>
                         </td>
                         <td><?php echo $res['job_title']; ?></td>
-                        <td><a href=""></a><?php echo $res['job_title']; ?></td>
+                        <td><a class="btn btn-primary" name="Details" href="jobdetails.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
                 
         </tr>
     

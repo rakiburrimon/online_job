@@ -1,14 +1,13 @@
 <html>
    
    <head>
-      <title>Sending HTML email using PHP</title>
+      <title>Sending email</title>
    </head>
    
    <body>
       <?php
-      	ini_set('SMTP', "gmail.com");
-		ini_set('smtp_port', "25");
-		ini_set('sendmail_from', "email@domain.com");
+      ini_set("SMTP","ssl://smtp.gmail.com");
+      ini_set("smtp_port","25");
          
          $to = $_POST['job_seeker_email'];
 
@@ -18,8 +17,7 @@
 
          $header = $_POST['employer_email'];
          $header .= "MIME-Version: 1.0\r\n";
-		$header .= 'From: Your name <info@address.com>' . "\r\n";
-		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
+		   $header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
          
          $retval = mail ($to,$subject,$message, $header);
          
