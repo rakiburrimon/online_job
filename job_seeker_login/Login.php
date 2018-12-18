@@ -10,7 +10,7 @@ $row = mysqli_fetch_array($result);
 if(is_array($row)) {
 $_SESSION["job_seeker_id"] = $row[job_seeker_id];
 $_SESSION["job_seeker_email"] = $row[job_seeker_email];
-$_SESSION["image"] = $row[image];
+$$row["image"] = $row[image];
 } else {
 $message = "Invalid Userid or Email or Password!";
 }

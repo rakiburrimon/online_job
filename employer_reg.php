@@ -18,7 +18,7 @@
   <div class="row justify-content-center">
    <div class="col-md-12">
     
-    <form action="insert_employer.php" method="POST">
+    <form action="insert_employer.php" method="POST" enctype="multipart/form-data">
 
       <div class="form-group">
     <label for="name">Company Name</label>
@@ -163,6 +163,10 @@
               </label>
             </div>
         </div>
+    <div class="form-group">
+    <label for="image">Logo</label>
+    <input type="file" name="image" id="image" placeholder="Select Logo" required>
+  </div>
    <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
 </form>
 </div>

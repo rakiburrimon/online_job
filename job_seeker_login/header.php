@@ -53,6 +53,7 @@
                         </li>
                         </ul>
                         </div>
+                    
                         <div>
                         <ul class="nav navbar-nav navbar-right">
                     <?php if (empty($_SESSION['job_seeker_email'])) { ?>
@@ -60,6 +61,13 @@
                     <?php } else { ?>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                            <?php
+                                    include 'connection.php';
+                                    $q = "SELECT * FROM job_seeker WHERE job_seeker_id = '".$_SESSION['job_seeker_id']."' ";
+                                    $query= mysqli_query($conn,$q);
+                                    $res= mysqli_fetch_assoc($query);
+                                ?>
+                         <img src="job_seeker_image/<?php echo $res['image']; ?>"  width="25px" class="rounded" alt="User Icon" aria-expanded="false">
                             <?php echo ($_SESSION['job_seeker_email']); ?>
                         </a>
                         <div class="dropdown-menu">

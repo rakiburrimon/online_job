@@ -18,8 +18,9 @@ if(!isset($_SESSION["employer_id"])){
 		$contact_person_name 	= mysqli_real_escape_string($conn,$_POST['contact_person_name']);
 		$contact_person_email 	= mysqli_real_escape_string($conn,$_POST['contact_person_email']);
 		$employer_contact 	= mysqli_real_escape_string($conn,$_POST['employer_contact']);
+		$image = $_FILES["image"]["name"];
 
-		$sql= "SELECT * FROM employer WHERE company_name='$company_name' AND business_description='$business_description' AND industry_type='$industry_type' AND contact_person_email='$contact_person_email' AND employer_contact='$employer_contact' AND employer_id!='".$_SESSION['employer_id']."'";
+		$sql= "SELECT * FROM employer WHERE company_name='$company_name' AND business_description='$business_description' AND industry_type='$industry_type' AND contact_person_email='$contact_person_email' AND employer_contact='$employer_contact' AND logo='$image' AND employer_id!='".$_SESSION['employer_id']."'";
 		$res_s= mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 		if (mysqli_num_rows($res_s)>0) {
@@ -27,7 +28,12 @@ if(!isset($_SESSION["employer_id"])){
 		}
 		else{
 
-			$sql= "UPDATE employer SET company_name='$company_name', company_location='$company_location', company_description='$company_description', business_description='$business_description', industry_type='$industry_type', contact_person_name='$contact_person_name', contact_person_email='$contact_person_email', employer_contact='$employer_contact' WHERE employer_id='".$_SESSION['employer_id']."'";
+			$sql= "UPDATE employer SET company_name='$company_name', company_location='$company_location', company_description='$company_description', business_description='$business_description', industry_type='$industry_type', contact_person_name='$contact_person_name', contact_person_email='$contact_person_email', employer_contact='$employer_contact',logo='$image' WHERE employer_id='".$_SESSION['employer_id']."'";
+
+			$target_dir = "employer_logo/";
+   			$target_file = $target_dir . basename($_FILES["image"]["name"]);
+   			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			move_uploaded_file($_FILES["image"]["tmp_name"],$target_file);
 
 			$qry= mysqli_query($conn,$sql);
 
@@ -79,7 +85,7 @@ if(!isset($_SESSION["employer_id"])){
 					<div class="panel-body">
 						<div style="max-width: 600px; margin: 0 auto;">
 
-							<form action="" method="POST">
+							<form action="" method="POST" enctype="multipart/form-data">
 
 								<?php
 									
@@ -90,7 +96,10 @@ if(!isset($_SESSION["employer_id"])){
 									$res= mysqli_fetch_assoc($query);
 									
 								?>
-
+								<div class="form-group">
+								<img src="employer_logo/<?php echo $res['logo'] ?>"  width="140px" class="rounded" alt="User Icon" aria-expanded="false">
+								<input type="file" name="image">
+							</div>
 								<div class="form-group">
 									<label for="company_name">Company Name: </label>
 									<input type="text" name="company_name" id="company_name" class="form-control" required="" value="<?php echo $res['company_name']; ?>" />
@@ -131,9 +140,12 @@ if(!isset($_SESSION["employer_id"])){
                         					<option value="Others">Others</option>
     
   								</div>
+  								<?php echo "</br>"; ?>
+
 								<div class="form-group">
+									<p>Contact Person's Name</p>
 									<label for="contact_person_name">Contact Person's Name: </label>
-									<textarea type="text" name="contact_person_name" id="contact_person_name" class="form-control" rows="3" ><?php echo $res['contact_person_name']; ?></textarea>
+									<input type="text" name="contact_person_name" id="contact_person_name" class="form-control" value="<?php echo $res['contact_person_name']; ?>" />
 								</div>
 								<div class="form-group">
 									<label for="contact_person_email">Contact Person's Email: </label>

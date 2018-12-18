@@ -54,7 +54,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 										while ($res= mysqli_fetch_array($query)) {
 										
 								?>
-
+								<img src="job_seeker_image/<?php echo $res['image'] ?>"  width="140px" class="rounded" alt="User Icon" aria-expanded="false">
 								<div class="form-group">
 									<p class="text-primary">Full Name: </p>
 									<td><?php echo $res['job_seeker_name']; ?> </td>

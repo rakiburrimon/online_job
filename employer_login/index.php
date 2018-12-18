@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION["employer_id"])){
   header("Location:Login.php");
-}
+} 
 ?>
  <html>
    

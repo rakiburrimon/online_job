@@ -16,7 +16,7 @@
     <h3>Job Seeker Registration</h3>
   <div class="row justify-content-center">
    <div class="col-md-12">
-    <form action="insert_job_seeker.php" method="POST">
+    <form action="insert_job_seeker.php" method="POST" enctype="multipart/form-data">
       <div class="form-group">
     <label for="name">Enter Full Name</label>
     <input type="text" class="form-control" id="name" name="name" placeholder="Enter Full Name">
@@ -46,6 +46,10 @@
   <div class="form-group">
     <label for="password">Confirm Password</label>
     <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
+  </div>
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image" placeholder="Select Image" required>
   </div>
    <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
 </form>

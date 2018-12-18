@@ -17,7 +17,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 		$job_seeker_career_objective 	= mysqli_real_escape_string($conn,$_POST['job_seeker_career_objective']);
 		$job_seeker_job_profile 	= mysqli_real_escape_string($conn,$_POST['job_seeker_job_profile']);
 		$job_seeker_gender 	= mysqli_real_escape_string($conn,$_POST['job_seeker_gender']);
-		$job_seeker_image 	= mysqli_real_escape_string($conn,$_POST['job_seeker_image']);
+		$image = $_FILES["image"]["name"];
 
 		$sql= "SELECT * FROM job_seeker WHERE job_seeker_name='$job_seeker_name' AND job_seeker_address='$job_seeker_address' AND job_seeker_career_objective='$job_seeker_career_objective' AND job_seeker_gender='$job_seeker_gender'AND image='$image' AND job_seeker_id!='".$_SESSION['job_seeker_id']."'";
 		$res_s= mysqli_query($conn,$sql) or die(mysqli_error($conn));
@@ -28,6 +28,11 @@ if(!isset($_SESSION["job_seeker_id"])){
 		else{
 
 			$sql= "UPDATE job_seeker SET job_seeker_id=$job_seeker_id, job_seeker_name='$job_seeker_name', job_seeker_email='$job_seeker_email', job_seeker_contact='$job_seeker_contact', job_seeker_address='$job_seeker_address', job_seeker_career_objective='$job_seeker_career_objective', job_seeker_job_profile='$job_seeker_job_profile', job_seeker_gender='$job_seeker_gender', image='$image' WHERE job_seeker_id='".$_SESSION['job_seeker_id']."'";
+
+			$target_dir = "job_seeker_image/";
+   			$target_file = $target_dir . basename($_FILES["image"]["name"]);
+   			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			move_uploaded_file($_FILES["image"]["tmp_name"],$target_file);
 
 			$qry= mysqli_query($conn,$sql);
 
@@ -79,7 +84,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 					<div class="panel-body">
 						<div style="max-width: 600px; margin: 0 auto;">
 
-							<form action="" method="POST">
+							<form action="" method="POST" enctype="multipart/form-data">
 
 								<?php
 									
@@ -123,7 +128,8 @@ if(!isset($_SESSION["job_seeker_id"])){
 									<input type="text" name="job_seeker_gender" id="job_seeker_gender" class="form-control" value="<?php echo $res['job_seeker_gender']; ?>"/>
 								</div>
 								<div class="form-group">									
-									<input type="" name="image" id="image" class="form-control" value="<?php echo $res['image']; ?>"/>
+									<img src="job_seeker_image/<?php echo $res['image']; ?>"  width="140px" class="rounded" alt="User Icon" aria-expanded="false">
+									<input type="file" name="image">
 								</div>
 								
 								<button type="submit" name="submit" class="btn btn-success">Submit</button>

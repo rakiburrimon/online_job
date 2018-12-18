@@ -58,6 +58,11 @@ if(!isset($_SESSION["job_seeker_id"])){
 
     <form action="insert_experience.php" method="POST">
       <div class="form-group">
+    <label for="name">Designation</label>
+    <input type="text" class="form-control" name="designation" placeholder="Designation">
+    
+  </div>
+      <div class="form-group">
     <label for="name">Organozation Name</label>
     <input type="text" class="form-control" name="experience_organization" placeholder="Organozation Name">
     

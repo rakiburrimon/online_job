@@ -42,7 +42,7 @@ echo "<br>";
 										
 		?>
 		<div id="headshot" class="quickFade">
-			
+			<img src="job_seeker_image/<?php echo $_SESSION['image'] ?>"  width="55px" height="auto">
 		</div>
 		
 		<div id="name">
@@ -106,9 +106,9 @@ echo "<br>";
 			?>
 			<div>
 				<div  class="sectionContent">
-					<h2><?php echo $res['designation']; ?></h2>
+					<h5><?php echo $res['designation']; ?></h5>
 					<p class="subDetails">Duration : <?php echo $res['experience_duration']; ?></p>
-					<h3><b>Organization</b> : <?php echo $res['experience_organization']; ?>.</h3>
+					<h6><b>Organization</b> : <?php echo $res['experience_organization']; ?>.</h6>
 				</div>
 				<?php 
 					}

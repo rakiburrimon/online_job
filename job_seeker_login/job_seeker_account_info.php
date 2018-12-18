@@ -78,7 +78,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 									<td><?php echo $res['job_seeker_career_objective']; ?></td>
 									<td><?php echo $res['job_seeker_job_profile']; ?></td>
 									<td><?php echo $res['job_seeker_gender']; ?></td>
-									<td><?php echo $res['image']; ?></td>
+									<td><img src="job_seeker_image/<?php echo $res['image'] ?>"  width="140px" class="rounded" alt="User Icon" aria-expanded="false"></td>
 									<td><a class="btn btn-success" name="update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
 									<td><a class="btn btn-success" href="cv_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Resume</a></td>
 

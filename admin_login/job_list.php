@@ -65,7 +65,8 @@ if(!isset($_SESSION["admin_id"])){
     <th><a class="btn btn-info" name="add" href="add_job.php">Add New Job</a></th>
                                 </tr>
    <div class="col-md-12">
-    <table id="example" class="table table-striped">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+    <table id="myTable" class="table table-striped">
     <tr class="container-fluid bg-info">
                                     <th>Job Title</th>
                                     <th>Location</th>
@@ -134,6 +135,29 @@ pageTracker._trackPageview();
     $(document).ready(function() {
     $('#example').DataTable();
     } );
+    <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
 </script>
 <script src="../assets/css/dataTables.bootstrap4.min.css"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
