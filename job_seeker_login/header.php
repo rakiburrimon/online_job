@@ -60,7 +60,6 @@
                         <?php 
                         if(isset($_POST['submit'])) { 
                         unset($_SESSION["message"]);
-                        session_destroy();  
                          }
                          $_SESSION['message'] = '';
                         ?>
@@ -79,7 +78,7 @@
                                     $res= mysqli_fetch_assoc($query);
                                 ?>
                          <img src="job_seeker_image/<?php echo $res['image']; ?>"  width="25px" class="rounded" alt="User Icon" aria-expanded="false">
-                            <?php echo ($_SESSION['job_seeker_email']); ?>
+                            <?php echo ($_SESSION['job_seeker_name']); ?>
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="logout.php">Logout</a>
