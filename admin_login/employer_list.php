@@ -7,7 +7,7 @@ if(!isset($_SESSION["admin_id"])){
 <!DOCTYPE html>
 <html>
 <head>
-<title>Candidates List</title>
+<title>Employer List</title>
 
  <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -67,6 +67,7 @@ if(!isset($_SESSION["admin_id"])){
    <div class="col-md-12">
     <table id="example" class="table table-striped">
     <tr class="container-fluid bg-info">
+                                    <th>Logo</th>
                                     <th>Company Name</th>
                                     <th>Location</th>
                                     <th>Phone</th>
@@ -89,6 +90,9 @@ if($conn->connect_error){
              <tr>
                 
                     <div class="media-body">
+                      <td>
+                        <img src="../employer_login/employer_logo/<?php echo $res['logo']; ?>"  width="60px" class="rounded" alt="User Icon" aria-expanded="false">
+                      </td>
                         <td><?php echo $res['company_name']; ?></td>
                         <td><?php echo $res['company_location']; ?></td>
                         <td><?php echo $res['employer_contact']; ?></td>

@@ -43,7 +43,7 @@ echo "<br>";
 										
 		?>
 		<div id="headshot" class="quickFade">
-			
+			<img src="../job_seeker_login/job_seeker_image/<?php echo $res['image'] ?>"  width="55px" class="rounded" alt="User Icon" aria-expanded="false">
 		</div>
 		
 		<div id="name">

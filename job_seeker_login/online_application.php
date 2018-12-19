@@ -26,7 +26,8 @@ $t = date('Y-d-m H:i:s',time());
 $sql = "INSERT INTO `online_application` (`online_application_id`, `job_id`, `job_seeker_id`, `application_time`) VALUES (NULL, '$a1', '".$_SESSION['job_seeker_id']."', '$t')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    $_SESSION['message'] = "Successful";
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

@@ -67,6 +67,7 @@ if(!isset($_SESSION["admin_id"])){
    <div class="col-md-12">
     <table id="example" class="table table-striped">
     <tr class="container-fluid bg-info">
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
@@ -87,14 +88,15 @@ if($conn->connect_error){
              <tr> 
                 
                     <div class="media-body">
+                        <td><img src="../job_seeker_login/job_seeker_image/<?php echo $res['image'] ?>"  width="40px" class="rounded" alt="User Icon" aria-expanded="false"></td>
                         <td><?php echo $res['job_seeker_name']; ?></td>
                         <td><?php echo $res['job_seeker_email']; ?></td>
                         <td>
                         <?php echo $res['job_seeker_contact']; ?>
                      </td>
-                     <td><a class="btn btn-primary" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Details..</a></td>
-                            <td><a class="btn btn-success" name="Update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
-                             <td><a class="btn btn-danger" name="Delete" href="delete_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
+                     <td><a class="btn btn-primary btn-sm" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Details..</a></td>
+                            <td><a class="btn btn-success btn-sm" name="Update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
+                             <td><a class="btn btn-danger btn-sm" name="Delete" href="delete_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
                         <td>
                     </div>
                 

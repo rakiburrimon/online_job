@@ -66,6 +66,7 @@ if(!isset($_SESSION["admin_id"])){
     <table class="table table-striped">
     <tr class="container-fluid bg-info">
                                     <th>Details</th>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Experience</th>
                                     <th>Skill</th>
@@ -99,7 +100,9 @@ if($conn->connect_error){
                 
                     <div class="media-body">
                         <td><a class="btn btn-success" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res1['job_seeker_id']; ?>">Details..</a></td>
-
+                        <td>
+                        <img src="../job_seeker_login/job_seeker_image/<?php echo $res1['image']; ?>"  width="35px" class="rounded" alt="User Icon" aria-expanded="false">
+                      </td>
                         <td><?php echo $res1['job_seeker_name']; ?></td>
                         <td>
                         <?php

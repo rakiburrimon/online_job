@@ -25,10 +25,10 @@ $a2=$_POST["skill_description"];
 $sql = "INSERT INTO `skill` (`skill_id`, `skill_name`, `skill_description`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '".$_SESSION['job_seeker_id']."')";
 
 if ($conn->query($sql) === TRUE) {
-    $_SESSION['message'] ="New record created successfully";
+   $_SESSION['message'] = "Successful";
+		header('location:job_seeker_account_details.php');
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
-header("Location: job_seeker_account_details.php");
 $conn->close();
 ?> 

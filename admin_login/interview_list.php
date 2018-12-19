@@ -71,6 +71,7 @@ if(!isset($_SESSION["admin_id"])){
                                     <th>Location</th>
                                     <th>Job Title</th>
                                     <th>Company Name</th>
+                                    <th>Company Logo</th>
                                     <th>   </th>
                                     <th>Action</th>
                                     <th>   </th>
@@ -111,7 +112,10 @@ if($conn->connect_error){
                             $query = mysqli_query($conn,$q);
 
                             while ($res2= mysqli_fetch_array($query)) { ?>
-                                <td><?php echo $res2['company_name']; } ?></td>
+                                <td><?php echo $res2['company_name'];  ?></td>
+                                <td>
+                                <img src="../employer_login/employer_logo/<?php echo $res2['logo']; } ?>"  width="70px" class="rounded" alt="User Icon" aria-expanded="false">
+                                </td>
                             <td><a class="btn btn-success" name="Update" href="update_interview.php?interview_id=<?php echo $res['interview_id']; ?>">Update</a></td>
                              <td><a class="btn btn-danger" name="Delete" href="delete_interview.php?interview_id=<?php echo $res['interview_id']; ?>">Delete</a></td>
                              <td><a class="btn btn-primary" name="Details" href="interview_details.php?job_id=<?php echo $job_id; ?> && interview_id=<?php echo $res['interview_id']; ?>">Details..</a></td>

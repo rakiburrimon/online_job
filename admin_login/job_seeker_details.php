@@ -57,7 +57,9 @@ if(!isset($_SESSION["admin_id"])){
 										
 								?>
 								<td><a class="btn btn-success" name="Details" href="cv_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Check Resume..</a></td>
-
+								<div class="form-group">
+								<img src="../job_seeker_login/job_seeker_image/<?php echo $res['image'] ?>"  width="110px" class="rounded" alt="User Icon" aria-expanded="false">
+								</div>
 								<div class="form-group">
 									<p class="text-primary"></p>
 									<td>Full Name: <?php echo $res['job_seeker_name']; ?> </td>

@@ -53,7 +53,18 @@
                         </li>
                         </ul>
                         </div>
-                    
+                        <div class="alert alert-success alert-dismissable" id="flash-msg">
+                        <h6><?php echo $_SESSION['message']; ?></h6>
+                        <button aria-hidden="true" data-dismiss="alert" type="submit" name="off" method="off" value="off" class="close">×</button>
+                        
+                        <?php 
+                        if(isset($_POST['submit'])) { 
+                        unset($_SESSION["message"]);
+                        session_destroy();  
+                         }
+                         $_SESSION['message'] = '';
+                        ?>
+                        </div>
                         <div>
                         <ul class="nav navbar-nav navbar-right">
                     <?php if (empty($_SESSION['job_seeker_email'])) { ?>

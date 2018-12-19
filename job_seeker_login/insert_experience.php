@@ -26,7 +26,8 @@ $a3=$_POST["designation"];
 $sql = "INSERT INTO `experience` (`experience_id`, `experience_duration`, `experience_organization`, `job_seeker_id`, `designation`) VALUES (NULL, '$a1', '$a2', '".$_SESSION['job_seeker_id']."', '$a3')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    $_SESSION['message'] = "Successful";
+		header('location:job_seeker_account_details.php');
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

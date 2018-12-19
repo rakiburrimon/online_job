@@ -72,6 +72,7 @@ if(!isset($_SESSION["admin_id"])){
                                     <th>Location</th>
                                     <th>Deadline</th>
                                     <th>Company Name</th>
+                                    <th>Company Logo</th>
                                     <th>   </th>
                                     <th>Action</th>
                                     <th>   </th>
@@ -103,7 +104,10 @@ if($conn->connect_error){
 
                             while ($res1= mysqli_fetch_array($query)) { ?>
 
-                        <td><?php echo $res1['company_name']; } ?></td>
+                        <td><?php echo $res1['company_name']; ?></td>
+                        <td>
+                        <img src="../employer_login/employer_logo/<?php echo $res1['logo']; } ?>"  width="60px" class="rounded" alt="User Icon" aria-expanded="false">
+                      </td>
                      <td><a class="btn btn-primary" name="Details" href="jobdetails.php?job_id=<?php echo $res['job_id']; ?>">Details..</a></td>
                             <td><a class="btn btn-success" name="Update" href="update_job.php?job_id=<?php echo $res['job_id']; ?>">Update</a></td>
                              <td><a class="btn btn-danger" name="Delete" href="delete_job.php?job_id=<?php echo $res['job_id']; ?>">Delete</a></td>

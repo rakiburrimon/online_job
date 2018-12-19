@@ -20,8 +20,9 @@ if(isset($_SESSION["job_seeker_id"])) {
 	header("Location:".$_GET["redirect"]);
 	return;
 }
+$_SESSION['message'] = "Welcome !!!";
 header('location:index.php');
-
+ 
 }
 ?>
 <html>

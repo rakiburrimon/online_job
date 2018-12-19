@@ -30,7 +30,8 @@ $a7=$_POST["reference_type"];
 $sql = "INSERT INTO `reference` (`reference_id`, `name`, `designation`, `company`, `address`, `email`, `phone`, `reference_type`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4', '$a5', '$a6', '$a7', '".$_SESSION['job_seeker_id']."')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    $_SESSION['message'] = "Successful";
+		header('location:job_seeker_account_details.php');
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
