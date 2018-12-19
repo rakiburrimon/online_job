@@ -42,7 +42,7 @@ echo "<br>";
 										
 		?>
 		<div id="headshot" class="quickFade">
-			<img src="job_seeker_image/<?php echo $_SESSION['image'] ?>"  width="55px" height="auto">
+			<img src="job_seeker_image/<?php echo $res['image'] ?>"  width="55px" height="auto">
 		</div>
 		
 		<div id="name">
