@@ -70,6 +70,7 @@
                             <?php echo $res['company_name']; ?>
                         </a>
                         <div class="dropdown-menu">
+                            <a class="dropdown-item" href="change_password.php">Change Password</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                         </div>
                         </li>

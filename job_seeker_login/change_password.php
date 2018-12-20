@@ -1,16 +1,16 @@
 <?php 
 session_start();
-if(!isset($_SESSION["admin_id"])){
+if(!isset($_SESSION["job_seeker_id"])){
   header("Location:Login.php");
 }
 
 include_once 'connection.php';
 
 if (count($_POST) > 0) {
-    $result = mysqli_query($conn, "SELECT *from admin WHERE admin_id='" . $_SESSION["admin_id"] . "'");
+    $result = mysqli_query($conn, "SELECT *from job_seeker WHERE job_seeker_id='" . $_SESSION["job_seeker_id"] . "'");
     $row = mysqli_fetch_array($result);
     if ($_POST["currentPassword"] == $row["password"]) {
-        mysqli_query($conn, "UPDATE admin set password='" . $_POST["newPassword"] . "' WHERE admin_id='" . $_SESSION["admin_id"] . "'");
+        mysqli_query($conn, "UPDATE job_seeker set password='" . $_POST["newPassword"] . "' WHERE job_seeker_id='" . $_SESSION["job_seeker_id"] . "'");
         $message = "Password Changed";
     } else
         $message = "Current Password is not correct";
@@ -21,31 +21,19 @@ if (count($_POST) > 0) {
 <title>Change Password</title>
 <link rel="stylesheet" type="text/css" href="styles.css" />
 <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../assets/css/passwordvalidation.css">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/passwordvalidation.css">
-    <link rel="stylesheet" href="../assets/css/style4.css">
-    
     <meta charset="utf-8">
 
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/bootstrap/css/simple-sidebar.css" rel="stylesheet">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/style4.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <script>
+    <link rel="stylesheet" href="../assets/css/passwordvalidation.css">
+<script>
 function validatePassword() {
 var currentPassword,newPassword,confirmPassword,output = true;
 
