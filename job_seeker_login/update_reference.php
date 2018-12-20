@@ -29,6 +29,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 			$sql= "UPDATE reference SET reference_id=$reference_id, name='$name', designation='$designation',company='$company', address='$address',email='$email', phone='$phone', reference_type='$reference_type' WHERE reference_id='$reference_id'";
 
 			$qry= mysqli_query($conn,$sql);
+			$_SESSION['message'] = "Update Successful";
 
 			header("location: ");
 			}

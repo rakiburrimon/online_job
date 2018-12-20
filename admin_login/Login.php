@@ -15,6 +15,11 @@ $message = "Invalid Userid or company name or Password!";
 }
 }
 if(isset($_SESSION["admin_id"])) {
+  if(isset($_GET["redirect"])){
+  header("Location:".$_GET["redirect"]);
+  return;
+}
+$_SESSION['message'] = "Welcome !!!";
 header('location:index.php');
 }
 ?>

@@ -36,6 +36,7 @@ if(!isset($_SESSION["employer_id"])){
 			move_uploaded_file($_FILES["image"]["tmp_name"],$target_file);
 
 			$qry= mysqli_query($conn,$sql);
+			$_SESSION['message'] = "Update Successful";
 
 			header("location: ");
 			}

@@ -42,34 +42,37 @@ if(!isset($_SESSION["employer_id"])){
 </head>
 <nav>
    <?php
-			if(isset($_SESSION["employer_id"])){
-			?>
-			<nav>
-   				<?php include "header.php"; ?>
-  			</nav>
-			<?php
+            if(isset($_SESSION["employer_id"])){
+            ?>
+            <nav>
+                <?php include "header.php"; ?>
+            </nav>
+            <?php
 }else{
-	?>
-	<div>
-				<input type="hidden" name="">
-			</div>
-	<?php
+    ?>
+    <div>
+                <input type="hidden" name="">
+            </div>
+    <?php
 }
-			?>
+            ?>
   </nav>
 
 <body id="top" class=""> 
-    <form action="addjobseekerinterview.php" method="POST">
-<div class="container">
+<form>
+    <div class="row row justify-content-center">
+<input type="submit" class="btn btn-danger col-md-2 btn-lg row justify-content-center" onclick="printDiv('printableArea')" value="print This Page!">
+</div>
+<div class="container" id="printableArea">
   <div class="row justify-content-center">
    <div class="col-md-12">
     <table class="table table-striped">
     <tr class="container-fluid bg-info">
                                     <th>Details</th>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Experience</th>
                                     <th>Skill</th>
-                                    <th>Action</th>
              
              </tr> 
 <?php
@@ -79,13 +82,12 @@ if($conn->connect_error){
     }else{
 
         $job_id=$_GET['job_id'];
-        $sql="select * from job_seeking_application where job_id = $job_id";
+        $sql="select * from online_application where job_id = $job_id";
         $quer = mysqli_query($conn,$sql);
         while ($res= mysqli_fetch_array($quer)){
-        $job_id= $res['job_seeker_id'];
+        $job_id= $res['job_id'];
         $jj= $res['job_seeker_id'];
         ?>
-        <input type="hidden" name="job_id" value="<?php echo $res['job_id']; ?>">
         <?php
         $sql1="select * from job_seeker where job_seeker_id =$jj";
 
@@ -98,9 +100,8 @@ if($conn->connect_error){
              <tr>
                 
                     <div class="media-body">
-                        <input type="hidden" name="job_seeker_id" value="<?php echo $res['job_seeker_id']; ?>">
-                        <td><a class="btn btn-success" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res1['job_seeker_id']; ?>">Details..</a></td>
-                        <div id="printableArea">
+                        <td><a class="btn btn-outline-success btn-lg btn-circle" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res1['job_seeker_id']; ?>">O</a></td>
+                        <td><img src="../job_seeker_login/job_seeker_image/<?php echo $res1['image'] ?>"  width="70px" class="rounded" alt="User Icon" aria-expanded="false"></td>
                         <td><?php echo $res1['job_seeker_name']; ?></td>
                         <td>
                         <?php
@@ -126,7 +127,20 @@ if($conn->connect_error){
                         <?php echo $res3['skill_name']; } ?>
                         </li>
                     </td>
-                    </div>
+                    <?php
+                    include 'connection.php';
+                    $a;
+                        $sql2="select * from interview where job_id =".$_GET['job_id']."";
+
+                        $quer3 = mysqli_query($conn,$sql2);
+
+                        while ($res3= mysqli_fetch_array($quer3)){
+                             $a=$res3['interview_id'];
+                         }
+                        ?>
+
+
+                    </form>
                 
         </tr>
     
@@ -136,13 +150,12 @@ if($conn->connect_error){
         </div> 
     <?php
     }
-    }
+}
 }
     ?>
 </div>
 </div>
 </div>
-</form>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -164,5 +177,6 @@ function printDiv(divName) {
      document.body.innerHTML = originalContents;
 }
 </script> 
+
 </body>
 </html>

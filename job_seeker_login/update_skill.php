@@ -24,6 +24,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 			$sql= "UPDATE skill SET skill_id=$skill_id, skill_name='$skill_name', skill_description='$skill_description' WHERE skill_id='$skill_id'";
 
 			$qry= mysqli_query($conn,$sql);
+			$_SESSION['message'] = "Update Successful";
 
 			header("location: ");
 			}

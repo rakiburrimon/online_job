@@ -50,12 +50,14 @@ if(!isset($_SESSION["employer_id"])){
 										include 'connection.php';
 
 										$q = "SELECT * FROM employer Where employer_id = '".$_SESSION['employer_id']."'";
-										
+										 
 										$query = mysqli_query($conn,$q);
 
 										while ($res= mysqli_fetch_array($query)) {
 										
 								?>
+
+								<img src="employer_logo/<?php echo $res['logo'] ?>"  width="240px" class="rounded" alt="User Icon" aria-expanded="false">
 
 								<div class="form-group">
 									<p class="text-primary">Company Name: </p>

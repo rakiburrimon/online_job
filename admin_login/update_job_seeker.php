@@ -17,9 +17,10 @@ if(!isset($_SESSION["admin_id"])){
 		$job_seeker_career_objective 	= mysqli_real_escape_string($conn,$_POST['job_seeker_career_objective']);
 		$job_seeker_job_profile 	= mysqli_real_escape_string($conn,$_POST['job_seeker_job_profile']);
 		$job_seeker_gender 	= mysqli_real_escape_string($conn,$_POST['job_seeker_gender']);
-		$job_seeker_image 	= mysqli_real_escape_string($conn,$_POST['job_seeker_image']);
+		$job_seeker_type 	= mysqli_real_escape_string($conn,$_POST['job_seeker_type']);
+		$job_seeker_status 	= mysqli_real_escape_string($conn,$_POST['job_seeker_status']);
 
-		$sql= "SELECT * FROM job_seeker WHERE job_seeker_name='$job_seeker_name' AND job_seeker_address='$job_seeker_address' AND job_seeker_career_objective='$job_seeker_career_objective' AND job_seeker_gender='$job_seeker_gender'AND image='$image' AND job_seeker_id!=$job_seeker_id";
+		$sql= "SELECT * FROM job_seeker WHERE job_seeker_name='$job_seeker_name' AND job_seeker_address='$job_seeker_address' AND job_seeker_career_objective='$job_seeker_career_objective' AND job_seeker_gender='$job_seeker_gender'AND job_seeker_type='$job_seeker_type' AND job_seeker_status='$job_seeker_status' AND job_seeker_id!=$job_seeker_id";
 		$res_s= mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 		if (mysqli_num_rows($res_s)>0) {
@@ -27,10 +28,10 @@ if(!isset($_SESSION["admin_id"])){
 		}
 		else{
 
-			$sql= "UPDATE job_seeker SET job_seeker_id=$job_seeker_id, job_seeker_name='$job_seeker_name', job_seeker_email='$job_seeker_email', job_seeker_contact='$job_seeker_contact', job_seeker_address='$job_seeker_address', job_seeker_career_objective='$job_seeker_career_objective', job_seeker_job_profile='$job_seeker_job_profile', job_seeker_gender='$job_seeker_gender', image='$image' WHERE job_seeker_id=$job_seeker_id";
+			$sql= "UPDATE job_seeker SET job_seeker_id=$job_seeker_id, job_seeker_name='$job_seeker_name', job_seeker_email='$job_seeker_email', job_seeker_contact='$job_seeker_contact', job_seeker_address='$job_seeker_address', job_seeker_career_objective='$job_seeker_career_objective', job_seeker_job_profile='$job_seeker_job_profile', job_seeker_gender='$job_seeker_gender', job_seeker_type='$job_seeker_type', job_seeker_status='$job_seeker_status' WHERE job_seeker_id=$job_seeker_id";
 
 			$qry= mysqli_query($conn,$sql);
-
+			$_SESSION['message'] = "Updated Successful";
 			header("location: ");
 			}
 	}
@@ -119,9 +120,29 @@ if(!isset($_SESSION["admin_id"])){
 									<textarea type="text" name="job_seeker_job_profile" id="job_seeker_job_profile" class="form-control" rows="3" ><?php echo $res['job_seeker_job_profile']; ?></textarea>
 								</div>
 								<div class="form-group">
-									<label for="job_seeker_gender">Gender: </label>
-									<input type="text" name="job_seeker_gender" id="job_seeker_gender" class="form-control" value="<?php echo $res['job_seeker_gender']; ?>"/>
-								</div>
+    								<label for="comment">Job Seeker Gender</label>
+    									<select class="form-control rqun" style="width:100%" title="Job Seeker Gender" name="job_seeker_gender">
+                        					<option value="<?php echo $res['job_seeker_gender']; ?>"><?php echo $res['job_seeker_gender']; ?></option>
+                        					<option value="Male">Male</option>
+                        					<option value="Female">Female</option>
+                        				</select>
+  								</div>
+								<div class="form-group">
+    								<label for="comment">Job Seeker Type</label>
+    									<select class="form-control rqun" style="width:100%" title="Job Seeker Type" name="job_seeker_type">
+                        					<option value="<?php echo $res['job_seeker_type']; ?>"><?php echo $res['job_seeker_type']; ?></option>
+                        					<option value="General">General</option>
+                        					<option value="Special">Special</option>
+                        				</select>
+  								</div>
+								<div class="form-group">
+    								<label for="comment">Job Seeker Status</label>
+    									<select class="form-control rqun" style="width:100%" title="Job Seeker Status" name="job_seeker_status">
+                        					<option value="<?php echo $res['job_seeker_status']; ?>"><?php echo $res['job_seeker_status']; ?></option>
+                        					<option value="Active">Active</option>
+                        					<option value="Disable">Disable</option>
+                        				</select>
+  								</div>
 								
 								<button type="submit" name="submit" class="btn btn-success">Submit</button>
 							</form>

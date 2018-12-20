@@ -65,7 +65,6 @@ if(!isset($_SESSION["admin_id"])){
     <th><a class="btn btn-info" name="add" href="add_job.php">Add New Job</a></th>
                                 </tr>
    <div class="col-md-12">
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
     <table id="myTable" class="table table-striped">
     <tr class="container-fluid bg-info">
                                     <th>Job Title</th>

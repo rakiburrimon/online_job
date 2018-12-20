@@ -1,4 +1,4 @@
- 
+  
 <head>
     <link rel="stylesheet" href="assets/css/style4.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -43,6 +43,15 @@
                         </li>
                         </ul>
                         </div>
+                        <div class="alert alert-success alert-dismissable" id="flash-msg">
+                        <button aria-hidden="true" data-dismiss="alert" type="submit" name="off" method="off" value="off" class="close"><h6><?php echo $_SESSION['message']; echo "   "; ?> X </h6></button>
+                        <?php 
+                        if(isset($_POST['submit'])) { 
+                        unset($_SESSION["message"]);
+                         }
+                         $_SESSION['message'] = '';
+                        ?>
+                        </div>
                         <div>
                         <ul class="nav navbar-nav navbar-right">
                     <?php if (empty($_SESSION['company_name'])) { ?>
@@ -58,7 +67,7 @@
                                     $res= mysqli_fetch_assoc($query);
                                 ?>
                          <img src="employer_logo/<?php echo $res['logo']; ?>"  width="40px" class="rounded" alt="User Icon" aria-expanded="false">
-                            <?php echo ($_SESSION['company_name']); ?>
+                            <?php echo $res['company_name']; ?>
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="logout.php">Logout</a>

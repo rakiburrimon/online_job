@@ -16,6 +16,11 @@ $message = "Invalid Userid or company name or Password!";
 }
 }
 if(isset($_SESSION["employer_id"])) {
+  if(isset($_GET["redirect"])){
+  header("Location:".$_GET["redirect"]);
+  return;
+}
+$_SESSION['message'] = "Welcome !!!";
 header('location:index.php');
 }
 ?>
@@ -43,14 +48,14 @@ header('location:index.php');
 
     <!-- Login Form -->
     <form>
-      <input type="text" id="userid_or_email" class="fadeIn second" name="userid_or_email" placeholder="Email">
+      <input type="text" id="userid_or_email" class="fadeIn second" name="userid_or_email" placeholder="Comapny Name">
       <input type="password" id="employer_password" class="fadeIn second" name="employer_password" placeholder="Password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="../job_seeker_reg.php">Job Seeker Registration</a>
+      <a class="underlineHover" href="../employer_reg.php">Employer Registration</a>
     </div>
 
   </div>

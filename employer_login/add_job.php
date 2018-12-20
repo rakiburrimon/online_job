@@ -52,7 +52,7 @@ if(!isset($_SESSION["employer_id"])){
 
     <div class="container">
   <div class="row justify-content-center">
-   <div class="col-md-12">
+   <div class="col-md-10">
         <h1>Add Job</h1>
 
     <form action="insert_job.php" method="POST">
@@ -92,7 +92,7 @@ if(!isset($_SESSION["employer_id"])){
   </div>
   <div class="form-group">
     <label for="date">Application Deadline</label>
-    <input type="date" rows="2" class="form-control" name="application_deadline" placeholder="Application Deadline">
+    <input type="date" rows="2" class="form-control" name="application_deadline" min="<?php echo date("Y-m-d"); ?>" placeholder="Application Deadline">
     
   </div>
   

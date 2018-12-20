@@ -56,7 +56,7 @@ if(!isset($_SESSION["employer_id"])){
 										while ($res= mysqli_fetch_array($query)) {
 										
 								?>
-
+								<img src="../job_seeker_login/job_seeker_image/<?php echo $res['image'] ?>"  width="100px" class="rounded" alt="User Icon" aria-expanded="false">
 								<div class="form-group">
 									<p class="text-primary"></p>
 									<td>Full Name: <?php echo $res['job_seeker_name']; ?> </td>
@@ -235,10 +235,20 @@ if(!isset($_SESSION["employer_id"])){
 										while ($res= mysqli_fetch_array($query)) {
 										
 								?>
-								<td><a class="btn btn-success" name="Details" href=" email.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Send Email..</a></td>
+								<input type="hidden" value=<?php echo $res['job_seeker_email']; ?> id="myInput">
+								<button class="btn btn-info" onclick="myFunction()">Copy Email Address</button>
 								<?php } ?>
 					</div>
 				</div>
 			</div>
 		</div>
+		<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}
+</script>
+
 	</body>

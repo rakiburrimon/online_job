@@ -70,6 +70,14 @@ if(!isset($_SESSION["admin_id"])){
     <label for="password">Confirm Password</label>
     <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
   </div>
+
+  <div class="form-group">
+      <label for="job_seeker_type">Job Seeker Type</label>
+      <select class="form-control" id="job_seeker_type" name="job_seeker_type">
+        <option value="General">General</option>
+        <option value="Special">Special</option>
+      </select>
+    </div>
    <button type="submit" class="btn btn-primary btn-lg btn-block">Register Now</button>
 </form>
 </div>

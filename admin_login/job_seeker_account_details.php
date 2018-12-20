@@ -35,9 +35,9 @@ if(!isset($_SESSION["admin_id"])){
   </nav>
 <body>
 <div class="row">
-			<div class="col-md-3"></div>
+			<div class="col-md-8"></div>
 
-			<div class="col-md-6">
+			<div class="col-md-9">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3>Personal Details</h3>
@@ -179,8 +179,8 @@ if(!isset($_SESSION["admin_id"])){
 					<div class="panel-heading">
 						<h3>Reference</h3>
 					</div>
-					<div class="panel-body">
-						<div style="max-width: 400px; margin: 0 auto;">
+					<div class="panel-body" width="50%">
+						<div style="max-width: 40px; margin: 0 auto;">
 
 								<?php 
 										include 'connection.php';

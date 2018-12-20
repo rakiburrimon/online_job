@@ -71,6 +71,8 @@ if(!isset($_SESSION["admin_id"])){
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Type</th>
                                     <th>   </th>
                                     <th>Action</th>
                                     <th>   </th>
@@ -93,6 +95,12 @@ if($conn->connect_error){
                         <td><?php echo $res['job_seeker_email']; ?></td>
                         <td>
                         <?php echo $res['job_seeker_contact']; ?>
+                     </td>
+                     <td>
+                        <?php echo $res['job_seeker_status']; ?>
+                     </td>
+                     <td>
+                        <?php echo $res['job_seeker_type']; ?>
                      </td>
                      <td><a class="btn btn-primary btn-sm" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Details..</a></td>
                             <td><a class="btn btn-success btn-sm" name="Update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>

@@ -4,9 +4,44 @@ if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
 }
 ?>
+<?php 	
+	include 'connection.php';
+	if (isset($_POST['submit'])) {
+
+		$employer_id	=$_GET['employer_id'];
+
+		$company_name 		= mysqli_real_escape_string($conn,$_POST['company_name']);
+		$company_location 		= mysqli_real_escape_string($conn,$_POST['company_location']);
+		$company_description 	= mysqli_real_escape_string($conn,$_POST['company_description']);
+		$business_description 	= mysqli_real_escape_string($conn,$_POST['business_description']);
+		$industry_type 	= mysqli_real_escape_string($conn,$_POST['industry_type']);
+		$contact_person_name 	= mysqli_real_escape_string($conn,$_POST['contact_person_name']);
+		$contact_person_email 	= mysqli_real_escape_string($conn,$_POST['contact_person_email']);
+		$employer_contact 	= mysqli_real_escape_string($conn,$_POST['employer_contact']);
+		$employer_type 	= mysqli_real_escape_string($conn,$_POST['employer_type']);
+		$employer_status 	= mysqli_real_escape_string($conn,$_POST['employer_status']);
+
+		$sql= "SELECT * FROM employer WHERE company_name='$company_name' AND business_description='$business_description' AND industry_type='$industry_type' AND contact_person_email='$contact_person_email' AND employer_contact='$employer_contact' AND employer_type='$employer_type' AND employer_status='$employer_status' AND employer_id!='$employer_id'";
+		$res_s= mysqli_query($conn,$sql) or die(mysqli_error($conn));
+
+		if (mysqli_num_rows($res_s)>0) {
+			$msg= "Error !!";
+		}
+		else{
+
+			$sql= "UPDATE employer SET company_name='$company_name', company_location='$company_location', company_description='$company_description', business_description='$business_description', industry_type='$industry_type', contact_person_name='$contact_person_name', contact_person_email='$contact_person_email', employer_contact='$employer_contact',employer_type='$employer_type',employer_status='$employer_status' WHERE employer_id='$employer_id'";
+
+			$qry= mysqli_query($conn,$sql);
+			$_SESSION['message'] = "Update Successful";
+
+			header("location: ");
+			}
+	}
+
+?>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <meta charset="utf-8">
@@ -29,72 +64,114 @@ if(!isset($_SESSION["admin_id"])){
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+   
+   </head>
 </head>
-<body>
-	<nav>
+<nav>
    <?php include "header.php"; ?>
   </nav>
-<div class="row">
+	
+		<div class="row">
 			<div class="col-md-3"></div>
 
 			<div class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3>Employer Details</h3>
+						<h3>Update Account Info.</h3>
 					</div>
 					<div class="panel-body">
-						<div style="max-width: 400px; margin: 0 auto;">
-							<div class="container-fluid bg-light border border-primary">
+						<div style="max-width: 600px; margin: 0 auto;">
 
-								<?php 
-										$employer_id=$_GET['employer_id'];
-										include 'connection.php';
+							<form action="" method="POST" enctype="multipart/form-data">
 
-
-										$q = "SELECT * FROM employer Where employer_id = $employer_id";
-										
-										$query = mysqli_query($conn,$q);
-
-										while ($res= mysqli_fetch_array($query)) {
-										
-								?>
-
-								<div class="form-group">
-									<p class="text-primary">Company Name: </p>
-									<td><?php echo $res['company_name']; ?> </td>
+								<?php
 									
+
+									$employer_id=$_GET['employer_id'];
+									$q = "SELECT * FROM employer WHERE employer_id = '$employer_id' ";
+									$query= mysqli_query($conn,$q);
+									$res= mysqli_fetch_assoc($query);
+									
+								?>
+								<div class="form-group">
+									<label for="company_name">Company Name: </label>
+									<input type="text" name="company_name" id="company_name" class="form-control" required="" value="<?php echo $res['company_name']; ?>" />
+									<?php if (isset($msg)): ?>
+									<span><?php echo $msg;?></span>
+								<?php endif ?>
 								</div>								
 								<div class="form-group">
-									<p class="text-primary">Location: </p>
-									<p><?php echo $res['company_location']; ?> </p>
+									<label for="company_location">Location: </label>
+									<input type="text" name="company_location" id="company_location" class="form-control" required="" value="<?php echo $res['company_location']; ?>"/>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Company Description: </p>
-									<td><?php echo $res['company_description']; ?> </td>
-								</div>
-								<p class="text-primary">Business Description: </p>
-									<td><?php echo $res['business_description']; ?> </td>
-								<div class="form-group">
-									<p class="text-primary">Industry Type: </p>
-									<td><?php echo $res['industry_type']; ?> </td>
-								</div>
-							</div>
-								<div class="form-group">
-									<p class="text-primary">Contact Person's Name: </p>
-									<td><?php echo $res['contact_person_name']; ?> </td>
+									<label for="company_description">Company Description: </label>
+									<input type="text" row="5" name="company_description" id="company_description" class="form-control" required="" value="<?php echo $res['company_description']; ?>"/>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Email: </p>
-									<td><?php echo $res['contact_person_email']; ?> </td>
+									<label for="business_description">Business Description: </label>
+									<textarea type="text" name="business_description" id="business_description" class="form-control" rows="3" ><?php echo $res['business_description']; ?></textarea>
 								</div>
 								<div class="form-group">
-									<p class="text-primary">Cell: </p>
-									<td><?php echo $res['employer_contact']; ?> </td>
+    								<label for="comment">Industry Type</label>
+    									<select class="form-control rqun" style="width:100%" title="Industry Type" name="industry_type">
+                        					<option value="<?php echo $res['industry_type']; ?>"><?php echo $res['industry_type']; ?></option>
+                        					<option value="Agro based Industry">Agro based Industry</option>
+                        					<option value="Archi./Engg./Construction">Archi./Engg./Construction</option>
+                        					<option value="Automobile/Industrial Machine">Automobile/Industrial Machine</option>
+                        					<option value="Bank/Non-Bank Fin. Institution">Bank/Non-Bank Fin. Institution</option>
+                        					<option value="Energy/Power/Fuel">Energy/Power/Fuel</option>
+                        					<option value="Education">Education</option>
+                        					<option value="Garments/Textile">Garments/Textile</option>
+                        					<option value="Pharmaceuticals">Pharmaceuticals</option>
+                        					<option value="Hospital/ Diagnostic Center">Hospital/ Diagnostic Center</option>
+                        					<option value="Information Technology (IT)">Information Technology (IT)</option>
+                        					<option value="Media / Advertising/ Event Mgt.">Media / Advertising/ Event Mgt.</option>
+                        					<option value="Real Estate/Development">Real Estate/Development</option>
+                        					<option value="Food/Beverage Industry">Food/Beverage Industry</option>
+                        					<option value="Security Service">Security Service</option>
+                        					<option value="Others">Others</option>
+    
+  								</div>
+  								<?php echo "</br>"; ?>
+
+								<div class="form-group">
+									<p>Contact Person's Name</p>
+									<label for="contact_person_name">Contact Person's Name: </label>
+									<input type="text" name="contact_person_name" id="contact_person_name" class="form-control" value="<?php echo $res['contact_person_name']; ?>" />
 								</div>
-								<?php } ?>
+								<div class="form-group">
+									<label for="contact_person_email">Contact Person's Email: </label>
+									<input type="text" name="contact_person_email" id="contact_person_email" class="form-control" value="<?php echo $res['contact_person_email']; ?>"/>
+								</div>
+								<div class="form-group">
+									<label for="employer_contact">Cell: </label>
+									<input type="text" name="employer_contact" id="employer_contact" class="form-control" value="<?php echo $res['employer_contact']; ?>"/>
+								</div>
+								<div class="form-group">
+    								<label for="comment">Employer Type</label>
+    									<select class="form-control rqun" style="width:100%" title="Employer Type" name="employer_type">
+                        					<option value="<?php echo $res['employer_type']; ?>"><?php echo $res['employer_type']; ?></option>
+                        					<option value="General">General</option>
+                        					<option value="Special">Special</option>
+                        				</select>
+  								</div>
+								<div class="form-group">
+    								<label for="comment">Employer Status</label>
+    									<select class="form-control rqun" style="width:100%" title="Employer Status" name="employer_status">
+                        					<option value="<?php echo $res['employer_status']; ?>"><?php echo $res['employer_status']; ?></option>
+                        					<option value="Active">Active</option>
+                        					<option value="Disable">Disable</option>
+                        				</select>
+  								</div>
+								
+								<button type="submit" name="submit" class="btn btn-success">Submit</button>
+							</form>
+
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<div class="col-md-3"></div>
 		</div>
-	</body>

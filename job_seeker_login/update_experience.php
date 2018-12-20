@@ -26,7 +26,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 
 			$qry= mysqli_query($conn,$sql);
 
-			$_SESSION['message'] = "Successful";
+			$_SESSION['message'] = "Updated Successful";
 			}
 	}
 

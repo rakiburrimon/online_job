@@ -64,6 +64,15 @@
                         </li>
                         </ul>
                         </div>
+                        <div class="alert alert-success alert-dismissable" id="flash-msg">
+                        <button aria-hidden="true" data-dismiss="alert" type="submit" name="off" method="off" value="off" class="close"><h6><?php echo $_SESSION['message']; echo "   "; ?> X </h6></button>
+                        <?php 
+                        if(isset($_POST['submit'])) { 
+                        unset($_SESSION["message"]);
+                         }
+                         $_SESSION['message'] = '';
+                        ?>
+                        </div>
                         <div>
                         <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item dropdown">

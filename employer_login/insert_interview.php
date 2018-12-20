@@ -24,6 +24,7 @@ $a3=$_POST["job_id"];
 $sql = "INSERT INTO `interview` (`interview_id`, `interview_date`, `interview_place`, `job_id`) VALUES (NULL, '', '', '$a3')";
 
 if ($conn->query($sql) === TRUE) {
+	$_SESSION['message'] = "Successful";
     header('Location: jobdetails.php?job_id=' . $a3);
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

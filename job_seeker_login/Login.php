@@ -14,7 +14,7 @@ $_SESSION["job_seeker_name"] = $row[job_seeker_name];
 $row["image"] = $row[image];
 } else {
 $message = "Invalid Userid or Email or Password!";
-}
+} 
 }
 if(isset($_SESSION["job_seeker_id"])) {
 	if(isset($_GET["redirect"])){

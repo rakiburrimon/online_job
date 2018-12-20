@@ -25,7 +25,7 @@ if(!isset($_SESSION["job_seeker_id"])){
 			$sql= "UPDATE qualification SET qualification_id=$qualification_id, qualification_name='$qualification_name', qualification_institution='$qualification_institution', qualification_result='$qualification_result' WHERE qualification_id='$qualification_id'";
 
 			$qry= mysqli_query($conn,$sql);
-
+			$_SESSION['message'] = "Update Successful";
 			header("location: ");
 			}
 	}

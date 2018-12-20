@@ -14,13 +14,12 @@ $a1=$_POST["name"];
 $a2=$_POST["email"];
 $a3=$_POST["phone"];
 $a4=$_POST["password"];
+$a5=$_POST["job_seeker_type"];
 
-$sql = "INSERT INTO `job_seeker` (`job_seeker_id`, `job_seeker_name`, `job_seeker_email`, `job_seeker_contact`, `job_seeker_address`, `job_seeker_career_objective`, `job_seeker_gender`, `image`, `job_seeker_password`, `job_seeker_status`, `job_seeker_type`) VALUES (NULL, '$a1', '$a2', '$a3', NULL, NULL, NULL, NULL, '$a4', 'active', 'general') ";
+$sql = "INSERT INTO `job_seeker` (`job_seeker_id`, `job_seeker_name`, `job_seeker_email`, `job_seeker_contact`, `job_seeker_address`, `job_seeker_career_objective`, `job_seeker_gender`, `image`, `job_seeker_password`, `job_seeker_status`, `job_seeker_type`) VALUES (NULL, '$a1', '$a2', '$a3', NULL, NULL, NULL, NULL, '$a4', 'active', '$a5') ";
 
 if ($conn->query($sql) === TRUE) {
-    echo "<script type=\"text/javascript\">".
-        "alert('success');".
-        "</script>";
+$_SESSION['message'] = "Added Successful";
         header("refresh:1;url=job_seeker_list.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

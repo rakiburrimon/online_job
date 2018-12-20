@@ -25,7 +25,7 @@ if(!isset($_SESSION["employer_id"])){
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap/css/simple-sidebar.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style5.css">
+    <link rel="stylesheet" href="../assets/css/box.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
 
@@ -67,6 +67,66 @@ if(!isset($_SESSION["employer_id"])){
       </div>
     </div>
   </div>
+      <div class="counter bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+                <div class="customer">
+                    <p class="counter-count"><?php 
+                            include 'connection.php';
+
+
+                            if ($result = mysqli_query($conn, "SELECT job_id FROM job where employer_id='".$_SESSION['employer_id']."' ORDER BY job_id")) {
+
+                            $row_cnt = mysqli_num_rows($result);
+                              echo "$row_cnt";
+                             mysqli_free_result($result);
+                            }
+
+                            mysqli_close($conn); ?></p>
+                    <p class="customer-p">Posted Jobs</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+                <div class="customer">
+                    <p class="counter-count"><?php 
+                            include 'connection.php';
+
+
+                            if ($result = mysqli_query($conn, "SELECT job_seeker_id FROM job_seeker where job_seeker_status='active' ORDER BY job_seeker_id")) {
+
+                            $row_cnt = mysqli_num_rows($result);
+                              echo "$row_cnt";
+                             mysqli_free_result($result);
+                            }
+
+                            mysqli_close($conn); ?></p>
+                    <p class="customer-p">Job Seekers</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+                <div class="customer">
+                    <p class="counter-count"><?php 
+                            include 'connection.php';
+
+
+                            if ($result = mysqli_query($conn, "SELECT job_id FROM job where employer_id='".$_SESSION['employer_id']."' AND job_application_deadline >= CURDATE() ORDER BY job_id")) {
+
+                            $row_cnt = mysqli_num_rows($result);
+                              echo "$row_cnt";
+                             mysqli_free_result($result);
+                            }
+
+                            mysqli_close($conn); ?></p>
+                    <p class="customer-p">Current Job</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
   <!--   Core JS Files   -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

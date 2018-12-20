@@ -26,7 +26,8 @@ $a3=$_POST["job_seeker_id"];
 $sql = "INSERT INTO `skill` (`skill_id`, `skill_name`, `skill_description`, `job_seeker_id`) VALUES (NULL, '$a1', '$a2', '$a3')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    $_SESSION['message'] = "Addedd Successful";
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
