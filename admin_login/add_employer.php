@@ -35,7 +35,7 @@ if(!isset($_SESSION["admin_id"])){
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 
-    <title>Post Job</title>
+    <title>Add Employer</title>
   </head>
            <nav>
             <?php include "header.php"; ?>

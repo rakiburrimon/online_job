@@ -75,12 +75,6 @@
                         </div>
                         <div>
                         <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item dropdown">
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="">Edit Profile</a>
-                            <a class="dropdown-item" href="logout.php">Logout</a>                            
-                        </div>
-                        </li>
 
                     <?php if (empty($_SESSION['admin_name'])) { ?>
                         <li><a href="Login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                        
@@ -91,6 +85,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="admin_edit.php">Edit Profile</a>
+                            <a class="dropdown-item" href="change_password.php">Change Password</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                             
                         </div>

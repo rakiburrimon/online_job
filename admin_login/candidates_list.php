@@ -25,7 +25,7 @@ if(!isset($_SESSION["admin_id"])){
     <meta charset="utf-8">
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap/css/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style5.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
