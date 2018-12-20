@@ -90,7 +90,7 @@
                             <?php echo ($_SESSION['admin_name']); ?>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="">Edit Profile</a>
+                            <a class="dropdown-item" href="admin_edit.php">Edit Profile</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                             
                         </div>
