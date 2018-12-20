@@ -250,5 +250,7 @@ function myFunction() {
   alert("Copied the text: " + copyText.value);
 }
 </script>
-
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>
 	</body>

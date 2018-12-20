@@ -222,3 +222,9 @@ if(!isset($_SESSION["admin_id"])){
       </div>
 
 </body>
+<div class= "footer">
+
+</div>
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>

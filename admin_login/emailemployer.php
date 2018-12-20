@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["employer_id"])){
+if(!isset($_SESSION["admin_id"])){
   header("Location:Login.php");
 }
 ?>
@@ -43,17 +43,17 @@ if(!isset($_SESSION["employer_id"])){
 	<form action="emailsend.php" method="Post">
 		
 		<?php 
-		$to= $_GET['job_seeker_id'];
+		$to= $_GET['employer_id'];
 					include 'connection.php';
 
-					$q = "SELECT * FROM job_seeker Where job_seeker_id = $to";
+					$q = "SELECT * FROM employer Where employer_id = $to";
 										
 					$query = mysqli_query($conn,$q);
 
 					while ($res= mysqli_fetch_array($query)) {
 										
 			?>
-			<input type="text" readonly class="form-control" name="job_seeker_email" value="<?php echo $res['job_seeker_email']; } ?>">
+			<input type="text" readonly class="form-control" name="contact_person_email" value="<?php echo $res['contact_person_email']; } ?>">
 <div class="form-group">
     <label for="name">Subject</label>
     <input type="text" class="form-control" name="subject" placeholder="Subject">
@@ -66,16 +66,20 @@ if(!isset($_SESSION["employer_id"])){
 								<?php 
 										include 'connection.php';
 
-										$q = "SELECT * FROM employer Where employer_id = '".$_SESSION['employer_id']."'";
+										$q = "SELECT * FROM admin Where admin_id = '".$_SESSION['admin_id']."'";
 										
 										$query = mysqli_query($conn,$q);
 
 										while ($res= mysqli_fetch_array($query)) {
 										
 								?>
-								<input type="text" class="form-control" readonly name="employer_email" value="<?php echo $res['contact_person_email']; } ?>">
+								<input type="text" class="form-control" readonly name="admin_email" value="<?php echo $res['admin_email']; } ?>">
 								<button type="Submit">Send</button>
 
 	</form>
+
 </body>
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>
 

@@ -133,4 +133,7 @@ function printDiv(divName) {
 }
 </script> 
 </body>
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>
 </html>

@@ -203,5 +203,8 @@ function printDiv(divName) {
      document.body.innerHTML = originalContents;
 }
 </script> 
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>
 </body>
 </html>

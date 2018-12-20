@@ -228,3 +228,6 @@ if(!isset($_SESSION["job_seeker_id"])){
 			</div>
 		</div>
 	</body>
+	<footer>
+   <?php include "footer.php"; ?>
+  </footer>

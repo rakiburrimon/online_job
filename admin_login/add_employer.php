@@ -210,6 +210,9 @@ if(!isset($_SESSION["admin_id"])){
 </div>
 </div>
 </div>
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>
 <script>
 var myInput = document.getElementById("password");
 var letter = document.getElementById("letter");

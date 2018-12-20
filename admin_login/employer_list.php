@@ -75,6 +75,7 @@ if(!isset($_SESSION["admin_id"])){
                                     <th>   </th>
                                     <th>Action</th>
                                     <th>   </th>
+                                    <th>Send Mail</th>
              </tr> 
 <?php
 include 'connection.php';
@@ -102,6 +103,7 @@ if($conn->connect_error){
                      <td><a class="btn btn-primary" name="Details" href="employer_details.php?employer_id=<?php echo $res['employer_id']; ?>">Details..</a></td>
                             <td><a class="btn btn-success" name="Update" href="update_employer.php?employer_id=<?php echo $res['employer_id']; ?>">Update</a></td>
                              <td><a class="btn btn-danger" name="Delete" href="delete_employer.php?employer_id=<?php echo $res['employer_id']; ?>">Delete</a></td>
+                             <td><a class="btn btn-warning" name="Email" href="emailemployer.php?employer_id=<?php echo $res['employer_id']; ?>">Email</a></td>
                         <td>
                     </td>
                     </div>
@@ -152,5 +154,8 @@ function printDiv(divName) {
      document.body.innerHTML = originalContents;
 }
 </script> 
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>
 </body>
 </html>

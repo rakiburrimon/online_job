@@ -122,5 +122,8 @@ if(!isset($_SESSION["employer_id"])){
             });
         });
     </script>
+    <footer>
+   <?php include "footer.php"; ?>
+  </footer>
   </body>
 </html>

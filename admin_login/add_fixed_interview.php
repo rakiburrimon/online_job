@@ -108,5 +108,8 @@ if(!isset($_SESSION["admin_id"])){
             });
         });
     </script>
+    <footer>
+   <?php include "footer.php"; ?>
+  </footer>
   </body>
 </html>

@@ -75,4 +75,7 @@ if($conn->connect_error){
         echo "<br>";     
     ?>
 </body>
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>
 </html>

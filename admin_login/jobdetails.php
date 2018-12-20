@@ -201,5 +201,8 @@ if(!isset($_SESSION["admin_id"])){
 </div>
 </div>
 </form>
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>
 </body>
 </html>

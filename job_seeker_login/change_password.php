@@ -140,4 +140,7 @@ myInput.onkeyup = function() {
         </div>
     </form>
 </body>
+<footer>
+   <?php include "footer.php"; ?>
+  </footer>
 </html>

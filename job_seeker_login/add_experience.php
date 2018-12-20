@@ -99,4 +99,7 @@ if(!isset($_SESSION["job_seeker_id"])){
         });
     </script>
   </body>
+  <footer>
+   <?php include "footer.php"; ?>
+  </footer>
 </html>

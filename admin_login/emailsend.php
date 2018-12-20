@@ -1,4 +1,4 @@
-<html>
+<html> 
    
    <head>
       <title>Sending email</title>
@@ -7,15 +7,15 @@
    <body>
       <?php
       ini_set("SMTP","ssl://smtp.gmail.com");
-      ini_set("smtp_port","25");
+      ini_set("smtp_port","587");
          
-         $to = $_POST['job_seeker_email'];
+         $to = $_POST['contact_person_email'];
 
          $subject = $_POST['subject'];
          
          $message = $_POST['message'];         
 
-         $header = $_POST['employer_email'];
+         $header = $_POST['admin_email'];
          $header .= "MIME-Version: 1.0\r\n";
 		   $header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
          
