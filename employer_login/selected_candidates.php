@@ -64,6 +64,9 @@ if(!isset($_SESSION["employer_id"])){
 <input type="submit" class="btn btn-danger col-md-2 btn-lg row justify-content-center" onclick="printDiv('printableArea')" value="print This Page!">
 </div>
 <div class="container" id="printableArea">
+    <div>
+        <h3><?php echo date("Y-m-d"); ?></h3>
+    </div>
   <div class="row justify-content-center">
    <div class="col-md-12">
     <table class="table table-striped">
@@ -81,15 +84,15 @@ if($conn->connect_error){
     echo 'Connection Faild: '.$con->connect_error;
     }else{
 
-        $job_id=$_GET['job_id'];
-        $sql="select * from online_application where job_id = $job_id";
+        $interview_id=$_GET['interview_id'];
+        $sql="select * from job_seeking_interview where interview_id = $interview_id";
         $quer = mysqli_query($conn,$sql);
         while ($res= mysqli_fetch_array($quer)){
-        $job_id= $res['job_id'];
+        $interview_id= $res['interview_id'];
         $jj= $res['job_seeker_id'];
         ?>
         <?php
-        $sql1="select * from job_seeker where job_seeker_id =$jj";
+        $sql1="select * from job_seeker where job_seeker_id =$jj and job_seeker_status='Active'";
 
         $quer1 = mysqli_query($conn,$sql1);
 
@@ -127,19 +130,6 @@ if($conn->connect_error){
                         <?php echo $res3['skill_name']; } ?>
                         </li>
                     </td>
-                    <?php
-                    include 'connection.php';
-                    $a;
-                        $sql2="select * from interview where job_id =".$_GET['job_id']."";
-
-                        $quer3 = mysqli_query($conn,$sql2);
-
-                        while ($res3= mysqli_fetch_array($quer3)){
-                             $a=$res3['interview_id'];
-                         }
-                        ?>
-
-
                     </form>
                 
         </tr>
@@ -179,7 +169,4 @@ function printDiv(divName) {
 </script> 
 
 </body>
-<footer>
-   <?php include "footer.php"; ?>
-  </footer>
 </html>

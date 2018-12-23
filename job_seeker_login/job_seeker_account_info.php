@@ -42,22 +42,11 @@ if(!isset($_SESSION["job_seeker_id"])){
 					</div>
 				</div>
 					<div class="panel-body">
-							<div class="container">
-						<div>
+							<div >
+						<div class="container col-md-6 justify-content-center">
 
-							<table class="table table-striped">
+							<div class="col-md-6 justify-content-center">
 								<h3>Personal Details</h3>
-								<tr>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Contact</th>
-									<th>Address</th>
-									<th>Career Objective</th>
-									<th>Job Profile</th>
-									<th>Gender</th>
-									<th> Image</th>
-								</tr>
-
 								<?php 
 										include 'connection.php';
 
@@ -69,34 +58,53 @@ if(!isset($_SESSION["job_seeker_id"])){
 										
 								?>
 
-								<tr>
-									<td><?php echo $res['job_seeker_name']; ?></td>
-									<br>
-									<td><?php echo $res['job_seeker_email']; ?></td>
-									<td><?php echo $res['job_seeker_contact']; ?></td>
-									<td><?php echo $res['job_seeker_address']; ?></td>
-									<td><?php echo $res['job_seeker_career_objective']; ?></td>
-									<td><?php echo $res['job_seeker_job_profile']; ?></td>
-									<td><?php echo $res['job_seeker_gender']; ?></td>
-									<td><img src="job_seeker_image/<?php echo $res['image'] ?>"  width="140px" class="rounded" alt="User Icon" aria-expanded="false"></td>
-									<td><a class="btn btn-success" name="update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
-									<td><a class="btn btn-success" href="cv_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Resume</a></td>
+								<td><a class="btn btn-success" name="Details" href="cv_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Check Resume..</a>  <a class="btn btn-success" name="update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
+								<p></p>
+								<br>
+								<div class="form-group">
+								<img src="../job_seeker_login/job_seeker_image/<?php echo $res['image'] ?>"  width="110px" class="rounded" alt="User Icon" aria-expanded="false">
+								</div>
+								<div class="form-group">
+									<p class="text-primary"></p>
+									<td>Full Name: <?php echo $res['job_seeker_name']; ?> </td>
+									
+								</div>								
+								<div class="form-group">
+									<h4></h4>
+									<p>Email: <?php echo $res['job_seeker_email']; ?> </p>
+								</div>
+								<div class="form-group">
+									<p class="text-primary"></p>
+									<td>Contact: <?php echo $res['job_seeker_contact']; ?> </td>
+								</div>
+								<p class="text-primary"></p>
+									<td>Address: <?php echo $res['job_seeker_address']; ?> </td>
+								<div class="form-group">
+									<p class="text-primary"></p>
+									<td>Career Objective: <?php echo $res['job_seeker_career_objective']; ?> </td>
+								</div>
+								<div class="form-group">
+									<p class="text-primary"></p>
+									<td>Job Profile: <?php echo $res['job_seeker_job_profile']; ?> </td>
+								</div>
+								<p class="text-primary"></p>
+									<td>Gender: <?php echo $res['job_seeker_gender']; ?> </td>
+								<?php echo "<br>"; ?>	<td><a class="btn btn-success" name="update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
+								
 
-								</tr>
+								</div>
 
 								<?php 
 									}
+									echo "<br>";
 								?>
 																
-							</table>
-							<table class="table table-striped">
-								<h3>Experience</h3>
-								<tr>
-									<th>Designation</th>
-									<th>Organization</th>
-									<th>Duration</th>
-									<th><a class="btn btn-info" name="add" href="add_experience.php">Add</a></th>
-								</tr>
+							</div>
+							<div class="col-md-6 justify-content-center container">
+								<h3 class="container d-flex justify-content-center">Experience</h3>
+									<br>
+									<div class="d-flex justify-content-center"><a class="btn btn-info" name="add" href="add_experience.php">Add Experience</a></div>
+									<br>
 
 								<?php 
 										include 'connection.php';
@@ -109,29 +117,29 @@ if(!isset($_SESSION["job_seeker_id"])){
 										
 								?>
 
-								<tr>
-									<td><?php echo $res['designation']; ?></td>
-									<td><?php echo $res['experience_organization']; ?></td>
-									<br>
-									<td><?php echo $res['experience_duration']; ?></td>
-									<td><a class="btn btn-success" href="update_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Update</a></td>
-									<td><a class="btn btn-danger" href="delete_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Delete</a></td>
-
-								</tr>
+								<div class="border border-primary rounded col-md-12 justify-content-center container">
+									<div class="col-md-12">
+									<h5>Position: <?php echo $res['designation']; ?></h5>
+									<h5>Organization Name: <?php echo $res['experience_organization']; ?></h5>
+									<h5>Duration: <?php echo $res['experience_duration']; ?></h5>
+								</div>
+								<div class="justify-content-center">
+									<h5><a class="btn btn-success" href="update_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Update</a>
+									<a class="btn btn-danger" href="delete_experience.php?experience_id=<?php echo $res['experience_id']; ?>">Delete</a></h5>
+								</div>
+								</div>
 
 								<?php 
+								echo "<br>";
 									}
 								?>
 																
-							</table>
-							<table class="table table-striped">
-								<h3>Skills</h3>
-								<tr>
-									<th>Skill Name</th>
-									<th>Skill Description</th>
-									<th><a class="btn btn-info" name="add" href="add_skill.php">Add</a></th>
-								</tr>
-
+							</div>
+							<div class="col-md-6 justify-content-center container">
+								<h3 class="container d-flex justify-content-center">Skill</h3>
+									<br>
+									<div class="d-flex justify-content-center"><a class="btn btn-info" name="add" href="add_skill.php">Add Skill</a></div>
+									<br>
 								<?php 
 										include 'connection.php';
 
@@ -143,29 +151,26 @@ if(!isset($_SESSION["job_seeker_id"])){
 										
 								?>
 
-								<tr>
-									<td><?php echo $res['skill_name']; ?></td>
-									<br>
-									<td><?php echo $res['skill_description']; ?></td>
-									<td><a class="btn btn-success" name="update" href="update_skill.php?skill_id=<?php echo $res['skill_id']; ?>">Update</a></td>
-									<td><a class="btn btn-danger" href="delete_skill.php?skill_id=<?php echo $res['skill_id']; ?>">Delete</a></td>
-
-								</tr>
-
+								<div class="border border-primary rounded col-md-12 justify-content-center container">
+									<div class="col-md-12">
+									<h5>Skill Name: <?php echo $res['skill_name']; ?></h5>
+									<h5>Skill Description: <?php echo $res['skill_description']; ?></h5>
+									<div class="justify-content-center">
+									<h5><a class="btn btn-success" name="update" href="update_skill.php?skill_id=<?php echo $res['skill_id']; ?>">Update</a> <a class="btn btn-danger" href="delete_skill.php?skill_id=<?php echo $res['skill_id']; ?>">Delete</a></h5>
+								</div>
+								</div>
+							</div>
 								<?php 
+								echo "<br>";
 									}
+									
 								?>
-																
-							</table>
-							<table class="table table-striped">
-								<h3>Qualification</h3>
-								<tr>
-									<th>Degree</th>
-									<th>Result</th>
-									<th>Institution</th>
-									<th><a class="btn btn-info" name="add" href="add_qualification.php">Add</a></th>
-								</tr>
-
+									</div>							
+							<div class="col-md-6 justify-content-center container">
+								<h3 class="container d-flex justify-content-center">Qualification</h3>
+									<br>
+									<div class="d-flex justify-content-center"><a class="btn btn-info" name="add" href="add_qualification.php">Add Qualification</a></div>
+									<br>
 								<?php 
 										include 'connection.php';
 
@@ -176,37 +181,27 @@ if(!isset($_SESSION["job_seeker_id"])){
 										while ($res= mysqli_fetch_array($query)) {
 										
 								?>
-
-								<tr>
-									<td><?php echo $res['qualification_name']; ?></td>
+									<div class="border border-primary rounded col-md-12 justify-content-center container">
+									<div class="col-md-12">
+									<h5>Qualification: <?php echo $res['qualification_name']; ?></h5>
 									<br>
-									<td><?php echo $res['qualification_result']; ?></td>
-									<td><?php echo $res['qualification_institution']; ?></td>
+									<h5>Result <?php echo $res['qualification_result']; ?></h5>
+									<h5>Institution: <?php echo $res['qualification_institution']; ?></h5>
 
-									<td><a class="btn btn-success" name="update" href="update_qualification.php?qualification_id=<?php echo $res['qualification_id']; ?>">Update</a></td>
-									<td><a class="btn btn-danger" href="delete_qualification.php?qualification_id=<?php echo $res['qualification_id']; ?>">Delete</a></td>
-
-								</tr>
-
+									<h5><a class="btn btn-success" name="update" href="update_qualification.php?qualification_id=<?php echo $res['qualification_id']; ?>">Update</a>  <a class="btn btn-danger" href="delete_qualification.php?qualification_id=<?php echo $res['qualification_id']; ?>">Delete</a></h5>
+								</div>
+							</div>
 								<?php 
+								echo "<br>";
 									}
+									
 								?>
-																
-							</table>
-							<table class="table table-striped">
-								<h3>Reference</h3>
-								<tr>
-									<th>Name</th>
-									<th>Desiganation</th>
-									<th>Company</th>
-									<th>Address</th>
-									<th>Email</th>
-									<th>Phone</th>
-									<th>Reference Type</th>
-									<th><a class="btn btn-info" name="add" href="add_reference.php">Add</a></th>
-
-								</tr>
-
+							</div>
+							<div class="col-md-6 justify-content-center container">
+								<h3 class="container d-flex justify-content-center">Reference</h3>
+									<br>
+									<div class="d-flex justify-content-center"><a class="btn btn-info" name="add" href="add_reference.php">Add Reference</a></div>
+									<br>
 								<?php 
 										include 'connection.php';
 
@@ -218,33 +213,36 @@ if(!isset($_SESSION["job_seeker_id"])){
 										
 								?>
 
-								<tr>
-									<td><?php echo $res['name']; ?></td>
+								<div class="border border-primary rounded col-md-12 justify-content-center container">
+									<div class="col-md-12">
+									<h5>Name: <?php echo $res['name']; ?></h5>
 									<br>
-									<td><?php echo $res['designation']; ?></td>
-									<td><?php echo $res['company']; ?></td>
-									<td><?php echo $res['address']; ?></td>
-									<td><?php echo $res['email']; ?></td>
-									<td><?php echo $res['phone']; ?></td>
-									<td><?php echo $res['reference_type']; ?></td>
+									<h5>Designation: <?php echo $res['designation']; ?></h5>
+									<h5>Company: <?php echo $res['company']; ?></h5>
+									<h5>Address: <?php echo $res['address']; ?></h5>
+									<h5>Email: <?php echo $res['email']; ?></h5>
+									<h5>Phone: <?php echo $res['phone']; ?></h5>
+									<h5>Reference Type: <?php echo $res['reference_type']; ?></h5>
 
-									<td><a class="btn btn-success" name="update" href="update_reference.php?reference_id=<?php echo $res['reference_id']; ?>">Update</a></td>
-									<td><a class="btn btn-danger" href="delete_reference.php?reference_id=<?php echo $res['reference_id']; ?>">Delete</a></td>
+									<h5><a class="btn btn-success" name="update" href="update_reference.php?reference_id=<?php echo $res['reference_id']; ?>">Update</a>  <a class="btn btn-danger" href="delete_reference.php?reference_id=<?php echo $res['reference_id']; ?>">Delete</a></h5>
 
-								</tr>
+								</div>
+							</div>
 
 								<?php 
 									}
 								?>
 																
-							</table>
+							</div>
 							
 						</div>
 					</div>
 					</div>
 				</div>
 			</div>
-
+<?php 
+		echo "<br>";								
+?>
 		</div>
 <footer>
    <?php include "footer.php"; ?>

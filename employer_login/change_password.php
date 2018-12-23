@@ -7,10 +7,10 @@ if(!isset($_SESSION["employer_id"])){
 include_once 'connection.php';
 
 if (count($_POST) > 0) {
-    $result = mysqli_query($conn, "SELECT *from employee WHERE employer_id='" . $_SESSION["employer_id"] . "'");
+    $result = mysqli_query($conn, "SELECT *from employer WHERE employer_id='" . $_SESSION["employer_id"] . "'");
     $row = mysqli_fetch_array($result);
-    if ($_POST["currentPassword"] == $row["password"]) {
-        mysqli_query($conn, "UPDATE employee set password='" . $_POST["newPassword"] . "' WHERE employer_id='" . $_SESSION["employer_id"] . "'");
+    if ($_POST["currentPassword"] == $row["employer_password"]) {
+        mysqli_query($conn, "UPDATE employer set employer_password='" . $_POST["newPassword"] . "' WHERE employer_id='" . $_SESSION["employer_id"] . "'");
         $message = "Password Changed";
     } else
         $message = "Current Password is not correct";

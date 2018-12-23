@@ -39,27 +39,27 @@ if(!isset($_SESSION["admin_id"])){
 
     <title>Add Interview</title>
   </head>
-
+            <nav>
+            <?php include "header.php"; ?>
+            </nav>
   <body>
   	<div>
         <!-- Sidebar  -->
 
         <!-- Page Content  -->
         <div id="content">
-            <nav>
-            <?php include "header.php"; ?>
-            </nav>
+
      <div class="">
 
     <h1>Create Interview</h1>
     <div class="container">
-  <div class="row justify-content-center">
+  <div class="row">
    <div class="col-md-12">
 
     <form action="insert_interview.php" method="POST">
     <div class="form-group">
     <label for="date">Interview Date</label>
-    <input type="date" rows="2" class="form-control" name="interview_date" placeholder="Interview Date">
+    <input type="date" class="form-control" name="interview_date" placeholder="Interview Date">
     
   </div>
   <div class="form-group">
@@ -109,8 +109,9 @@ if(!isset($_SESSION["admin_id"])){
             });
         });
     </script>
+
+  </body>
+</html>
     <footer>
    <?php include "footer.php"; ?>
   </footer>
-  </body>
-</html>

@@ -1,5 +1,6 @@
  
 <head>
+  <link rel="icon" type="image/png" href="../assets/img/logo.png">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <meta charset="utf-8">
@@ -63,7 +64,13 @@
                         </div>
                         </li>
                         </ul>
-                        </div>
+                      </div>
+                        <?php
+                        if($_SESSION["message"]==null){
+                            ?>
+                            <p><?php echo $_SESSION['message']; ?></p>
+                            <?php 
+                        }else{ ?>
                         <div class="alert alert-success alert-dismissable" id="flash-msg">
                         <button aria-hidden="true" data-dismiss="alert" type="submit" name="off" method="off" value="off" class="close"><h6><?php echo $_SESSION['message']; echo "   "; ?> X </h6></button>
                         <?php 
@@ -71,9 +78,11 @@
                         unset($_SESSION["message"]);
                          }
                          $_SESSION['message'] = '';
+                         ?>
+                         </div>
+                         <?php 
+                        }
                         ?>
-                        </div>
-                        <div>
                         <ul class="nav navbar-nav navbar-right">
 
                     <?php if (empty($_SESSION['admin_name'])) { ?>

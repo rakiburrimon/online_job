@@ -39,13 +39,13 @@ if(!isset($_SESSION["job_seeker_id"])){
 
     <title>Add Qualification</title>
   </head>
-
-  <body>
-  	<div>
-        <div id="content">
             <nav>
             <?php include "header.php"; ?>
             </nav>
+  <body>
+  	<div>
+        <div id="">
+
      <div class="">
 
     <h1>Post job</h1>
@@ -69,7 +69,8 @@ if(!isset($_SESSION["job_seeker_id"])){
     <input type="text" class="form-control" name="qualification_institution" placeholder="Institution">
     
   </div>
-   <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Post the Job</button>
+  <br>
+   <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Add</button>
 </form>
  
 </div>

@@ -23,7 +23,7 @@ $a8=$_POST["application_deadline"];
 $a9=$_POST["employer_id"];
 //'".$_SESSION['employer_id']."'
 
-$sql = "INSERT INTO `job` (`job_id`, `job_title`, `job_context`, `job_responsibilities`, `educaqtional_requirement`, `job_experience_required`, `job_status`, `job_location`, `job_salary`, `job_application_deadline`, `employer_id`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4', '$a5', 'Active', '$a6', '$a7', '$a8', '$a9')";
+$sql = "INSERT INTO `job` (`job_id`, `job_title`, `job_context`, `job_responsibilities`, `educaqtional_requirement`, `job_experience_required`, `job_status`,`job_type`, `job_location`, `job_salary`, `job_application_deadline`, `employer_id`) VALUES (NULL, '$a1', '$a2', '$a3', '$a4', '$a5', 'Active','Special', '$a6', '$a7', '$a8', '$a9')";
 
 if ($conn->query($sql) === TRUE) {
   echo "Successful";

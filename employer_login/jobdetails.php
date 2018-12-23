@@ -154,7 +154,7 @@ if(!isset($_SESSION["employer_id"])){
 			<div>
 				<div class="sectionContent">
 					<td><a class="btn btn-success" name="Show Candidates List" href="candidates_list.php?job_id=<?php echo $res['job_id']; ?>">Show Candidates List..</a></td>
-					<td><a class="btn btn-success" name="Selected Candidates List" href="selected_candidates.php?job_id=<?php echo $res['job_id']; ?>">Selected Candidates List..</a></td>
+					
 					<?php
 					include 'connection.php';
 					$job_id= $_GET['job_id'];
@@ -165,7 +165,8 @@ if(!isset($_SESSION["employer_id"])){
 
 					$res= mysqli_fetch_array($query);
 										
-					?>		
+					?>
+					<td><a class="btn btn-success" name="Selected Candidates List" href="selected_candidates.php?interview_id=<?php echo $res['interview_id']; ?>">Selected Candidates List..</a></td>		
 					<td><a class="btn btn-success" name="Manage Interview" href="update_interview.php?interview_id=<?php echo $res['interview_id']; ?>">Manage Interview..</a></td>
 				</div>
 			<?php  ?>

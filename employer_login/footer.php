@@ -9,38 +9,69 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="assets/demo/demo.css" rel="stylesheet" />
-    <footer class="footer" >
-    <div class="container" >
-      <nav>
-        <ul>
-          <li>
-            <a href="">
-              Contact
-            </a>
-          </li>
-          <li>
-            <a href="">
-              About Us
-            </a>
-          </li>
-          <li>
-            <a href="">
-              Blog
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright">
-        &copy;
+    <footer class="page-footer font-small bg-secondary pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-sm-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <img src="../assets/img/caveman.png" width="60%" alt="User Icon" />
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a class="text-light" href="#!">Contact</a>
+              </li>
+              <li>
+                <a class="text-light" href="#!">About Us</a>
+              </li>
+              <li>
+                <a class="text-light" href="#!">Search Job</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+   <div class="footer-copyright text-center py-3"><div class="copyright">
+        <h5 class="text-light">&copy;</h5>
         <script>
           document.write(new Date().getFullYear())
-        </script>, Designed by
-        <a>Md. Rakibur Rahman</a>
+        </script><h5 class="text-light"> Designed by
+        <a>Md. Rakibur Rahman</a></h5>
       </div>
     </div>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+
+
   </footer>
 </html>

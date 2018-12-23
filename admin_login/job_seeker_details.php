@@ -54,7 +54,7 @@ if(!isset($_SESSION["admin_id"])){
 										$query = mysqli_query($conn,$q);
 
 										while ($res= mysqli_fetch_array($query)) {
-										
+										 
 								?>
 								<td><a class="btn btn-success" name="Details" href="cv_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Check Resume..</a></td>
 								<div class="form-group">

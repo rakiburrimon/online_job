@@ -63,10 +63,15 @@ if(!isset($_SESSION["admin_id"])){
 <div class="container">
   <div class="row justify-content-center">
     <th><a class="btn btn-info" name="add" href="add_employer.php">Add New Employer</a></th>
-                                </tr>
+                                </div>
+                                <br>
    <div class="col-md-12">
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <?php if (isset($msg)): ?>
+      <?php echo $msg;?>
+    <?php endif ?>
     <table id="example" class="table table-striped">
-    <tr class="container-fluid bg-info">
+    <thead class="container-fluid bg-info">
                                     <th>Logo</th>
                                     <th>Company Name</th>
                                     <th>Location</th>
@@ -76,7 +81,7 @@ if(!isset($_SESSION["admin_id"])){
                                     <th>Action</th>
                                     <th>   </th>
                                     <th>Send Mail</th>
-             </tr> 
+             </thead>
 <?php
 include 'connection.php';
 if($conn->connect_error){
@@ -86,9 +91,9 @@ if($conn->connect_error){
         $quer = mysqli_query($conn,$sql);
         while ($res= mysqli_fetch_array($quer)){
             ?>
-            <?php echo "<br>"; ?>
+            
         <div class="row">                
-             <tr>
+             <tbody id="myTable">
                 
                     <div class="media-body">
                       <td>
@@ -108,13 +113,14 @@ if($conn->connect_error){
                     </td>
                     </div>
                 
-        </tr>
+        </tbody>
     
         </div>
     <?php
     }
 }
     ?>
+  </table>
 </div>
 </div>
 </div>
@@ -143,6 +149,42 @@ pageTracker._trackPageview();
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<script>
 function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;
      var originalContents = document.body.innerHTML;
@@ -154,8 +196,10 @@ function printDiv(divName) {
      document.body.innerHTML = originalContents;
 }
 </script> 
-<footer>
-   <?php include "footer.php"; ?>
-  </footer>
+
+
 </body>
 </html>
+<table><footer>
+   <?php include "footer.php"; ?>
+  </footer></table>

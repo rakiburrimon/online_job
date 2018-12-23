@@ -139,12 +139,10 @@ if(!isset($_SESSION["employer_id"])){
                         					<option value="Food/Beverage Industry">Food/Beverage Industry</option>
                         					<option value="Security Service">Security Service</option>
                         					<option value="Others">Others</option>
+                        				</select>
     
   								</div>
-  								<?php echo "</br>"; ?>
-
 								<div class="form-group">
-									<p>Contact Person's Name</p>
 									<label for="contact_person_name">Contact Person's Name: </label>
 									<input type="text" name="contact_person_name" id="contact_person_name" class="form-control" value="<?php echo $res['contact_person_name']; ?>" />
 								</div>
@@ -164,8 +162,9 @@ if(!isset($_SESSION["employer_id"])){
 					</div>
 				</div>
 			</div>
-<footer>
-   <?php include "footer.php"; ?>
-  </footer>
+
 			<div class="col-md-3"></div>
 		</div>
+		<footer>
+   <?php include "footer.php"; ?>
+  </footer>

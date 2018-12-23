@@ -24,6 +24,9 @@ if(!isset($_SESSION["admin_id"])){
     
     <meta charset="utf-8">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap/css/simple-sidebar.css" rel="stylesheet">
@@ -40,7 +43,6 @@ if(!isset($_SESSION["admin_id"])){
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
-<nav>
    <?php
 			if(isset($_SESSION["admin_id"])){
 			?>
@@ -50,13 +52,12 @@ if(!isset($_SESSION["admin_id"])){
 			<?php
 }else{
 	?>
-	<div>
+	<nav>
 				<input type="hidden" name="">
-			</div>
+			</nav>
 	<?php
 }
 			?>
-  </nav>
 
 <body id="top" class=""> 
     <form>
@@ -64,9 +65,17 @@ if(!isset($_SESSION["admin_id"])){
   <div class="row justify-content-center">
     <th><a class="btn btn-info" name="add" href="add_job.php">Add New Job</a></th>
                                 </tr>
-   <div class="col-md-12">
-    <table id="myTable" class="table table-striped">
-    <tr class="container-fluid bg-info">
+                              </div>
+                              <br>
+   <div class="col-md-12 row justify-content-center">
+    
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br> <br>
+    <?php if (isset($msg)): ?>
+      <?php echo $msg;?>
+    <?php endif ?>
+    <table id="example" class="table table-striped">
+    <thead class="container-fluid bg-info">
                                     <th>Job Title</th>
                                     <th>Location</th>
                                     <th>Deadline</th>
@@ -75,7 +84,7 @@ if(!isset($_SESSION["admin_id"])){
                                     <th>   </th>
                                     <th>Action</th>
                                     <th>   </th>
-             </tr> 
+             </thead>
 <?php
 include 'connection.php';
 if($conn->connect_error){
@@ -84,10 +93,8 @@ if($conn->connect_error){
         $sql="select * from job ORDER BY job_id DESC";
         $quer = mysqli_query($conn,$sql);
         while ($res= mysqli_fetch_array($quer)){
-            ?>
-            <?php echo "<br>"; ?>
-        <div class="row">                
-             <tr>
+            ?>           
+             <tbody id="myTable">
                 
                     <div class="media-body">
                         <td><?php echo $res['job_title']; ?></td>
@@ -114,9 +121,8 @@ if($conn->connect_error){
                     </td>
                     </div>
                 
-        </tr>
+        </tbody>
     
-        </div>
     <?php
     }
 }
@@ -138,7 +144,6 @@ pageTracker._trackPageview();
     $(document).ready(function() {
     $('#example').DataTable();
     } );
-    <script>
 function myFunction() {
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;
@@ -161,6 +166,15 @@ function myFunction() {
   }
 }
 </script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 </script>
 <script src="../assets/css/dataTables.bootstrap4.min.css"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -183,8 +197,9 @@ function printDiv(divName) {
      document.body.innerHTML = originalContents;
 }
 </script> 
-<footer>
-   <?php include "footer.php"; ?>
-  </footer>
+
 </body>
 </html>
+<table><footer>
+   <?php include "footer.php"; ?>
+  </footer></table>

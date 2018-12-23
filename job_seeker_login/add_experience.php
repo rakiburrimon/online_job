@@ -39,16 +39,16 @@ if(!isset($_SESSION["job_seeker_id"])){
 
     <title>Add Experience</title>
   </head>
-
+            <nav>
+            <?php include "header.php"; ?>
+            </nav>
   <body>
   	<div>
         <!-- Sidebar  -->
 
         <!-- Page Content  -->
-        <div id="content">
-            <nav>
-            <?php include "header.php"; ?>
-            </nav>
+        <div id="">
+
      <div class="">
 
     <h1>Add Experience</h1>
@@ -72,6 +72,7 @@ if(!isset($_SESSION["job_seeker_id"])){
     <input type="text" class="form-control" name="experience_duration" placeholder="Duration">
     
   </div>
+  <br>
    <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Add this Experience</button>
 </form>
  

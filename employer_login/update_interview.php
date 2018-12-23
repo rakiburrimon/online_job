@@ -93,8 +93,9 @@ if(!isset($_SESSION["employer_id"])){
 					</div>
 				</div>
 			</div>
-<footer>
-   <?php include "footer.php"; ?>
-  </footer>
+
 			<div class="col-md-3"></div>
 		</div>
+		<footer>
+   <?php include "footer.php"; ?>
+  </footer>

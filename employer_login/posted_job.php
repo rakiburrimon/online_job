@@ -86,7 +86,9 @@ if(!isset($_SESSION["employer_id"])){
             </ul>
         </div>
         </div>
-        <?php } ?>	
+        <?php
+        echo "<br>"; }
+         ?>	
 </div>
 </div>
 </div>

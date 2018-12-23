@@ -42,7 +42,7 @@ if(!isset($_SESSION["admin_id"])){
   <nav>
    <?php include "header.php"; ?>
   </nav>
-
+<br><br><br>
     <div class="counter bg-white">
     <div class="container">
       <br>
@@ -220,7 +220,7 @@ if(!isset($_SESSION["admin_id"])){
           </div>
         </div>
       </div>
-
+<br><br><br><br><br>
 </body>
 <div class= "footer">
 

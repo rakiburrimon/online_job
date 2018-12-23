@@ -39,13 +39,13 @@ if(!isset($_SESSION["job_seeker_id"])){
 
     <title>Add Reference</title>
   </head>
-
-  <body>
-  	<div>
-        <div id="content">
             <nav>
             <?php include "header.php"; ?>
             </nav>
+  <body>
+  	<div>
+        <div id="">
+
      <div class="">
 
     <h1>Add Reference</h1>
@@ -95,7 +95,8 @@ if(!isset($_SESSION["job_seeker_id"])){
                         <option value="Other">Other</option>
     
   </div>
-   <input class="btn btn-outline-primary btn-lg btn-block" type="submit" value="Submit">
+  <br>
+   <input class="btn btn-outline-primary btn-lg btn-block" type="submit" value="Add">
 </form>
  
 </div>

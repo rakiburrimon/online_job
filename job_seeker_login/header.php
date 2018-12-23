@@ -1,5 +1,6 @@
 
 <head>
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
     <link rel="stylesheet" href="../assets/css/style4.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
@@ -53,6 +54,12 @@
                         </li>
                         </ul>
                         </div>
+                        <?php
+                        if($_SESSION["message"]==null){
+                            ?>
+                            <p><?php echo $_SESSION['message']; ?></p>
+                            <?php 
+                        }else{ ?>
                         <div class="alert alert-success alert-dismissable" id="flash-msg">
                         <button aria-hidden="true" data-dismiss="alert" type="submit" name="off" method="off" value="off" class="close"><h6><?php echo $_SESSION['message']; echo "   "; ?> X </h6></button>
                         <?php 
@@ -60,9 +67,11 @@
                         unset($_SESSION["message"]);
                          }
                          $_SESSION['message'] = '';
+                         ?>
+                         </div>
+                         <?php 
+                        }
                         ?>
-                        </div>
-                        <div>
                         <ul class="nav navbar-nav navbar-right">
                     <?php if (empty($_SESSION['job_seeker_email'])) { ?>
                         <li><a href="Login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                        
@@ -75,20 +84,19 @@
                                     $query= mysqli_query($conn,$q);
                                     $res= mysqli_fetch_assoc($query);
                                 ?>
-                         <img src="job_seeker_image/<?php echo $res['image']; ?>"  width="25px" class="rounded" alt="User Icon" aria-expanded="false">
+                         <img src="job_seeker_image/<?php echo $res['image']; ?>"  width="20px" class="rounded" alt="User Icon" aria-expanded="true">
                             <?php echo $res['job_seeker_name']; ?>
                         </a>
-                        <div class="dropdown-menu">
+                        <ul class="dropdown-menu">
                             <a class="dropdown-item" href="change_password.php">Change Password</a>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                             
-                        </div>
+                        </ul>
                         </li>
                     <?php } ?>
                         
                     
                 </ul>
-                    </div>
                 </div>
             </nav>
             </body>

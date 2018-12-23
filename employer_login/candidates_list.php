@@ -87,7 +87,7 @@ if($conn->connect_error){
         $jj= $res['job_seeker_id'];
         ?>
         <?php
-        $sql1="select * from job_seeker where job_seeker_id =$jj";
+        $sql1="select * from job_seeker where job_seeker_id =$jj and job_seeker_status='Active'";
 
         $quer1 = mysqli_query($conn,$sql1);
 
@@ -203,8 +203,11 @@ function printDiv(divName) {
      document.body.innerHTML = originalContents;
 }
 </script> 
-<footer>
-   <?php include "footer.php"; ?>
-  </footer>
+
 </body>
 </html>
+<table>
+    <footer>
+   <?php include "footer.php"; ?>
+  </footer>
+</table>

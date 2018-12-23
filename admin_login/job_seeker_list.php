@@ -63,10 +63,17 @@ if(!isset($_SESSION["admin_id"])){
 <div class="container">
   <div class="row justify-content-center">
     <th><a class="btn btn-info" name="add" href="add_job_seeker.php">Add New Job Seeker</a></th>
-                                </tr>
+                                
+                                <br><p>   </p>
+                            </div>
+                        <br>
    <div class="col-md-12">
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <?php if (isset($msg)): ?>
+      <?php echo $msg;?>
+    <?php endif ?>
     <table id="example" class="table table-striped">
-    <tr class="container-fluid bg-info">
+    <thead class="container-fluid bg-info">
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Email</th>
@@ -76,7 +83,7 @@ if(!isset($_SESSION["admin_id"])){
                                     <th>   </th>
                                     <th>Action</th>
                                     <th>   </th>
-             </tr> 
+             </thead>
 <?php
 include 'connection.php';
 if($conn->connect_error){
@@ -85,10 +92,8 @@ if($conn->connect_error){
         $sql="select * from job_seeker ORDER BY job_seeker_id DESC";
         $quer = mysqli_query($conn,$sql);
         while ($res= mysqli_fetch_array($quer)){
-           echo "<br>"; ?>
-        <div class="row">                
-             <tr> 
-                
+            ?>             
+             <tbody id="myTable"> 
                     <div class="media-body">
                         <td><img src="../job_seeker_login/job_seeker_image/<?php echo $res['image'] ?>"  width="40px" class="rounded" alt="User Icon" aria-expanded="false"></td>
                         <td><?php echo $res['job_seeker_name']; ?></td>
@@ -105,20 +110,22 @@ if($conn->connect_error){
                      <td><a class="btn btn-primary btn-sm" name="Details" href=" job_seeker_details.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Details..</a></td>
                             <td><a class="btn btn-success btn-sm" name="Update" href="update_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Update</a></td>
                              <td><a class="btn btn-danger btn-sm" name="Delete" href="delete_job_seeker.php?job_seeker_id=<?php echo $res['job_seeker_id']; ?>">Delete</a></td>
-                        <td>
+                        
                     </div>
                 
-        </tr>
+        </tbody>
     
         </div>
     <?php
 }
 }
     ?>
-</div>
+  </table>
 </div>
 </div>
 </form>
+</body>
+</html>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -154,8 +161,58 @@ function printDiv(divName) {
      document.body.innerHTML = originalContents;
 }
 </script> 
-<footer>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<script>
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script> 
+
+<table>
+    <footer>
+        <br><br>
    <?php include "footer.php"; ?>
   </footer>
-</body>
-</html>
+</table>

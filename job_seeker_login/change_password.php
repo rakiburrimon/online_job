@@ -9,8 +9,8 @@ include_once 'connection.php';
 if (count($_POST) > 0) {
     $result = mysqli_query($conn, "SELECT *from job_seeker WHERE job_seeker_id='" . $_SESSION["job_seeker_id"] . "'");
     $row = mysqli_fetch_array($result);
-    if ($_POST["currentPassword"] == $row["password"]) {
-        mysqli_query($conn, "UPDATE job_seeker set password='" . $_POST["newPassword"] . "' WHERE job_seeker_id='" . $_SESSION["job_seeker_id"] . "'");
+    if ($_POST["currentPassword"] == $row["job_seeker_password"]) {
+        mysqli_query($conn, "UPDATE job_seeker set job_seeker_password='" . $_POST["newPassword"] . "' WHERE job_seeker_id='" . $_SESSION["job_seeker_id"] . "'");
         $message = "Password Changed";
     } else
         $message = "Current Password is not correct";
