@@ -45,7 +45,7 @@ if(!isset($_SESSION["employer_id"])){
   </nav>
   <form action="add_fixed_interview.php" method="POST">
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center border border-primary">
    <div class="col-md-12">
 		<?php 
 			include 'connection.php';
@@ -72,7 +72,7 @@ if(!isset($_SESSION["employer_id"])){
 	<div>
 		<section>
 			<article>
-				
+			<label for="Job Title">Job Title: </label>
 				<div class="sectionContent">
 					<h1 class="quickFade delayTwo"><?php echo $res['job_title']; ?></h1>
 				</div>
@@ -84,7 +84,7 @@ if(!isset($_SESSION["employer_id"])){
 				<div class="sectionTitle">
 					<h3>Job Context</h3>
 				</div>
-				
+				<label for="Job Context">Job Context: </label>
 				<div class="sectionContent">
 					<p><?php echo $res['job_context']; ?></p>
 				</div>

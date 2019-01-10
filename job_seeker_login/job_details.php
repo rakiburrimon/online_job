@@ -204,7 +204,7 @@ session_start();
 			
 			<div>
 				<div  class="sectionContent">
-					<input class="btn btn-danger btn-lg btn-block" type="Disabled" value="Already Applied">
+					<input class="btn btn-success btn-lg btn-block" type="Disabled" value="Application Successful">
 				</div>
 			</div>
 				<?php
